@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Miksumia — Drive to Confluence Publisher</title>
+<meta name="description" content="Drive to Confluence Publisher convertit vos dossiers Google Drive en pages Confluence natives, en conservant l'arborescence et en resynchronisant les modifications.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FDFDFC;
+    --ink:#14202B;
+    --muted:#5C6B7A;
+    --rule:#DDE3E9;
+    --accent:#1F4B99;
+    --accent-soft:#EDF2FA;
+    --serif:"Source Serif 4",Georgia,serif;
+    --sans:"IBM Plex Sans",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--serif);
+    font-size:18px;
+    line-height:1.62;
+  }
+  .wrap{max-width:44rem;margin:0 auto;padding:0 1.5rem}
+  a{color:var(--accent)}
+  a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+  header{padding:3.5rem 0 0}
+  .mark{
+    font-family:var(--sans);
+    font-weight:500;
+    font-size:.95rem;
+    letter-spacing:.01em;
+    color:var(--muted);
+    text-decoration:none;
+  }
+  h1{
+    font-weight:600;
+    font-size:2.45rem;
+    line-height:1.18;
+    letter-spacing:-.015em;
+    margin:1.75rem 0 0;
+    max-width:20ch;
+  }
+  .lede{
+    font-size:1.16rem;
+    color:var(--muted);
+    margin:1.1rem 0 0;
+    max-width:56ch;
+  }
+
+  /* Arbre : le motif central du produit */
+  .transform{
+    margin:3rem 0 0;
+    border-top:1px solid var(--rule);
+    border-bottom:1px solid var(--rule);
+    padding:2rem 0;
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    gap:1.25rem;
+    align-items:center;
+    font-family:var(--sans);
+    font-size:.9rem;
+  }
+  .tree-label{
+    display:block;
+    color:var(--muted);
+    margin:0 0 .85rem;
+    font-size:.8rem;
+  }
+  .tree{list-style:none;margin:0;padding:0}
+  .tree ul{list-style:none;margin:.3rem 0 0;padding:0 0 0 1.05rem;border-left:1px solid var(--rule)}
+  .tree li{padding:.16rem 0;position:relative}
+  .tree ul li::before{
+    content:"";
+    position:absolute;
+    left:-1.05rem;top:1.05em;
+    width:.7rem;height:1px;
+    background:var(--rule);
+  }
+  .node-folder{color:var(--ink)}
+  .node-page{color:var(--ink)}
+  .node-page::after{
+    content:"";
+    display:inline-block;
+    width:.42rem;height:.42rem;
+    margin-left:.45rem;
+    border-radius:50%;
+    background:var(--accent);
+    vertical-align:.05em;
+  }
+  .arrow{
+    color:var(--accent);
+    font-size:1.35rem;
+    text-align:center;
+    line-height:1;
+  }
+  .arrow span{display:block;font-size:.72rem;color:var(--muted);margin-top:.5rem;white-space:nowrap}
+
+  h2{
+    font-weight:600;
+    font-size:1.28rem;
+    letter-spacing:-.005em;
+    margin:3rem 0 .6rem;
+  }
+  p{margin:0 0 1rem;max-width:66ch}
+  ul.plain{margin:0 0 1rem;padding-left:1.15rem;max-width:66ch}
+  ul.plain li{margin:.35rem 0}
+
+  .install{
+    margin:2.75rem 0 0;
+    background:var(--accent-soft);
+    border:1px solid #D6E0F0;
+    border-radius:4px;
+    padding:1.35rem 1.5rem;
+  }
+  .install p{margin:0;font-size:1rem}
+
+  footer{
+    margin:4.5rem 0 0;
+    border-top:1px solid var(--rule);
+    padding:1.5rem 0 3.5rem;
+    font-family:var(--sans);
+    font-size:.88rem;
+    color:var(--muted);
+  }
+  footer a{margin-right:1.25rem}
+  .legal{margin-top:.85rem;line-height:1.7}
+
+  @media (max-width:640px){
+    body{font-size:17px}
+    h1{font-size:1.95rem}
+    .transform{grid-template-columns:1fr;gap:1.5rem}
+    .arrow{transform:rotate(90deg);width:2rem;margin:0 auto}
+    .arrow span{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <a class="mark" href="/">Miksumia</a>
+    <h1>Vos dossiers Drive deviennent de vraies pages Confluence.</h1>
+    <p class="lede">
+      Drive to Confluence Publisher lit un dossier Google Drive et publie son
+      contenu dans Confluence sous forme de pages natives — cherchables,
+      commentables, gouvernées comme le reste de votre espace. L'arborescence
+      des dossiers devient l'arborescence des pages, et chaque modification
+      dans Drive est resynchronisée.
+    </p>
+  </header>
+
+  <section class="transform" aria-label="Ce que fait l'application">
+    <div>
+      <span class="tree-label">Dossier Google Drive</span>
+      <ul class="tree">
+        <li class="node-folder">Ressources humaines
+          <ul>
+            <li class="node-folder">Onboarding
+              <ul>
+                <li class="node-folder">Livret d'accueil.docx</li>
+                <li class="node-folder">Checklist J1.xlsx</li>
+              </ul>
+            </li>
+            <li class="node-folder">Politique de congés.pdf</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="arrow" aria-hidden="true">
+      →
+      <span>publication</span>
+    </div>
+
+    <div>
+      <span class="tree-label">Espace Confluence</span>
+      <ul class="tree">
+        <li class="node-page">Ressources humaines
+          <ul>
+            <li class="node-page">Onboarding
+              <ul>
+                <li class="node-page">Livret d'accueil</li>
+                <li class="node-page">Checklist J1</li>
+              </ul>
+            </li>
+            <li class="node-page">Politique de congés</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <h2>Des pages, pas des pièces jointes</h2>
+  <p>
+    Les outils existants affichent le fichier Drive dans un cadre inséré : le
+    contenu reste invisible à la recherche Confluence et aux agents. Ici, chaque
+    document est converti en contenu Confluence natif — titres, listes, tableaux,
+    images — avec le fichier d'origine toujours accessible en un clic.
+  </p>
+
+  <h2>Une synchronisation qui ne casse rien</h2>
+  <p>
+    Après la première publication, seuls les documents réellement modifiés sont
+    republiés. Les pages conservent leur identité, leur historique de version et
+    leurs liens entrants. Si un document est renommé ou déplacé dans Drive, la
+    page correspondante suit sans être recréée.
+  </p>
+
+  <h2>Ce que l'application lit, et ce qu'elle n'écrit pas</h2>
+  <ul class="plain">
+    <li>L'accès à Google Drive est en <strong>lecture seule</strong>. L'application ne modifie, ne déplace ni ne supprime jamais un fichier Drive.</li>
+    <li>Seuls les dossiers que vous connectez explicitement sont lus.</li>
+    <li>L'application s'exécute sur Atlassian Forge : le traitement a lieu dans l'infrastructure Atlassian, pas sur un serveur tiers.</li>
+    <li>Seul un administrateur Confluence peut créer, modifier ou supprimer une connexion.</li>
+  </ul>
+
+  <div class="install">
+    <p>
+      L'application est actuellement distribuée sur invitation, par lien
+      d'installation. Écrivez à <a href="mailto:contact@miksumia.com">contact@miksumia.com</a>
+      pour y accéder.
+    </p>
+  </div>
+
+  <footer>
+    <a href="/privacy.html">Politique de confidentialité</a>
+    <a href="mailto:contact@miksumia.com">Support</a>
+    <p class="legal">
+      <!-- À COMPLÉTER : raison sociale exacte, forme juridique, SIREN, adresse du siège -->
+      Miksumia — [RAISON SOCIALE], [FORME JURIDIQUE] au capital de [MONTANT] €.<br>
+      SIREN [SIREN] · Siège : [ADRESSE], France.<br>
+      Directeur de la publication : Mikolaj Umiastowski.
+    </p>
+  </footer>
+
+</div>
+</body>
+</html>

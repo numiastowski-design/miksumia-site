@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Politique de confidentialité — Drive to Confluence Publisher</title>
+<meta name="description" content="Politique de confidentialité de l'application Drive to Confluence Publisher : données traitées, usage des API Google, conservation et suppression.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FDFDFC;
+    --ink:#14202B;
+    --muted:#5C6B7A;
+    --rule:#DDE3E9;
+    --accent:#1F4B99;
+    --accent-soft:#EDF2FA;
+    --serif:"Source Serif 4",Georgia,serif;
+    --sans:"IBM Plex Sans",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--serif);font-size:18px;line-height:1.65;
+  }
+  .wrap{max-width:42rem;margin:0 auto;padding:0 1.5rem}
+  a{color:var(--accent)}
+  a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+  header{padding:3.5rem 0 0}
+  .mark{font-family:var(--sans);font-weight:500;font-size:.95rem;color:var(--muted);text-decoration:none}
+  h1{font-weight:600;font-size:2.1rem;line-height:1.2;letter-spacing:-.015em;margin:1.75rem 0 .5rem}
+  .meta{font-family:var(--sans);font-size:.86rem;color:var(--muted);margin:0 0 2.5rem}
+
+  h2{
+    font-weight:600;font-size:1.22rem;letter-spacing:-.005em;
+    margin:2.75rem 0 .6rem;padding-top:1.4rem;border-top:1px solid var(--rule);
+  }
+  h3{font-weight:600;font-size:1.02rem;margin:1.6rem 0 .4rem}
+  p{margin:0 0 1rem;max-width:66ch}
+  ul{margin:0 0 1rem;padding-left:1.15rem;max-width:66ch}
+  li{margin:.4rem 0}
+
+  .limited{
+    background:var(--accent-soft);
+    border:1px solid #D6E0F0;
+    border-radius:4px;
+    padding:1.25rem 1.4rem;
+    margin:1.25rem 0;
+  }
+  .limited p:last-child{margin-bottom:0}
+
+  table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.94rem}
+  th,td{text-align:left;vertical-align:top;padding:.6rem .8rem .6rem 0;border-bottom:1px solid var(--rule)}
+  th{font-family:var(--sans);font-weight:500;font-size:.82rem;color:var(--muted)}
+
+  footer{
+    margin:4rem 0 0;border-top:1px solid var(--rule);
+    padding:1.5rem 0 3.5rem;font-family:var(--sans);font-size:.88rem;color:var(--muted);
+  }
+  footer a{margin-right:1.25rem}
+  .legal{margin-top:.85rem;line-height:1.7}
+
+  @media (max-width:640px){
+    body{font-size:17px}
+    h1{font-size:1.8rem}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <a class="mark" href="/">Miksumia</a>
+  <h1>Politique de confidentialité</h1>
+  <p class="meta">
+    Application « Drive to Confluence Publisher » · Version du 5 septembre 2026
+  </p>
+</header>
+
+<p>
+  Cette politique décrit les données traitées par l'application Drive to
+  Confluence Publisher (« l'application »), éditée par
+  <!-- À COMPLÉTER --> [RAISON SOCIALE] (« nous »), et la manière dont elles
+  sont utilisées, conservées et supprimées.
+</p>
+<p>
+  L'application est une application Atlassian Forge installée par un
+  administrateur sur un site Confluence Cloud. Elle lit des fichiers dans
+  Google Drive et publie leur contenu sous forme de pages Confluence.
+</p>
+
+<h2>1. Responsable du traitement et contact</h2>
+<p>
+  <!-- À COMPLÉTER : raison sociale, forme, SIREN, adresse -->
+  [RAISON SOCIALE], [FORME JURIDIQUE], SIREN [SIREN], dont le siège est situé
+  [ADRESSE], France.
+</p>
+<p>
+  Pour toute question relative à cette politique ou à l'exercice de vos droits :
+  <a href="mailto:contact@miksumia.com">contact@miksumia.com</a>.
+</p>
+
+<h2>2. Données Google auxquelles l'application accède</h2>
+<p>
+  L'application demande une autorisation d'accès à Google Drive limitée à la
+  portée <code>https://www.googleapis.com/auth/drive.readonly</code>, en
+  <strong>lecture seule</strong>. Elle ne peut ni créer, ni modifier, ni
+  supprimer un fichier dans Google Drive.
+</p>
+
+<table>
+  <thead>
+    <tr><th>Donnée</th><th>Pourquoi elle est nécessaire</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Métadonnées des fichiers et dossiers : identifiant, nom, type, date de modification, dossier parent</td>
+      <td>Reconstruire l'arborescence dans Confluence et déterminer quels documents ont changé depuis la dernière synchronisation</td>
+    </tr>
+    <tr>
+      <td>Contenu des fichiers des dossiers connectés</td>
+      <td>Convertir chaque document en page Confluence</td>
+    </tr>
+    <tr>
+      <td>Notifications de changement Google Drive</td>
+      <td>Déclencher une synchronisation lorsqu'un document est modifié</td>
+    </tr>
+    <tr>
+      <td>Adresse e-mail du compte Google connecté</td>
+      <td>Afficher à l'administrateur quel compte est utilisé par la connexion</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+  Seuls les dossiers explicitement connectés par un administrateur Confluence
+  sont lus. Le reste du Drive du compte connecté n'est jamais parcouru.
+</p>
+
+<h2>3. Usage limité des données issues des API Google</h2>
+<div class="limited">
+  <p>
+    L'utilisation par Drive to Confluence Publisher des informations reçues des
+    API Google respecte la
+    <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noopener">Google API Services User Data Policy</a>,
+    y compris ses exigences d'usage limité (<em>Limited Use</em>).
+  </p>
+  <p>
+    En particulier, nous n'utilisons ces données que pour fournir et améliorer
+    les fonctions visibles par l'utilisateur décrites ci-dessus ; nous ne les
+    transférons pas à des tiers, sauf pour fournir ces fonctions, pour nous
+    conformer à une obligation légale ou dans le cadre d'une fusion ou d'une
+    acquisition ; nous ne les utilisons pas à des fins publicitaires ; et
+    aucun être humain ne les lit, sauf avec votre accord explicite pour un
+    besoin d'assistance, pour des raisons de sécurité, ou lorsque la loi
+    l'exige.
+  </p>
+  <p>
+    Les données issues des API Google ne sont pas utilisées pour entraîner des
+    modèles d'intelligence artificielle généralisés.
+  </p>
+</div>
+
+<h2>4. Où les données sont traitées et conservées</h2>
+<p>
+  L'application s'exécute intégralement sur la plateforme Atlassian Forge. Le
+  traitement et le stockage ont lieu dans l'infrastructure Atlassian ; nous
+  n'exploitons aucun serveur propre et ne détenons aucune copie de vos
+  documents en dehors de cette plateforme.
+</p>
+
+<h3>Ce que nous conservons</h3>
+<ul>
+  <li>
+    <strong>Configuration des connexions</strong> : identifiant du dossier Drive,
+    espace Confluence de destination, réglages de synchronisation, règles
+    d'exclusion. Conservé tant que la connexion existe.
+  </li>
+  <li>
+    <strong>État de synchronisation par document</strong> : identifiant du fichier
+    Drive, titre, dossier parent, identifiant de la page Confluence créée, et une
+    empreinte cryptographique irréversible (SHA-256) du contenu publié. Cette
+    empreinte permet de détecter qu'un document a changé sans conserver son
+    contenu.
+  </li>
+  <li>
+    <strong>Journaux d'exécution</strong> : dates de synchronisation, compteurs,
+    codes d'erreur. Ils ne contiennent ni contenu de document ni identifiant
+    d'authentification.
+  </li>
+  <li>
+    <strong>Texte extrait des images</strong> : lorsqu'un document contient des
+    images comportant du texte, le texte reconnu est conservé en cache afin
+    d'éviter de refaire l'analyse à chaque synchronisation.
+  </li>
+</ul>
+
+<h3>Ce que nous ne conservons pas</h3>
+<ul>
+  <li>Le contenu intégral de vos documents n'est pas stocké de façon durable : il est lu, converti, publié dans Confluence, puis écarté.</li>
+  <li>Les jetons d'accès et de rafraîchissement Google sont conservés dans le stockage chiffré de secrets fourni par Atlassian Forge. Ils ne sont jamais journalisés ni exposés à l'interface.</li>
+</ul>
+
+<p>
+  Une fois publié dans Confluence, le contenu se trouve dans votre propre espace
+  Confluence et relève de la politique de conservation de votre organisation,
+  ainsi que des conditions d'Atlassian.
+</p>
+
+<h2>5. Services tiers</h2>
+<p>
+  L'application communique avec les services suivants, et uniquement ceux-ci :
+</p>
+<table>
+  <thead>
+    <tr><th>Service</th><th>Ce qui lui est transmis</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>API Google Drive et Google Sheets</td>
+      <td>Requêtes de lecture des dossiers connectés, authentifiées par le compte Google que vous avez autorisé</td>
+    </tr>
+    <tr>
+      <td>Atlassian Confluence</td>
+      <td>Les pages et pièces jointes créées ou mises à jour dans votre espace</td>
+    </tr>
+    <tr>
+      <td>API Google Gemini</td>
+      <td>Uniquement les images contenues dans vos documents, lorsqu'une analyse est nécessaire pour en extraire le texte. Aucun autre contenu n'est transmis.</td>
+    </tr>
+  </tbody>
+</table>
+<p>
+  <!-- À VÉRIFIER avant publication : citer les termes exacts du paid tier Gemini
+       et de la politique Atlassian sur l'entraînement. Cf. TECHNICAL-SPEC §6.3. -->
+  Ces services sont utilisés dans le cadre de leurs offres payantes, dont les
+  conditions excluent l'utilisation des données transmises pour l'entraînement
+  de modèles.
+</p>
+
+<h2>6. Base légale et finalité</h2>
+<p>
+  Le traitement repose sur l'exécution du service demandé par votre
+  organisation : publier dans Confluence des documents que vous nous avez
+  explicitement désignés. Aucune donnée n'est utilisée à des fins publicitaires,
+  de profilage ou de revente.
+</p>
+
+<h2>7. Suppression de vos données</h2>
+<ul>
+  <li>
+    <strong>Déconnecter une connexion</strong> supprime sa configuration et l'état
+    de synchronisation associé. Les pages déjà publiées dans Confluence
+    restent sous votre contrôle.
+  </li>
+  <li>
+    <strong>Déconnecter le compte Google</strong> révoque l'autorisation et
+    supprime les jetons correspondants. Vous pouvez également révoquer l'accès
+    à tout moment depuis
+    <a href="https://myaccount.google.com/permissions" rel="noopener">les autorisations de votre compte Google</a>.
+  </li>
+  <li>
+    <strong>Désinstaller l'application</strong> entraîne la suppression par
+    Atlassian de l'ensemble des données stockées par l'application sur votre site.
+  </li>
+  <li>
+    Vous pouvez à tout moment demander la suppression de données nous concernant
+    en écrivant à <a href="mailto:contact@miksumia.com">contact@miksumia.com</a>.
+    Nous répondons sous 30 jours.
+  </li>
+</ul>
+
+<h2>8. Sécurité</h2>
+<ul>
+  <li>Les échanges avec Google et Atlassian se font exclusivement en HTTPS.</li>
+  <li>Les secrets et jetons sont stockés dans le magasin de secrets chiffré de Forge, jamais en clair dans le code ni dans les journaux.</li>
+  <li>L'accès à la configuration de l'application est réservé aux administrateurs Confluence, vérifié à chaque requête.</li>
+  <li>L'application demande le périmètre d'autorisations minimal nécessaire à son fonctionnement.</li>
+</ul>
+
+<h2>9. Vos droits</h2>
+<p>
+  Conformément au Règlement général sur la protection des données, vous disposez
+  d'un droit d'accès, de rectification, d'effacement, de limitation et
+  d'opposition concernant les données vous concernant. Adressez votre demande à
+  <a href="mailto:contact@miksumia.com">contact@miksumia.com</a>. Vous pouvez
+  également introduire une réclamation auprès de la
+  <a href="https://www.cnil.fr" rel="noopener">CNIL</a>.
+</p>
+
+<h2>10. Modifications</h2>
+<p>
+  Toute modification substantielle de cette politique sera publiée sur cette
+  page, avec une date de version mise à jour. Nous informons les administrateurs
+  des sites où l'application est installée lorsque le changement affecte les
+  données traitées.
+</p>
+
+<footer>
+  <a href="/">Accueil</a>
+  <a href="mailto:contact@miksumia.com">Support</a>
+  <p class="legal">
+    <!-- À COMPLÉTER -->
+    Miksumia — [RAISON SOCIALE], SIREN [SIREN], [ADRESSE], France.
+  </p>
+</footer>
+
+</div>
+</body>
+</html>
