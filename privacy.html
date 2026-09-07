@@ -113,15 +113,15 @@
     modifier, ni supprimer un fichier dans Google Drive.
   </li>
   <li>
-    <code>https://www.googleapis.com/auth/userinfo.email</code> — l'adresse
-    e-mail du compte connecté, afin de l'afficher à l'administrateur. Elle est
-    lue à la demande et n'est jamais conservée.
-  </li>
-  <li>
     <code>openid</code> — portée technique de connexion OpenID Connect, exigée par
     Google pour délivrer l'adresse e-mail ci-dessus. Elle n'ouvre l'accès à aucun
     contenu, et l'identifiant de compte qu'elle fournit n'est ni lu ni conservé
     par l'application.
+  </li>
+  <li>
+    <code>https://www.googleapis.com/auth/userinfo.email</code> — l'adresse
+    e-mail du compte connecté, afin de l'afficher à l'administrateur. Elle est
+    lue à la demande et n'est jamais conservée.
   </li>
 </ul>
 
@@ -201,10 +201,13 @@
   </li>
   <li>
     <strong>État de synchronisation par document</strong> : identifiant du fichier
-    Drive, titre, dossier parent, identifiant de la page Confluence créée, et une
-    empreinte cryptographique irréversible (SHA-256) du contenu publié. Cette
-    empreinte permet de détecter qu'un document a changé sans conserver son
-    contenu.
+    Drive, titre, type de fichier, dossier parent, identifiant de la page Confluence
+    créée, une empreinte cryptographique irréversible (SHA-256) du contenu publié,
+    ainsi que les indicateurs techniques nécessaires au suivi : numéro de révision de
+    la source, langues d'une traduction demandée, et, en cas d'échec, un code et un
+    message d'erreur technique. Ces éléments permettent de détecter qu'un document a
+    changé et de reprendre un traitement interrompu, sans conserver le contenu du
+    document.
   </li>
   <li>
     <strong>Journaux d'exécution</strong> : dates de synchronisation, compteurs,
