@@ -104,11 +104,26 @@
 
 <h2>2. Données Google auxquelles l'application accède</h2>
 <p>
-  L'application demande une autorisation d'accès à Google Drive limitée à la
-  portée <code>https://www.googleapis.com/auth/drive.readonly</code>, en
-  <strong>lecture seule</strong>. Elle ne peut ni créer, ni modifier, ni
-  supprimer un fichier dans Google Drive.
+  L'application demande trois autorisations Google, et uniquement celles-ci :
 </p>
+<ul>
+  <li>
+    <code>https://www.googleapis.com/auth/drive.readonly</code> — accès à Google
+    Drive en <strong>lecture seule</strong>. L'application ne peut ni créer, ni
+    modifier, ni supprimer un fichier dans Google Drive.
+  </li>
+  <li>
+    <code>https://www.googleapis.com/auth/userinfo.email</code> — l'adresse
+    e-mail du compte connecté, afin de l'afficher à l'administrateur. Elle est
+    lue à la demande et n'est jamais conservée.
+  </li>
+  <li>
+    <code>openid</code> — portée technique de connexion OpenID Connect, exigée par
+    Google pour délivrer l'adresse e-mail ci-dessus. Elle n'ouvre l'accès à aucun
+    contenu, et l'identifiant de compte qu'elle fournit n'est ni lu ni conservé
+    par l'application.
+  </li>
+</ul>
 
 <table>
   <thead>
@@ -215,29 +230,76 @@
   ainsi que des conditions d'Atlassian.
 </p>
 
-<h2>5. Services tiers</h2>
+<h2>5. Ce qui sort de l'application, et pourquoi</h2>
 <p>
-  L'application communique avec les services suivants, et uniquement ceux-ci :
+  L'application n'a pas de serveur propre : tout le traitement et tout le
+  stockage sont hébergés par Atlassian. Les seules données qui quittent cette
+  infrastructure sont celles listées ci-dessous.
 </p>
-<table>
-  <thead>
-    <tr><th>Service</th><th>Ce qui lui est transmis</th></tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>API Google Drive et Google Sheets</td>
-      <td>Requêtes de lecture des dossiers connectés, authentifiées par le compte Google que vous avez autorisé</td>
-    </tr>
-    <tr>
-      <td>Atlassian Confluence</td>
-      <td>Les pages et pièces jointes créées ou mises à jour dans votre espace</td>
-    </tr>
-    <tr>
-      <td>API Google Gemini</td>
-      <td>Uniquement les images contenues dans vos documents, lorsqu'une analyse est nécessaire pour en extraire le texte. Aucun autre contenu n'est transmis.</td>
-    </tr>
-  </tbody>
-</table>
+
+<h3>Google Gemini — le seul service qui reçoit du contenu</h3>
+<p>
+  Lorsqu'un document contient des images, ou lorsqu'il s'agit d'un PDF scanné,
+  l'application confie ces images à l'API Google Gemini pour en extraire le
+  texte et en produire une description destinée à l'accessibilité. C'est le
+  seul traitement où du contenu vous appartenant est transmis à un tiers.
+</p>
+<ul>
+  <li>
+    <strong>Ce qui est transmis</strong> : les octets de l'image ou des pages
+    scannées, et une consigne textuelle fixe, identique à chaque appel, qui ne
+    contient aucune de vos données.
+  </li>
+  <li>
+    <strong>Ce qui n'est pas transmis</strong> : ni le titre du document, ni le
+    nom du fichier Drive, ni l'espace Confluence de destination, ni aucune
+    information sur l'utilisateur. L'appel ne transporte que des pixels.
+  </li>
+  <li>
+    <strong>Ce qui revient</strong> : le texte lu dans l'image, une description
+    courte, et un indice de fiabilité.
+  </li>
+  <li>
+    <strong>Quand cela se produit</strong> : uniquement pour les documents
+    contenant des images ou les PDF scannés. Un document purement textuel ne
+    déclenche jamais cet appel.
+  </li>
+</ul>
+
+<h3>Google Drive et Google Sheets</h3>
+<p>
+  Ces API reçoivent le jeton d'accès et les identifiants des dossiers et
+  fichiers que vous avez connectés, et renvoient les métadonnées et le contenu
+  à convertir. L'API Sheets est utilisée en complément de l'API Drive parce
+  qu'elle seule permet de connaître les plages masquées d'une feuille de
+  calcul — et donc de <strong>ne pas publier des données que vous aviez
+  choisi de masquer</strong>.
+</p>
+
+<h3>Authentification Google</h3>
+<p>
+  Le service d'authentification reçoit le code d'autorisation ou le jeton de
+  rafraîchissement, ainsi que les identifiants de l'application. Aucune donnée
+  vous appartenant n'y transite. Lors d'une déconnexion, l'application appelle
+  la révocation du jeton auprès de Google et le supprime de son stockage
+  chiffré, que Google réponde ou non.
+</p>
+
+<h3>Notifications de changement</h3>
+<p>
+  Pour être informée qu'un document a changé, l'application enregistre auprès
+  de Google une adresse de notification et un jeton de vérification qu'elle a
+  elle-même générés. Aucun contenu n'y transite.
+</p>
+
+<h3>Ce qui ne sort jamais</h3>
+<ul>
+  <li>Aucun contenu Confluence. Le flux est unidirectionnel : de Drive vers Confluence.</li>
+  <li>Aucune donnée d'utilisateur Atlassian : ni nom, ni adresse, ni identifiant de compte.</li>
+  <li>Aucune télémétrie, aucune mesure d'audience, aucun journal externe. L'application n'envoie de statistiques à personne.</li>
+  <li>Aucune donnée vers un serveur nous appartenant : nous n'en exploitons aucun.</li>
+</ul>
+
 <p>
   <!-- À VÉRIFIER avant soumission à vérification : citer les termes exacts du paid tier Gemini
        et de la politique Atlassian sur l'entraînement. Cf. TECHNICAL-SPEC §6.3. -->
