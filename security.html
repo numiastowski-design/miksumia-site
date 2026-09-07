@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sécurité — Miksumia Publisher</title>
+<meta name="description" content="Politique de sécurité de Miksumia : signalement de vulnérabilités, réponse aux incidents, sécurité de l'information.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FDFDFC;
+    --ink:#14202B;
+    --muted:#5C6B7A;
+    --rule:#DDE3E9;
+    --accent:#1F4B99;
+    --accent-soft:#EDF2FA;
+    --serif:"Source Serif 4",Georgia,serif;
+    --sans:"IBM Plex Sans",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--serif);font-size:18px;line-height:1.65;
+  }
+  .wrap{max-width:42rem;margin:0 auto;padding:0 1.5rem}
+  a{color:var(--accent)}
+  a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+  header{padding:3.5rem 0 0}
+  .mark{font-family:var(--sans);font-weight:500;font-size:.95rem;color:var(--muted);text-decoration:none}
+  h1{font-weight:600;font-size:2.1rem;line-height:1.2;letter-spacing:-.015em;margin:1.75rem 0 .5rem}
+  .meta{font-family:var(--sans);font-size:.86rem;color:var(--muted);margin:0 0 2.5rem}
+
+  h2{
+    font-weight:600;font-size:1.22rem;letter-spacing:-.005em;
+    margin:2.75rem 0 .6rem;padding-top:1.4rem;border-top:1px solid var(--rule);
+  }
+  h3{font-weight:600;font-size:1.02rem;margin:1.6rem 0 .4rem}
+  p{margin:0 0 1rem;max-width:66ch}
+  ul{margin:0 0 1rem;padding-left:1.15rem;max-width:66ch}
+  li{margin:.4rem 0}
+
+  .limited{
+    background:var(--accent-soft);
+    border:1px solid #D6E0F0;
+    border-radius:4px;
+    padding:1.25rem 1.4rem;
+    margin:1.25rem 0;
+  }
+  .limited p:last-child{margin-bottom:0}
+
+  table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.94rem}
+  th,td{text-align:left;vertical-align:top;padding:.6rem .8rem .6rem 0;border-bottom:1px solid var(--rule)}
+  th{font-family:var(--sans);font-weight:500;font-size:.82rem;color:var(--muted)}
+
+  footer{
+    margin:4rem 0 0;border-top:1px solid var(--rule);
+    padding:1.5rem 0 3.5rem;font-family:var(--sans);font-size:.88rem;color:var(--muted);
+  }
+  footer a{margin-right:1.25rem}
+  .legal{margin-top:.85rem;line-height:1.7}
+
+  @media (max-width:640px){
+    body{font-size:17px}
+    h1{font-size:1.8rem}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <a class="mark" href="/">Miksumia</a>
+  <h1>Sécurité</h1>
+  <p class="meta">
+    Éditeur MIKSUMIA · Application « Miksumia Publisher » · Version du 7 septembre 2026
+  </p>
+</header>
+
+<p>
+  Cette page réunit trois politiques : le signalement de vulnérabilités, la
+  réponse aux incidents, et la sécurité de l'information. Elle décrit ce que
+  nous faisons réellement, à l'échelle qui est la nôtre — un éditeur
+  indépendant publiant une application entièrement hébergée sur la plateforme
+  Atlassian Forge, sans serveur ni infrastructure propre.
+</p>
+
+<h2 id="divulgation">1. Signalement de vulnérabilités</h2>
+
+<h3>Comment nous joindre</h3>
+<p>
+  Adressez tout signalement à
+  <a href="mailto:contact@miksumia.com">contact@miksumia.com</a>, avec la
+  mention « sécurité » en objet. Nous accusons réception sous trois jours
+  ouvrés et vous tenons informé de l'avancement. Les signalements anonymes sont
+  acceptés.
+</p>
+
+<h3>Informations utiles</h3>
+<ul>
+  <li>description de la vulnérabilité et de son impact potentiel ;</li>
+  <li>endroit où elle se manifeste ;</li>
+  <li>étapes de reproduction, avec captures ou scripts si possible.</li>
+</ul>
+<p>Le français et l'anglais conviennent également.</p>
+
+<h3>Périmètre</h3>
+<p>
+  Cette politique couvre l'application « Miksumia Publisher » et le site
+  <a href="/">miksumia.com</a>. Les plateformes tierces sur lesquelles
+  l'application s'exécute ou dont elle consomme les API — Atlassian, Google —
+  ne relèvent pas de ce périmètre : adressez-vous directement à leurs
+  programmes respectifs.
+</p>
+
+<h3>Ce que nous vous demandons</h3>
+<ul>
+  <li>nous signaler la faille dès sa découverte, et nous laisser un délai
+    raisonnable pour la corriger avant toute publication ;</li>
+  <li>ne pas dégrader le service, ni détruire ou modifier des données ;</li>
+  <li>n'exploiter une faille que dans la mesure nécessaire à sa démonstration :
+    ni extraction de données, ni persistance, ni rebond vers d'autres
+    systèmes ;</li>
+  <li>interrompre immédiatement le test et nous prévenir en cas d'accès à des
+    données personnelles ou confidentielles, et garder ces données
+    confidentielles.</li>
+</ul>
+<p>
+  Ne sont pas autorisés : les tests de déni de service, l'ingénierie sociale et
+  les tests physiques.
+</p>
+
+<h3>Notre engagement</h3>
+<p>
+  Une recherche menée conformément à cette politique est considérée comme
+  autorisée. Nous n'engagerons aucune action en justice à son encontre et nous
+  travaillerons avec vous à la compréhension et à la correction du problème.
+</p>
+
+<h2 id="incidents">2. Réponse aux incidents</h2>
+
+<h3>Objet et responsabilité</h3>
+<p>
+  Cette politique définit la conduite à tenir en cas d'incident de sécurité ou
+  de violation de données concernant l'application. MIKSUMIA étant une
+  structure à personne unique, le gérant assume l'ensemble des rôles :
+  réception du signalement, investigation, correction, communication.
+</p>
+
+<h3>Signalement</h3>
+<p>
+  Tout incident suspecté ou confirmé doit être signalé sans délai à
+  <a href="mailto:contact@miksumia.com">contact@miksumia.com</a>, que le
+  signalement vienne d'un client, d'un chercheur en sécurité, d'une plateforme
+  tierce ou de notre propre supervision.
+</p>
+
+<h3>Procédure</h3>
+<ul>
+  <li><strong>Qualifier.</strong> Reproduire le problème, en établir la nature
+    et l'étendue, et déterminer si des données personnelles sont
+    concernées.</li>
+  <li><strong>Contenir.</strong> Suspendre ou révoquer les accès concernés.
+    L'application peut être désactivée sur une installation, et l'autorisation
+    Google révoquée, sans attendre la correction.</li>
+  <li><strong>Corriger.</strong> Développer le correctif, le vérifier par des
+    tests, puis le déployer en développement avant la production.</li>
+  <li><strong>Communiquer.</strong> Informer les administrateurs des sites
+    concernés, et les plateformes tierces lorsque leur périmètre est en
+    cause.</li>
+  <li><strong>Prévenir la récidive.</strong> Ajouter un test couvrant le cas,
+    et rechercher les occurrences du même motif ailleurs dans le code.</li>
+  <li><strong>Consigner.</strong> Documenter l'incident, sa cause et sa
+    résolution.</li>
+</ul>
+
+<h3>Violation de données personnelles</h3>
+<p>
+  En cas de violation de données à caractère personnel susceptible d'engendrer
+  un risque pour les personnes concernées, nous notifions la
+  <a href="https://www.cnil.fr" rel="noopener">CNIL</a> dans les 72 heures
+  suivant la prise de connaissance de la violation, conformément à l'article 33
+  du RGPD. Lorsque le risque est élevé, les personnes concernées sont informées
+  dans les meilleurs délais, conformément à l'article 34. Les administrateurs
+  des sites Confluence concernés sont informés dans tous les cas.
+</p>
+
+<h2 id="information">3. Sécurité de l'information</h2>
+
+<h3>Périmètre</h3>
+<p>
+  L'application s'exécute intégralement dans le bac à sable géré d'Atlassian
+  Forge. Nous n'exploitons aucun serveur, aucune base de données et aucun
+  réseau propre. La sécurité de l'infrastructure d'hébergement relève
+  d'Atlassian ; ce qui suit décrit ce qui relève de nous.
+</p>
+
+<h3>Classification des données</h3>
+<ul>
+  <li><strong>Secrets.</strong> Identifiants OAuth et jetons d'actualisation
+    Google. Traités selon la section « gestion des secrets » ci-dessous.</li>
+  <li><strong>Contenu client.</strong> Documents lus dans Google Drive et
+    contenu dérivé. Traité en mémoire, publié dans Confluence, jamais
+    conservé au-delà de ce que décrit la
+    <a href="/privacy.html">politique de confidentialité</a>.</li>
+  <li><strong>Données techniques.</strong> Identifiants de fichiers, empreintes,
+    compteurs, états de synchronisation.</li>
+</ul>
+
+<h3>Contrôle des accès</h3>
+<p>
+  Les fonctions de l'application sont réservées aux administrateurs du site
+  Confluence, vérifié côté serveur à chaque requête auprès de Confluence
+  lui-même, jamais déduit de l'interface. L'accès à Google Drive est demandé en
+  lecture seule et limité aux dossiers explicitement connectés par
+  l'administrateur.
+</p>
+<p>
+  Les comptes d'administration de l'éditeur — console développeur Atlassian,
+  console Google Cloud, dépôt de code — sont nominatifs et protégés par
+  authentification à deux facteurs.
+</p>
+
+<h3>Gestion des secrets</h3>
+<p>
+  Aucun secret ne figure dans le code source. Les identifiants client OAuth
+  sont fournis au déploiement par variables d'environnement Forge. Les jetons
+  d'actualisation sont écrits exclusivement dans le stockage chiffré de Forge,
+  révoqués auprès de Google puis supprimés lors de la déconnexion du compte ou
+  de la désinstallation. Aucun secret n'est journalisé, renvoyé dans une
+  réponse, ni inclus dans un message d'erreur.
+</p>
+
+<h3>Chiffrement des communications</h3>
+<p>
+  Toutes les communications utilisent TLS. Aucun point d'accès en clair
+  n'existe. Les destinations réseau autorisées sont déclarées au manifeste de
+  l'application et vérifiées par la plateforme à l'exécution : aucune autre
+  destination n'est joignable.
+</p>
+
+<h3>Développement</h3>
+<ul>
+  <li>revue de conception avant implémentation ;</li>
+  <li>tests automatisés exécutés en intégration continue à chaque
+    modification ;</li>
+  <li>analyse statique de sécurité du code source, reproductible et rejouable ;</li>
+  <li>analyse des dépendances, avec suivi des vulnérabilités publiées, y
+    compris celles introduites de façon transitive.</li>
+</ul>
+
+<h3>Évaluation indépendante</h3>
+<p>
+  L'application fait l'objet d'une évaluation de sécurité indépendante
+  ADA CASA, requise annuellement par Google pour les applications accédant à
+  des portées d'API restreintes.
+</p>
+
+<h3>Revue</h3>
+<p>
+  Ces politiques sont revues au moins une fois par an, et à chaque évolution
+  substantielle de l'architecture de l'application.
+</p>
+
+<footer>
+  <a href="/">Accueil</a>
+  <a href="/privacy.html">Politique de confidentialité</a>
+  <a href="/terms.html">Conditions d'utilisation</a>
+  <a href="mailto:contact@miksumia.com">Support</a>
+  <p class="legal">
+    MIKSUMIA — SARL, SIREN 919 860 452, 70 boulevard Desgranges, 92330 Sceaux, France.
+  </p>
+</footer>
+
+</div>
+</body>
+</html>
