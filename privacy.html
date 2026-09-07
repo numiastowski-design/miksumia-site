@@ -76,7 +76,7 @@
   <a class="mark" href="/">Miksumia</a>
   <h1>Politique de confidentialité</h1>
   <p class="meta">
-    Application « Miksumia Publisher » · Version du 6 septembre 2026
+    Application « Miksumia Publisher » · Version du 7 septembre 2026
   </p>
 </header>
 
@@ -214,7 +214,11 @@
   <li>
     <strong>Texte extrait des images</strong> : lorsqu'un document contient des
     images comportant du texte, le texte reconnu est conservé en cache afin
-    d'éviter de refaire l'analyse à chaque synchronisation.
+    d'éviter de refaire l'analyse à chaque synchronisation. Ce cache est indexé
+    par l'empreinte cryptographique de l'image, et non par le document ou la
+    connexion dont elle provient ; il n'est donc pas effacé par la suppression
+    d'une connexion, et disparaît avec l'ensemble du stockage à la
+    désinstallation, dans les conditions décrites à la section 7.
   </li>
 </ul>
 
@@ -316,12 +320,22 @@
   de profilage ou de revente.
 </p>
 
-<h2>7. Suppression de vos données</h2>
+<h2>7. Conservation et suppression de vos données</h2>
 <ul>
   <li>
-    <strong>Déconnecter une connexion</strong> supprime sa configuration et l'état
-    de synchronisation associé. Les pages déjà publiées dans Confluence
-    restent sous votre contrôle.
+    <strong>Déconnecter une connexion</strong> met fin à sa synchronisation. Les
+    pages déjà publiées dans Confluence sont soit détachées — elles restent en
+    place et cessent d'être mises à jour —, soit mises à la corbeille de votre
+    espace, selon le choix que vous faites au moment de la déconnexion. La
+    configuration de la connexion et l'état de synchronisation sont
+    <strong>conservés</strong> : ils permettent de reprendre une déconnexion
+    interrompue et de reconnecter le dossier ultérieurement.
+  </li>
+  <li>
+    <strong>Supprimer une connexion</strong>, possible une fois celle-ci
+    déconnectée, efface l'inventaire des documents synchronisés, les
+    correspondances de dossiers, les règles d'exclusion et la connexion
+    elle-même.
   </li>
   <li>
     <strong>Déconnecter le compte Google</strong> révoque l'autorisation et
