@@ -211,8 +211,11 @@
   </li>
   <li>
     <strong>Journaux d'exécution</strong> : dates de synchronisation, compteurs,
-    codes d'erreur. Ils ne contiennent ni contenu de document ni identifiant
-    d'authentification.
+    identifiants techniques et codes d'erreur. Nous n'y inscrivons jamais de contenu
+    de document, de jeton ni d'identifiant d'authentification. Un message d'erreur
+    produit par une bibliothèque tierce peut, exceptionnellement, citer un fragment
+    du document à l'origine de l'échec ; ces journaux sont conservés par la
+    plateforme Atlassian Forge et ne nous servent qu'au diagnostic.
   </li>
   <li>
     <strong>Texte extrait des images</strong> : lorsqu'un document contient des
