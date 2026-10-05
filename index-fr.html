@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="alternate" hreflang="en" href="https://miksumia.com/">
 <link rel="alternate" hreflang="fr" href="https://miksumia.com/index-fr.html">
-<title>Miksumia Publisher — your Drive folders as Confluence pages</title>
-<meta name="description" content="Miksumia Publisher converts your Google Drive folders into native Confluence pages, preserving the folder tree and resynchronising changes.">
+<title>Miksumia Publisher — vos dossiers Drive en pages Confluence</title>
+<meta name="description" content="Miksumia Publisher convertit vos dossiers Google Drive en pages Confluence natives, en conservant l'arborescence et en resynchronisant les modifications.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
@@ -59,7 +59,7 @@
     max-width:56ch;
   }
 
-  /* Tree: the central motif of the product */
+  /* Arbre : le motif central du produit */
   .transform{
     margin:3rem 0 0;
     border-top:1px solid var(--rule);
@@ -151,30 +151,31 @@
 <div class="wrap">
 
   <header>
-    <a class="mark" href="/">Miksumia</a>
-    <span style="float:right;font-family:var(--sans);font-size:.95rem;color:var(--muted)"><a href="/index-fr.html" hreflang="fr" lang="fr">FR</a> | EN</span>
-    <h1>Your Drive folders become real Confluence pages.</h1>
+    <a class="mark" href="/index-fr.html">Miksumia</a>
+    <span style="float:right;font-family:var(--sans);font-size:.95rem;color:var(--muted)">FR | <a href="/" hreflang="en" lang="en">EN</a></span>
+    <h1>Vos dossiers Drive deviennent de vraies pages Confluence.</h1>
     <p class="lede">
-      Miksumia Publisher reads a Google Drive folder and publishes its
-      content in Confluence as native pages — searchable, open to comments,
-      governed like the rest of your space. The folder tree becomes the page
-      tree, and every change in Drive is resynchronised.
+      Miksumia Publisher lit un dossier Google Drive et publie son
+      contenu dans Confluence sous forme de pages natives — cherchables,
+      commentables, gouvernées comme le reste de votre espace. L'arborescence
+      des dossiers devient l'arborescence des pages, et chaque modification
+      dans Drive est resynchronisée.
     </p>
   </header>
 
-  <section class="transform" aria-label="What the application does">
+  <section class="transform" aria-label="Ce que fait l'application">
     <div>
-      <span class="tree-label">Google Drive folder</span>
+      <span class="tree-label">Dossier Google Drive</span>
       <ul class="tree">
-        <li class="node-folder">Human resources
+        <li class="node-folder">Ressources humaines
           <ul>
             <li class="node-folder">Onboarding
               <ul>
-                <li class="node-folder">Welcome booklet.docx</li>
-                <li class="node-folder">Day 1 checklist.xlsx</li>
+                <li class="node-folder">Livret d'accueil.docx</li>
+                <li class="node-folder">Checklist J1.xlsx</li>
               </ul>
             </li>
-            <li class="node-folder">Leave policy.pdf</li>
+            <li class="node-folder">Politique de congés.pdf</li>
           </ul>
         </li>
       </ul>
@@ -182,68 +183,68 @@
 
     <div class="arrow" aria-hidden="true">
       →
-      <span>publishing</span>
+      <span>publication</span>
     </div>
 
     <div>
-      <span class="tree-label">Confluence space</span>
+      <span class="tree-label">Espace Confluence</span>
       <ul class="tree">
-        <li class="node-page"><span>Human resources</span>
+        <li class="node-page"><span>Ressources humaines</span>
           <ul>
             <li class="node-page"><span>Onboarding</span>
               <ul>
-                <li class="node-page"><span>Welcome booklet</span></li>
-                <li class="node-page"><span>Day 1 checklist</span></li>
+                <li class="node-page"><span>Livret d'accueil</span></li>
+                <li class="node-page"><span>Checklist J1</span></li>
               </ul>
             </li>
-            <li class="node-page"><span>Leave policy</span></li>
+            <li class="node-page"><span>Politique de congés</span></li>
           </ul>
         </li>
       </ul>
     </div>
   </section>
 
-  <h2>Pages, not attachments</h2>
+  <h2>Des pages, pas des pièces jointes</h2>
   <p>
-    Existing tools display the Drive file in an embedded frame: the content
-    remains invisible to Confluence search and to agents. Here, every document
-    is converted into native Confluence content — headings, lists, tables,
-    images — with the original file always one click away.
+    Les outils existants affichent le fichier Drive dans un cadre inséré : le
+    contenu reste invisible à la recherche Confluence et aux agents. Ici, chaque
+    document est converti en contenu Confluence natif — titres, listes, tableaux,
+    images — avec le fichier d'origine toujours accessible en un clic.
   </p>
 
-  <h2>A synchronisation that breaks nothing</h2>
+  <h2>Une synchronisation qui ne casse rien</h2>
   <p>
-    After the first publication, only the documents that have actually changed
-    are republished. Pages keep their identity, their version history and their
-    incoming links. If a document is renamed or moved in Drive, the
-    corresponding page follows without being recreated.
+    Après la première publication, seuls les documents réellement modifiés sont
+    republiés. Les pages conservent leur identité, leur historique de version et
+    leurs liens entrants. Si un document est renommé ou déplacé dans Drive, la
+    page correspondante suit sans être recréée.
   </p>
 
-  <h2>What the application reads, and what it does not write</h2>
+  <h2>Ce que l'application lit, et ce qu'elle n'écrit pas</h2>
   <ul class="plain">
-    <li>Access to Google Drive is <strong>read-only</strong>. The application never modifies, moves or deletes a Drive file.</li>
-    <li>Only the folders you explicitly connect are read.</li>
-    <li>The application runs on Atlassian Forge: processing takes place within Atlassian's infrastructure, not on a third-party server.</li>
-    <li>Only a Confluence administrator can create, modify or delete a connection.</li>
+    <li>L'accès à Google Drive est en <strong>lecture seule</strong>. L'application ne modifie, ne déplace ni ne supprime jamais un fichier Drive.</li>
+    <li>Seuls les dossiers que vous connectez explicitement sont lus.</li>
+    <li>L'application s'exécute sur Atlassian Forge : le traitement a lieu dans l'infrastructure Atlassian, pas sur un serveur tiers.</li>
+    <li>Seul un administrateur Confluence peut créer, modifier ou supprimer une connexion.</li>
   </ul>
 
   <div class="install">
     <p>
-      The application is currently distributed by invitation, through an
-      installation link. Write to <a href="mailto:contact@miksumia.com">contact@miksumia.com</a>
-      to get access.
+      L'application est actuellement distribuée sur invitation, par lien
+      d'installation. Écrivez à <a href="mailto:contact@miksumia.com">contact@miksumia.com</a>
+      pour y accéder.
     </p>
   </div>
 
   <footer>
-    <a href="/privacy.html">Privacy policy</a>
-    <a href="/terms.html">Terms of use</a>
-    <a href="/security.html">Security</a>
+    <a href="/privacy-fr.html">Politique de confidentialité</a>
+    <a href="/terms-fr.html">Conditions d'utilisation</a>
+    <a href="/security-fr.html">Sécurité</a>
     <a href="mailto:contact@miksumia.com">Support</a>
     <p class="legal">
-      MIKSUMIA, société à responsabilité limitée (limited liability company).<br>
-      SIREN 919 860 452 · Registered office: 70 boulevard Desgranges, 92330 Sceaux, France.<br>
-      Publication director: Mikolaj Umiastowski.
+      MIKSUMIA, société à responsabilité limitée.<br>
+      SIREN 919 860 452 · Siège : 70 boulevard Desgranges, 92330 Sceaux, France.<br>
+      Directeur de la publication : Mikolaj Umiastowski.
     </p>
   </footer>
 

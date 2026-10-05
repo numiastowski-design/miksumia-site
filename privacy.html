@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Politique de confidentialité — Miksumia Publisher</title>
-<meta name="description" content="Politique de confidentialité de l'application Miksumia Publisher : données traitées, usage des API Google, conservation et suppression.">
+<link rel="alternate" hreflang="en" href="https://miksumia.com/privacy.html">
+<link rel="alternate" hreflang="fr" href="https://miksumia.com/privacy-fr.html">
+<title>Privacy policy — Miksumia Publisher</title>
+<meta name="description" content="Privacy policy of the Miksumia Publisher application: data processed, use of Google APIs, retention and deletion.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
@@ -74,93 +76,94 @@
 
 <header>
   <a class="mark" href="/">Miksumia</a>
-  <h1>Politique de confidentialité</h1>
+  <span style="float:right;font-family:var(--sans);font-size:.95rem;color:var(--muted)"><a href="/privacy-fr.html" hreflang="fr" lang="fr">FR</a> | EN</span>
+  <h1>Privacy policy</h1>
   <p class="meta">
-    Application « Miksumia Publisher » · Version du 5 octobre 2026
+    “Miksumia Publisher” application · Version of 5 October 2026
   </p>
 </header>
 
 <p>
-  Cette politique décrit les données traitées par l'application
-  Miksumia Publisher (« l'application »), éditée par
-  Miksumia SARL (« nous »), et la manière dont elles
-  sont utilisées, conservées et supprimées.
+  This policy describes the data processed by the
+  Miksumia Publisher application (“the application”), published by
+  Miksumia SARL (“we”), and how it is
+  used, retained and deleted.
 </p>
 <p>
-  L'application est une application Atlassian Forge installée par un
-  administrateur sur un site Confluence Cloud. Elle lit des fichiers dans
-  Google Drive et publie leur contenu sous forme de pages Confluence.
+  The application is an Atlassian Forge application installed by an
+  administrator on a Confluence Cloud site. It reads files in
+  Google Drive and publishes their content as Confluence pages.
 </p>
 
-<h2>1. Responsable du traitement et contact</h2>
+<h2>1. Data controller and contact</h2>
 <p>
-  MIKSUMIA, société à responsabilité limitée, SIREN 919 860 452, dont le
-  siège est situé 70 boulevard Desgranges, 92330 Sceaux, France.
+  MIKSUMIA, société à responsabilité limitée (limited liability company), SIREN 919 860 452, whose
+  registered office is at 70 boulevard Desgranges, 92330 Sceaux, France.
 </p>
 <p>
-  Pour toute question relative à cette politique ou à l'exercice de vos droits :
+  For any question about this policy or about exercising your rights:
   <a href="mailto:contact@miksumia.com">contact@miksumia.com</a>.
 </p>
 
-<h2>2. Données Google auxquelles l'application accède</h2>
+<h2>2. Google data the application accesses</h2>
 <p>
-  L'application demande trois autorisations Google, et uniquement celles-ci :
+  The application requests three Google permissions, and only these:
 </p>
 <ul>
   <li>
-    <code>https://www.googleapis.com/auth/drive.readonly</code> — accès à Google
-    Drive en <strong>lecture seule</strong>. L'application ne peut ni créer, ni
-    modifier, ni supprimer un fichier dans Google Drive.
+    <code>https://www.googleapis.com/auth/drive.readonly</code> — <strong>read-only</strong>
+    access to Google Drive. The application can neither create, nor
+    modify, nor delete a file in Google Drive.
   </li>
   <li>
-    <code>openid</code> — portée technique de connexion OpenID Connect, exigée par
-    Google pour délivrer l'adresse e-mail ci-dessous. Elle n'ouvre l'accès à aucun
-    contenu, et l'identifiant de compte qu'elle fournit n'est ni lu ni conservé
-    par l'application.
+    <code>openid</code> — technical OpenID Connect sign-in scope, required by
+    Google to provide the email address below. It grants access to no
+    content, and the account identifier it provides is neither read nor retained
+    by the application.
   </li>
   <li>
-    <code>https://www.googleapis.com/auth/userinfo.email</code> — l'adresse
-    e-mail du compte connecté, afin de l'afficher à l'administrateur. Elle est
-    lue à la demande et n'est jamais conservée.
+    <code>https://www.googleapis.com/auth/userinfo.email</code> — the email
+    address of the connected account, in order to display it to the administrator. It is
+    read on demand and never retained.
   </li>
 </ul>
 
 <table>
   <thead>
-    <tr><th>Donnée</th><th>Pourquoi elle est nécessaire</th></tr>
+    <tr><th>Data</th><th>Why it is needed</th></tr>
   </thead>
   <tbody>
     <tr>
-      <td>Métadonnées des fichiers et dossiers : identifiant, nom, type, date de modification, dossier parent</td>
-      <td>Reconstruire l'arborescence dans Confluence et déterminer quels documents ont changé depuis la dernière synchronisation</td>
+      <td>File and folder metadata: identifier, name, type, modification date, parent folder</td>
+      <td>Rebuild the folder tree in Confluence and determine which documents have changed since the last synchronisation</td>
     </tr>
     <tr>
-      <td>Contenu des fichiers des dossiers connectés</td>
-      <td>Convertir chaque document en page Confluence</td>
+      <td>Content of the files in the connected folders</td>
+      <td>Convert each document into a Confluence page</td>
     </tr>
     <tr>
-      <td>Notifications de changement Google Drive</td>
-      <td>Déclencher une synchronisation lorsqu'un document est modifié</td>
+      <td>Google Drive change notifications</td>
+      <td>Trigger a synchronisation when a document is modified</td>
     </tr>
     <tr>
-      <td>Adresse e-mail du compte Google connecté</td>
-      <td>Afficher à l'administrateur quel compte est utilisé par la connexion</td>
+      <td>Email address of the connected Google account</td>
+      <td>Show the administrator which account the connection uses</td>
     </tr>
   </tbody>
 </table>
 
 <p>
-  Seuls les dossiers explicitement connectés par un administrateur Confluence
-  sont lus. Le reste du Drive du compte connecté n'est jamais parcouru.
+  Only the folders explicitly connected by a Confluence administrator
+  are read. The rest of the connected account's Drive is never browsed.
 </p>
 
-<h2>3. Usage limité des données issues des API Google</h2>
+<h2>3. Limited use of data obtained from Google APIs</h2>
 <div class="limited">
   <p>
-    L'utilisation et le transfert par Miksumia Publisher, vers toute autre
-    application, des informations reçues des API Google respectent la
+    Miksumia Publisher's use and transfer, to any other
+    application, of information received from Google APIs complies with the
     <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noopener">Google API Services User Data Policy</a>,
-    y compris ses exigences d'usage limité (<em>Limited Use</em>).
+    including its <em>Limited Use</em> requirements.
   </p>
   <p lang="en">
     Miksumia Publisher's use and transfer of information received from Google
@@ -169,252 +172,252 @@
     including the Limited Use requirements.
   </p>
   <p>
-    En particulier, nous n'utilisons ces données que pour fournir et améliorer
-    les fonctions visibles par l'utilisateur décrites ci-dessus ; nous ne les
-    transférons pas à des tiers, sauf pour fournir ces fonctions, pour nous
-    conformer à une obligation légale ou dans le cadre d'une fusion ou d'une
-    acquisition ; nous ne les utilisons pas à des fins publicitaires ; et
-    aucun être humain ne les lit, sauf avec votre accord explicite pour un
-    besoin d'assistance, pour des raisons de sécurité, ou lorsque la loi
-    l'exige.
+    In particular, we use this data only to provide and improve
+    the user-facing features described above; we do not
+    transfer it to third parties, except to provide these features, to
+    comply with a legal obligation, or as part of a merger or an
+    acquisition; we do not use it for advertising purposes; and
+    no human reads it, except with your explicit consent for a
+    support need, for security reasons, or where the law
+    requires it.
   </p>
   <p>
-    Les données issues des API Google ne sont pas utilisées pour entraîner des
-    modèles d'intelligence artificielle généralisés.
+    Data obtained from Google APIs is not used to train
+    generalised artificial intelligence models.
   </p>
 </div>
 
-<h2>4. Où les données sont traitées et conservées</h2>
+<h2>4. Where data is processed and stored</h2>
 <p>
-  L'application s'exécute intégralement sur la plateforme Atlassian Forge. Le
-  traitement et le stockage ont lieu dans l'infrastructure Atlassian ; nous
-  n'exploitons aucun serveur propre et ne détenons aucune copie de vos
-  documents en dehors de cette plateforme.
+  The application runs entirely on the Atlassian Forge platform.
+  Processing and storage take place within Atlassian's infrastructure; we
+  operate no server of our own and hold no copy of your
+  documents outside this platform.
 </p>
 
-<h3>Ce que nous conservons</h3>
+<h3>What we retain</h3>
 <ul>
   <li>
-    <strong>Configuration des connexions</strong> : identifiant du dossier Drive,
-    espace Confluence de destination, réglages de synchronisation, règles
-    d'exclusion. Conservé tant que la connexion existe.
+    <strong>Connection configuration</strong>: Drive folder identifier,
+    destination Confluence space, synchronisation settings, exclusion
+    rules. Retained as long as the connection exists.
   </li>
   <li>
-    <strong>État de synchronisation par document</strong> : identifiant du fichier
-    Drive, titre, type de fichier, dossier parent, identifiant de la page Confluence
-    créée, une empreinte cryptographique irréversible (SHA-256) du contenu publié,
-    ainsi que les indicateurs techniques nécessaires au suivi : numéro de révision de
-    la source, langues d'une traduction demandée, et, en cas d'échec, un code et un
-    message d'erreur technique. Ces éléments permettent de détecter qu'un document a
-    changé et de reprendre un traitement interrompu, sans conserver le contenu du
-    document. Conservé tant que la connexion existe, puis effacé à sa
-    suppression ; sans suppression, jusqu'à la désinstallation (section 7).
+    <strong>Per-document synchronisation state</strong>: Drive file
+    identifier, title, file type, parent folder, identifier of the Confluence page
+    created, an irreversible cryptographic fingerprint (SHA-256) of the published content,
+    as well as the technical indicators needed for tracking: revision number of
+    the source, languages of a requested translation, and, in case of failure, a technical error
+    code and message. These items make it possible to detect that a document has
+    changed and to resume interrupted processing, without retaining the content of the
+    document. Retained as long as the connection exists, then erased when it is
+    deleted; without deletion, until uninstallation (section 7).
   </li>
   <li>
-    <strong>Journaux d'exécution</strong> : dates de synchronisation, compteurs,
-    identifiants techniques et codes d'erreur. Nous n'y inscrivons jamais de contenu
-    de document, de jeton ni d'identifiant d'authentification. Un message d'erreur
-    produit par une bibliothèque tierce peut, exceptionnellement, citer un fragment
-    du document à l'origine de l'échec ; ces journaux sont conservés par la
-    plateforme Atlassian Forge et ne nous servent qu'au diagnostic.
+    <strong>Execution logs</strong>: synchronisation dates, counters,
+    technical identifiers and error codes. We never write document
+    content, tokens or authentication credentials to them. An error message
+    produced by a third-party library may, exceptionally, quote a fragment
+    of the document that caused the failure; these logs are retained by the
+    Atlassian Forge platform and are used by us only for diagnosis.
   </li>
   <li>
-    <strong>Texte extrait des images (ancien)</strong> : jusqu'au 17 septembre
-    2026, le texte lu dans des images était conservé en cache, indexé par
-    l'empreinte cryptographique de l'image. L'application n'y écrit plus. Les
-    entrées déjà présentes ne sont pas effacées par la suppression d'une
-    connexion ; elles disparaissent avec l'ensemble du stockage à la
-    désinstallation, dans les conditions décrites à la section 7.
+    <strong>Text extracted from images (legacy)</strong>: until 17 September
+    2026, text read from images was kept in a cache, indexed by
+    the image's cryptographic fingerprint. The application no longer writes to it. The
+    entries already present are not erased when a
+    connection is deleted; they disappear with all of the storage upon
+    uninstallation, under the conditions described in section 7.
   </li>
 </ul>
 
-<h3>Ce que nous ne conservons pas</h3>
+<h3>What we do not retain</h3>
 <ul>
-  <li>Le contenu intégral de vos documents n'est pas stocké de façon durable : il est lu, converti, publié dans Confluence, puis écarté.</li>
-  <li>Les jetons d'accès et de rafraîchissement Google sont conservés dans le stockage chiffré de secrets fourni par Atlassian Forge. Ils ne sont jamais journalisés ni exposés à l'interface.</li>
+  <li>The full content of your documents is not stored durably: it is read, converted, published in Confluence, then discarded.</li>
+  <li>Google access and refresh tokens are kept in the encrypted secrets storage provided by Atlassian Forge. They are never logged or exposed to the interface.</li>
 </ul>
 
 <p>
-  Une fois publié dans Confluence, le contenu se trouve dans votre propre espace
-  Confluence et relève de la politique de conservation de votre organisation,
-  ainsi que des conditions d'Atlassian.
+  Once published in Confluence, the content resides in your own Confluence
+  space and is subject to your organisation's retention policy,
+  as well as to Atlassian's terms.
 </p>
 
-<h2>5. Ce qui sort de l'application, et pourquoi</h2>
+<h2>5. What leaves the application, and why</h2>
 <p>
-  L'application n'a pas de serveur propre : tout le traitement et tout le
-  stockage sont hébergés par Atlassian. Les seules données qui quittent cette
-  infrastructure sont celles listées ci-dessous.
+  The application has no server of its own: all processing and all
+  storage are hosted by Atlassian. The only data that leaves this
+  infrastructure is the data listed below.
 </p>
 
-<h3>Google Gemini — le seul service qui reçoit du contenu</h3>
+<h3>Google Gemini — the only service that receives content</h3>
 <p>
-  Deux traitements, et deux seulement, transmettent du contenu vous appartenant
-  à l'API Google Gemini. Tous deux dépendent d'un choix d'un administrateur :
-  la lecture par IA se demande document par document ; la traduction, une fois
-  une langue choisie pour un dossier, s'applique à chaque synchronisation de ce
-  dossier.
+  Two processes, and only two, send content belonging to you
+  to the Google Gemini API. Both depend on a choice made by an administrator:
+  AI reading is requested document by document; translation, once
+  a language has been chosen for a folder, applies to every synchronisation of that
+  folder.
 </p>
 <ul>
   <li>
-    <strong>Lecture par IA d'un PDF scanné</strong> : lorsqu'un administrateur a
-    activé la lecture par IA d'un PDF scanné, l'application envoie les pages de
-    ce document à Gemini pour en extraire le texte. Les images contenues dans
-    les autres documents ne sont jamais envoyées.
+    <strong>AI reading of a scanned PDF</strong>: when an administrator has
+    enabled AI reading of a scanned PDF, the application sends the pages of
+    that document to Gemini to extract its text. Images contained in
+    other documents are never sent.
   </li>
   <li>
-    <strong>Traduction</strong> : lorsqu'un administrateur choisit une langue de
-    traduction pour un dossier, le texte de chaque document (paragraphes,
-    cellules, titres) est envoyé à Gemini pour être traduit.
+    <strong>Translation</strong>: when an administrator chooses a translation
+    language for a folder, the text of each document (paragraphs,
+    cells, headings) is sent to Gemini to be translated.
   </li>
 </ul>
 <ul>
   <li>
-    <strong>Ce qui est transmis</strong> : pour la lecture par IA, les pages du
-    PDF scanné ; pour la traduction, le texte du document ; dans les deux cas,
-    une consigne textuelle fixe, identique à chaque appel, qui ne contient
-    aucune de vos données.
+    <strong>What is sent</strong>: for AI reading, the pages of the
+    scanned PDF; for translation, the text of the document; in both cases,
+    a fixed text instruction, identical on every call, which contains
+    none of your data.
   </li>
   <li>
-    <strong>Ce qui n'est pas transmis</strong> : ni le titre du document, ni le
-    nom du fichier Drive, ni l'espace Confluence de destination, ni aucune
-    information sur l'utilisateur.
+    <strong>What is not sent</strong>: neither the document title, nor the
+    Drive file name, nor the destination Confluence space, nor any
+    information about the user.
   </li>
   <li>
-    <strong>Ce qui revient</strong> : pour la lecture par IA, le texte lu, une
-    description courte et un indice de fiabilité ; pour la traduction, le texte
-    traduit.
+    <strong>What comes back</strong>: for AI reading, the text read, a
+    short description and a reliability score; for translation, the translated
+    text.
   </li>
   <li>
-    <strong>Quand cela se produit</strong> : uniquement pour un PDF scanné dont
-    un administrateur a activé la lecture par IA, et pour les documents d'un
-    dossier dont un administrateur a choisi une langue de traduction.
+    <strong>When this happens</strong>: only for a scanned PDF for which
+    an administrator has enabled AI reading, and for the documents of a
+    folder for which an administrator has chosen a translation language.
   </li>
 </ul>
 
-<h3>Google Drive et Google Sheets</h3>
+<h3>Google Drive and Google Sheets</h3>
 <p>
-  Ces API reçoivent le jeton d'accès et les identifiants des dossiers et
-  fichiers que vous avez connectés, et renvoient les métadonnées et le contenu
-  à convertir. L'API Sheets est utilisée en complément de l'API Drive parce
-  qu'elle seule permet de connaître les plages masquées d'une feuille de
-  calcul — et donc de <strong>ne pas publier des données que vous aviez
-  choisi de masquer</strong>.
+  These APIs receive the access token and the identifiers of the folders and
+  files you have connected, and return the metadata and the content
+  to convert. The Sheets API is used in addition to the Drive API because
+  only it reveals the hidden ranges of a
+  spreadsheet — and therefore makes it possible <strong>not to publish data you had
+  chosen to hide</strong>.
 </p>
 
-<h3>Authentification Google</h3>
+<h3>Google authentication</h3>
 <p>
-  Le service d'authentification reçoit le code d'autorisation ou le jeton de
-  rafraîchissement, ainsi que les identifiants de l'application. Aucune donnée
-  vous appartenant n'y transite. Lors d'une déconnexion, l'application appelle
-  la révocation du jeton auprès de Google et le supprime de son stockage
-  chiffré, que Google réponde ou non.
+  The authentication service receives the authorisation code or the refresh
+  token, as well as the application's credentials. No data
+  belonging to you passes through it. On disconnection, the application calls
+  token revocation with Google and deletes the token from its encrypted
+  storage, whether or not Google responds.
 </p>
 
-<h3>Notifications de changement</h3>
+<h3>Change notifications</h3>
 <p>
-  Pour être informée qu'un document a changé, l'application enregistre auprès
-  de Google une adresse de notification et un jeton de vérification qu'elle a
-  elle-même générés. Aucun contenu n'y transite.
+  To be informed that a document has changed, the application registers with
+  Google a notification address and a verification token that it
+  generated itself. No content passes through them.
 </p>
 
-<h3>Ce qui ne sort jamais</h3>
+<h3>What never leaves</h3>
 <ul>
-  <li>Aucun contenu Confluence. Le flux est unidirectionnel : de Drive vers Confluence.</li>
-  <li>Aucune donnée d'utilisateur Atlassian : ni nom, ni adresse, ni identifiant de compte.</li>
-  <li>Aucune télémétrie, aucune mesure d'audience, aucun journal externe. L'application n'envoie de statistiques à personne.</li>
-  <li>Aucune donnée vers un serveur nous appartenant : nous n'en exploitons aucun.</li>
+  <li>No Confluence content. The flow is one-way: from Drive to Confluence.</li>
+  <li>No Atlassian user data: no name, no address, no account identifier.</li>
+  <li>No telemetry, no audience measurement, no external logging. The application sends statistics to no one.</li>
+  <li>No data to a server belonging to us: we operate none.</li>
 </ul>
 
 <p>
-  <!-- À VÉRIFIER avant soumission à vérification : citer les termes exacts du paid tier Gemini
-       et de la politique Atlassian sur l'entraînement. Cf. TECHNICAL-SPEC §6.3. -->
-  Ces services sont utilisés dans le cadre de leurs offres payantes, dont les
-  conditions excluent l'utilisation des données transmises pour l'entraînement
-  de modèles.
+  <!-- TO CHECK before submission for verification: quote the exact terms of the Gemini paid tier
+       and of Atlassian's policy on training. See TECHNICAL-SPEC §6.3. -->
+  These services are used under their paid offerings, whose
+  terms exclude the use of transmitted data for training
+  models.
 </p>
 
-<h2>6. Base légale et finalité</h2>
+<h2>6. Legal basis and purpose</h2>
 <p>
-  Le traitement repose sur l'exécution du service demandé par votre
-  organisation : publier dans Confluence des documents que vous nous avez
-  explicitement désignés. Aucune donnée n'est utilisée à des fins publicitaires,
-  de profilage ou de revente.
+  Processing is based on the performance of the service requested by your
+  organisation: publishing in Confluence documents that you have
+  explicitly designated to us. No data is used for advertising,
+  profiling or resale purposes.
 </p>
 
-<h2>7. Conservation et suppression de vos données</h2>
+<h2>7. Retention and deletion of your data</h2>
 <ul>
   <li>
-    <strong>Déconnecter une connexion</strong> met fin à sa synchronisation. Les
-    pages déjà publiées dans Confluence sont soit détachées — elles restent en
-    place et cessent d'être mises à jour —, soit mises à la corbeille de votre
-    espace, selon le choix que vous faites au moment de la déconnexion. La
-    configuration de la connexion et l'état de synchronisation sont
-    <strong>conservés</strong> : ils permettent de reprendre une déconnexion
-    interrompue et de reconnecter le dossier ultérieurement.
+    <strong>Disconnecting a connection</strong> ends its synchronisation. The
+    pages already published in Confluence are either detached — they stay in
+    place and are no longer updated — or moved to the trash of your
+    space, depending on the choice you make at the time of disconnection. The
+    connection configuration and the synchronisation state are
+    <strong>retained</strong>: they make it possible to resume an interrupted disconnection
+    and to reconnect the folder later.
   </li>
   <li>
-    <strong>Supprimer une connexion</strong>, possible une fois celle-ci
-    déconnectée, efface l'inventaire des documents synchronisés, les
-    correspondances de dossiers, les règles d'exclusion et la connexion
-    elle-même.
+    <strong>Deleting a connection</strong>, possible once it has been
+    disconnected, erases the inventory of synchronised documents, the
+    folder mappings, the exclusion rules and the connection
+    itself.
   </li>
   <li>
-    <strong>Déconnecter le compte Google</strong> révoque l'autorisation et
-    supprime les jetons correspondants. Vous pouvez également révoquer l'accès
-    à tout moment depuis
-    <a href="https://myaccount.google.com/permissions" rel="noopener">les autorisations de votre compte Google</a>.
+    <strong>Disconnecting the Google account</strong> revokes the authorisation and
+    deletes the corresponding tokens. You can also revoke access
+    at any time from
+    <a href="https://myaccount.google.com/permissions" rel="noopener">your Google account permissions</a>.
   </li>
   <li>
-    <strong>Désinstaller l'application</strong> révoque d'abord l'autorisation
-    Google de l'application, puis déclenche la suppression, par Atlassian,
-    de l'ensemble des données stockées par l'application sur votre site. Cette suppression
-    n'est pas instantanée : Atlassian procède d'abord à une suppression logique, puis
-    conserve les données <strong>28 jours</strong> avant leur effacement définitif. Durant
-    les 21 premiers jours, et uniquement à votre demande, ces données peuvent être
-    rattachées à une réinstallation de l'application ; au-delà, elles ne sont plus
-    récupérables. Ce délai est celui de la plateforme Atlassian Forge, qui héberge
-    l'application, et non un choix de notre part
-    (<a href="https://developer.atlassian.com/platform/forge/storage-reference/hosted-storage-data-lifecycle" rel="noopener">cycle de vie des données du stockage hébergé Forge</a>).
+    <strong>Uninstalling the application</strong> first revokes the application's Google
+    authorisation, then triggers the deletion, by Atlassian,
+    of all data stored by the application on your site. This deletion
+    is not instantaneous: Atlassian first performs a soft deletion, then
+    retains the data for <strong>28 days</strong> before it is permanently erased. During
+    the first 21 days, and only at your request, this data can be
+    attached to a reinstallation of the application; after that, it can no longer be
+    recovered. This period is that of the Atlassian Forge platform, which hosts
+    the application, and not a choice on our part
+    (<a href="https://developer.atlassian.com/platform/forge/storage-reference/hosted-storage-data-lifecycle" rel="noopener">Forge hosted storage data lifecycle</a>).
   </li>
   <li>
-    Vous pouvez à tout moment demander la suppression de données nous concernant
-    en écrivant à <a href="mailto:contact@miksumia.com">contact@miksumia.com</a>.
-    Nous répondons sous 30 jours.
+    You can at any time request the deletion of data concerning you
+    by writing to <a href="mailto:contact@miksumia.com">contact@miksumia.com</a>.
+    We respond within 30 days.
   </li>
 </ul>
 
-<h2>8. Sécurité</h2>
+<h2>8. Security</h2>
 <ul>
-  <li>Les échanges avec Google et Atlassian se font exclusivement en HTTPS.</li>
-  <li>Les secrets et jetons sont stockés dans le magasin de secrets chiffré de Forge, jamais en clair dans le code ni dans les journaux.</li>
-  <li>L'accès à la configuration de l'application est réservé aux administrateurs Confluence, vérifié à chaque requête.</li>
-  <li>L'application demande le périmètre d'autorisations minimal nécessaire à son fonctionnement.</li>
+  <li>Exchanges with Google and Atlassian take place exclusively over HTTPS.</li>
+  <li>Secrets and tokens are stored in Forge's encrypted secrets store, never in plain text in the code or in the logs.</li>
+  <li>Access to the application's configuration is restricted to Confluence administrators, verified on every request.</li>
+  <li>The application requests the minimum scope of permissions needed for it to function.</li>
 </ul>
 
-<h2>9. Vos droits</h2>
+<h2>9. Your rights</h2>
 <p>
-  Conformément au Règlement général sur la protection des données, vous disposez
-  d'un droit d'accès, de rectification, d'effacement, de limitation et
-  d'opposition concernant les données vous concernant. Adressez votre demande à
-  <a href="mailto:contact@miksumia.com">contact@miksumia.com</a> : l'application
-  n'offre pas d'export en libre-service, et nous répondons sous 30 jours. Vous pouvez
-  également introduire une réclamation auprès de la
+  In accordance with the General Data Protection Regulation (GDPR), you have
+  a right of access, rectification, erasure, restriction and
+  objection regarding data concerning you. Send your request to
+  <a href="mailto:contact@miksumia.com">contact@miksumia.com</a>: the application
+  offers no self-service export, and we respond within 30 days. You may
+  also lodge a complaint with the
   <a href="https://www.cnil.fr" rel="noopener">CNIL</a>.
 </p>
 
-<h2>10. Modifications</h2>
+<h2>10. Changes</h2>
 <p>
-  Toute modification substantielle de cette politique sera publiée sur cette
-  page, avec une date de version mise à jour. Nous informons les administrateurs
-  des sites où l'application est installée lorsque le changement affecte les
-  données traitées.
+  Any substantial change to this policy will be published on this
+  page, with an updated version date. We inform the administrators
+  of the sites where the application is installed when the change affects the
+  data processed.
 </p>
 
 <footer>
-  <a href="/">Accueil</a>
-  <a href="/terms.html">Conditions d'utilisation</a>
-    <a href="/security.html">Sécurité</a>
+  <a href="/">Home</a>
+  <a href="/terms.html">Terms of use</a>
+    <a href="/security.html">Security</a>
   <a href="mailto:contact@miksumia.com">Support</a>
   <p class="legal">
     MIKSUMIA — SARL, SIREN 919 860 452, 70 boulevard Desgranges, 92330 Sceaux, France.

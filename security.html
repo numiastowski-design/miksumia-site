@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sécurité — Miksumia Publisher</title>
-<meta name="description" content="Politique de sécurité de Miksumia : signalement de vulnérabilités, réponse aux incidents, sécurité de l'information.">
+<link rel="alternate" hreflang="en" href="https://miksumia.com/security.html">
+<link rel="alternate" hreflang="fr" href="https://miksumia.com/security-fr.html">
+<title>Security — Miksumia Publisher</title>
+<meta name="description" content="Miksumia security policy: vulnerability disclosure, incident response, information security.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
@@ -74,291 +76,292 @@
 
 <header>
   <a class="mark" href="/">Miksumia</a>
-  <h1>Sécurité</h1>
+  <span style="float:right;font-family:var(--sans);font-size:.95rem;color:var(--muted)"><a href="/security-fr.html" hreflang="fr" lang="fr">FR</a> | EN</span>
+  <h1>Security</h1>
   <p class="meta">
-    Éditeur MIKSUMIA · Application « Miksumia Publisher » · Version du 5 octobre 2026
+    Publisher MIKSUMIA · “Miksumia Publisher” application · Version of 5 October 2026
   </p>
 </header>
 
 <p>
-  Cette page réunit trois politiques : le signalement de vulnérabilités, la
-  réponse aux incidents, et la sécurité de l'information. Elle décrit ce que
-  nous faisons réellement, à l'échelle qui est la nôtre — un éditeur
-  indépendant publiant une application entièrement hébergée sur la plateforme
-  Atlassian Forge, sans serveur ni infrastructure propre.
+  This page brings together three policies: vulnerability disclosure, incident
+  response, and information security. It describes what
+  we actually do, at our own scale — an independent
+  publisher releasing an application hosted entirely on the
+  Atlassian Forge platform, with no server or infrastructure of its own.
 </p>
 
-<h2 id="divulgation">1. Signalement de vulnérabilités</h2>
+<h2 id="divulgation">1. Vulnerability disclosure</h2>
 
-<h3>Comment nous joindre</h3>
+<h3>How to reach us</h3>
 <p>
-  Adressez tout signalement à
+  Send any report to
   <a href="mailto:contact@miksumia.com">contact@miksumia.com</a>.
-  Nous accusons réception sous deux jours ouvrés et vous tenons informé de
-  l'avancement. Les signalements anonymes sont acceptés.
+  We acknowledge receipt within two business days and keep you informed of
+  progress. Anonymous reports are accepted.
 </p>
 
-<h3>Informations utiles</h3>
+<h3>Useful information</h3>
 <ul>
-  <li>description de la vulnérabilité et de son impact potentiel ;</li>
-  <li>endroit où elle se manifeste ;</li>
-  <li>étapes de reproduction, avec captures ou scripts si possible.</li>
+  <li>description of the vulnerability and of its potential impact;</li>
+  <li>where it occurs;</li>
+  <li>steps to reproduce, with screenshots or scripts if possible.</li>
 </ul>
-<p>Le français et l'anglais conviennent également.</p>
+<p>French and English are equally acceptable.</p>
 
-<h3>Délais de correction visés</h3>
+<h3>Target remediation times</h3>
 <p>
-  Ils courent à partir de la qualification du signalement. Ils respectent
-  la <a href="https://developer.atlassian.com/platform/marketplace/security-bugfix-policy/" rel="noopener">politique de correction des failles de l'Atlassian Marketplace</a>,
-  qui fixe les délais maximaux d'une application Cloud.
+  They run from the triage of the report. They comply with
+  the <a href="https://developer.atlassian.com/platform/marketplace/security-bugfix-policy/" rel="noopener">Atlassian Marketplace security bug fix policy</a>,
+  which sets the maximum timeframes for a Cloud application.
 </p>
 <table>
-  <tr><th>Gravité</th><th>Objectif</th><th>Délai maximal Atlassian</th></tr>
-  <tr><td>Critique</td><td>7 jours ouvrés</td><td>10 jours</td></tr>
-  <tr><td>Élevée</td><td>4 semaines</td><td>4 semaines</td></tr>
-  <tr><td>Moyenne</td><td>12 semaines</td><td>12 semaines</td></tr>
-  <tr><td>Faible</td><td>25 semaines</td><td>25 semaines</td></tr>
+  <tr><th>Severity</th><th>Target</th><th>Atlassian maximum timeframe</th></tr>
+  <tr><td>Critical</td><td>7 business days</td><td>10 days</td></tr>
+  <tr><td>High</td><td>4 weeks</td><td>4 weeks</td></tr>
+  <tr><td>Medium</td><td>12 weeks</td><td>12 weeks</td></tr>
+  <tr><td>Low</td><td>25 weeks</td><td>25 weeks</td></tr>
 </table>
 
-<h3>Périmètre</h3>
+<h3>Scope</h3>
 <p>
-  Cette politique couvre l'application « Miksumia Publisher » et le site
-  <a href="/">miksumia.com</a>. Les plateformes tierces sur lesquelles
-  l'application s'exécute ou dont elle consomme les API — Atlassian, Google —
-  ne relèvent pas de ce périmètre : adressez-vous directement à leurs
-  programmes respectifs.
+  This policy covers the “Miksumia Publisher” application and the
+  <a href="/">miksumia.com</a> website. The third-party platforms on which
+  the application runs or whose APIs it consumes — Atlassian, Google —
+  fall outside this scope: contact their respective
+  programmes directly.
 </p>
 
-<h3>Ce que nous vous demandons</h3>
+<h3>What we ask of you</h3>
 <ul>
-  <li>nous signaler la faille dès sa découverte, et nous laisser un délai
-    raisonnable pour la corriger avant toute publication ;</li>
-  <li>ne pas dégrader le service, ni détruire ou modifier des données ;</li>
-  <li>n'exploiter une faille que dans la mesure nécessaire à sa démonstration :
-    ni extraction de données, ni persistance, ni rebond vers d'autres
-    systèmes ;</li>
-  <li>interrompre immédiatement le test et nous prévenir en cas d'accès à des
-    données personnelles ou confidentielles, et garder ces données
-    confidentielles.</li>
+  <li>report the flaw to us as soon as it is discovered, and give us a
+    reasonable time to fix it before any publication;</li>
+  <li>do not degrade the service, or destroy or modify data;</li>
+  <li>exploit a flaw only to the extent necessary to demonstrate it:
+    no data extraction, no persistence, no pivoting to other
+    systems;</li>
+  <li>stop testing immediately and notify us if you access
+    personal or confidential data, and keep that data
+    confidential.</li>
 </ul>
 <p>
-  Ne sont pas autorisés : les tests de déni de service, l'ingénierie sociale et
-  les tests physiques.
+  The following are not authorised: denial-of-service testing, social engineering and
+  physical testing.
 </p>
 
-<h3>Notre engagement</h3>
+<h3>Our commitment</h3>
 <p>
-  Une recherche menée conformément à cette politique est considérée comme
-  autorisée. Nous n'engagerons aucune action en justice à son encontre et nous
-  travaillerons avec vous à la compréhension et à la correction du problème.
+  Research conducted in accordance with this policy is considered
+  authorised. We will not take legal action against it and we
+  will work with you to understand and fix the problem.
 </p>
 
-<h2 id="incidents">2. Réponse aux incidents</h2>
+<h2 id="incidents">2. Incident response</h2>
 
-<h3>Objet et responsabilité</h3>
+<h3>Purpose and responsibility</h3>
 <p>
-  Cette politique définit la conduite à tenir en cas d'incident de sécurité ou
-  de violation de données concernant l'application. MIKSUMIA étant une
-  structure à personne unique, le gérant assume l'ensemble des rôles :
-  réception du signalement, investigation, correction, communication.
+  This policy defines the course of action in the event of a security incident or
+  data breach concerning the application. As MIKSUMIA is a
+  one-person company, the managing director assumes all roles:
+  receiving the report, investigation, remediation, communication.
 </p>
 
-<h3>Signalement</h3>
+<h3>Reporting</h3>
 <p>
-  Tout incident suspecté ou confirmé doit être signalé sans délai à
-  <a href="mailto:contact@miksumia.com">contact@miksumia.com</a>, que le
-  signalement vienne d'un client, d'un chercheur en sécurité, d'une plateforme
-  tierce ou de notre propre supervision.
+  Any suspected or confirmed incident must be reported without delay to
+  <a href="mailto:contact@miksumia.com">contact@miksumia.com</a>, whether the
+  report comes from a customer, a security researcher, a third-party
+  platform or our own monitoring.
 </p>
 
-<h3>Procédure</h3>
+<h3>Procedure</h3>
 <ul>
-  <li><strong>Qualifier.</strong> Reproduire le problème, en établir la nature
-    et l'étendue, et déterminer si des données personnelles sont
-    concernées.</li>
-  <li><strong>Contenir.</strong> Suspendre ou révoquer les accès concernés.
-    L'application peut être désactivée sur une installation, et l'autorisation
-    Google révoquée, sans attendre la correction.</li>
-  <li><strong>Corriger.</strong> Développer le correctif, le vérifier par des
-    tests, puis le déployer en développement avant la production.</li>
-  <li><strong>Communiquer.</strong> Informer les administrateurs des sites
-    concernés, et les plateformes tierces lorsque leur périmètre est en
-    cause.</li>
-  <li><strong>Prévenir la récidive.</strong> Ajouter un test couvrant le cas,
-    et rechercher les occurrences du même motif ailleurs dans le code.</li>
-  <li><strong>Consigner.</strong> Documenter l'incident, sa cause et sa
-    résolution.</li>
+  <li><strong>Triage.</strong> Reproduce the problem, establish its nature
+    and extent, and determine whether personal data is
+    involved.</li>
+  <li><strong>Contain.</strong> Suspend or revoke the access concerned.
+    The application can be disabled on an installation, and the Google
+    authorisation revoked, without waiting for the fix.</li>
+  <li><strong>Fix.</strong> Develop the fix, verify it with
+    tests, then deploy it to development before production.</li>
+  <li><strong>Communicate.</strong> Inform the administrators of the sites
+    concerned, and the third-party platforms when their scope is
+    involved.</li>
+  <li><strong>Prevent recurrence.</strong> Add a test covering the case,
+    and look for occurrences of the same pattern elsewhere in the code.</li>
+  <li><strong>Record.</strong> Document the incident, its cause and its
+    resolution.</li>
 </ul>
 
-<h3>Violation de données personnelles</h3>
+<h3>Personal data breach</h3>
 <p>
-  En cas de violation de données à caractère personnel susceptible d'engendrer
-  un risque pour les personnes concernées, nous notifions la
-  <a href="https://www.cnil.fr" rel="noopener">CNIL</a> dans les 72 heures
-  suivant la prise de connaissance de la violation, conformément à l'article 33
-  du RGPD. Lorsque le risque est élevé, les personnes concernées sont informées
-  dans les meilleurs délais, conformément à l'article 34. Les administrateurs
-  des sites Confluence concernés sont informés dans tous les cas.
+  In the event of a personal data breach likely to result in
+  a risk to the data subjects, we notify the
+  <a href="https://www.cnil.fr" rel="noopener">CNIL</a> within 72 hours
+  of becoming aware of the breach, in accordance with Article 33
+  of the GDPR. Where the risk is high, the data subjects are informed
+  without undue delay, in accordance with Article 34. The administrators
+  of the Confluence sites concerned are informed in all cases.
 </p>
 
-<h2 id="information">3. Sécurité de l'information</h2>
+<h2 id="information">3. Information security</h2>
 
-<h3>Périmètre</h3>
+<h3>Scope</h3>
 <p>
-  L'application s'exécute intégralement dans le bac à sable géré d'Atlassian
-  Forge. Nous n'exploitons aucun serveur, aucune base de données et aucun
-  réseau propre. La sécurité de l'infrastructure d'hébergement relève
-  d'Atlassian ; ce qui suit décrit ce qui relève de nous.
+  The application runs entirely within Atlassian Forge's managed
+  sandbox. We operate no server, no database and no
+  network of our own. The security of the hosting infrastructure is the responsibility
+  of Atlassian; what follows describes what is our responsibility.
 </p>
 
-<h3>Données conservées, emplacement et sous-traitants</h3>
+<h3>Data retained, location and subprocessors</h3>
 <p>
-  L'application conserve, par site Confluence, dans le stockage Forge hébergé
-  par Atlassian :
+  The application retains, per Confluence site, in the Forge storage hosted
+  by Atlassian:
 </p>
 <ul>
-  <li>les réglages de connexion : identifiant du dossier Drive, espace cible,
-    état, réglages de synchronisation et de traduction ;</li>
-  <li>pour chaque document synchronisé : identifiant Drive, <strong>titre du
-    document</strong>, type, dossier parent, identifiant de la page Confluence,
-    empreinte SHA-256 du contenu publié, état technique ;</li>
-  <li>pour chaque dossier : <strong>titre du dossier</strong> et identifiants ;
-    règles d'exclusion (identifiants de fichiers et de dossiers) ;</li>
-  <li>des enregistrements techniques : synchronisations, canaux de
-    notification, compteurs mensuels d'IA, interrupteurs d'urgence, événements
-    d'audit, faits techniques par PDF.</li>
+  <li>the connection settings: Drive folder identifier, target space,
+    status, synchronisation and translation settings;</li>
+  <li>for each synchronised document: Drive identifier, <strong>document
+    title</strong>, type, parent folder, Confluence page identifier,
+    SHA-256 fingerprint of the published content, technical state;</li>
+  <li>for each folder: <strong>folder title</strong> and identifiers;
+    exclusion rules (file and folder identifiers);</li>
+  <li>technical records: synchronisations, notification
+    channels, monthly AI counters, emergency switches, audit
+    events, technical facts per PDF.</li>
 </ul>
 <p>
-  Le contenu complet des documents n'est pas conservé : il est lu, converti et
-  publié dans Confluence. Le jeton d'actualisation Google est gardé dans le
-  stockage chiffré des secrets de Forge.
+  The full content of documents is not retained: it is read, converted and
+  published in Confluence. The Google refresh token is kept in Forge's
+  encrypted secrets storage.
 </p>
 <p>
-  Les données sont traitées et conservées sur l'infrastructure Atlassian Forge.
-  Miksumia n'exploite ni serveur ni base de données. Les données ne quittent
-  Atlassian que vers les services Google ci-dessous ; les appels à Confluence
-  passent par Forge et ne sont pas une sortie vers l'extérieur. Pour
-  l'hébergement (emplacement, chiffrement, certifications), voir les pages
-  d'Atlassian :
+  Data is processed and stored on the Atlassian Forge infrastructure.
+  Miksumia operates neither a server nor a database. Data leaves
+  Atlassian only to the Google services below; calls to Confluence
+  go through Forge and are not an egress to the outside. For
+  hosting (location, encryption, certifications), see Atlassian's
+  pages:
   <a href="https://www.atlassian.com/trust" rel="noopener">Atlassian Trust Center</a>
-  et
-  <a href="https://developer.atlassian.com/platform/forge/security/" rel="noopener">sécurité de Forge</a>.
+  and
+  <a href="https://developer.atlassian.com/platform/forge/security/" rel="noopener">Forge security</a>.
 </p>
-<!-- Région d'hébergement Forge de l'app : à vérifier avant d'en dire quoi que ce soit. -->
+<!-- The app's Forge hosting region: to be verified before saying anything about it. -->
 
 <table>
-  <tr><th>Sous-traitant</th><th>Rôle</th></tr>
-  <tr><td>Atlassian</td><td>Hébergement de l'application et stockage (Forge) ; Confluence</td></tr>
-  <tr><td>Google</td><td>Lecture seule de Drive, Sheets et Slides (autorisation OAuth) ; API Gemini pour les seules fonctions activées par un administrateur</td></tr>
+  <tr><th>Subprocessor</th><th>Role</th></tr>
+  <tr><td>Atlassian</td><td>Application hosting and storage (Forge); Confluence</td></tr>
+  <tr><td>Google</td><td>Read-only access to Drive, Sheets and Slides (OAuth authorisation); Gemini API for only the features enabled by an administrator</td></tr>
 </table>
 
-<h3>Destinations réseau déclarées</h3>
-<p>Exactement les adresses déclarées au manifeste de l'application :</p>
+<h3>Declared network destinations</h3>
+<p>Exactly the addresses declared in the application's manifest:</p>
 <ul>
   <li>www.googleapis.com, oauth2.googleapis.com, sheets.googleapis.com,
-    slides.googleapis.com, docs.google.com et *.googleusercontent.com :
-    lecture des fichiers connectés et autorisation OAuth, en lecture seule.
-    Elles reçoivent le jeton d'accès et des identifiants de fichiers ;</li>
-  <li>generativelanguage.googleapis.com : API Gemini (Gemini Developer API,
-    pas Vertex AI). C'est le seul service qui reçoit du contenu client.</li>
+    slides.googleapis.com, docs.google.com and *.googleusercontent.com:
+    reading of the connected files and OAuth authorisation, read-only.
+    They receive the access token and file identifiers;</li>
+  <li>generativelanguage.googleapis.com: Gemini API (Gemini Developer API,
+    not Vertex AI). It is the only service that receives customer content.</li>
 </ul>
 <p>
-  Gemini reçoit du contenu dans deux cas seulement. (1) Traduction : dès qu'un
-  administrateur choisit une langue pour un dossier, le texte de ses documents
-  lui est envoyé à chaque synchronisation de ce dossier. (2) Lecture par IA d'un
-  PDF numérisé : elle est demandée document par document, et les pages du PDF
-  sont alors envoyées. Une consigne fixe accompagne l'envoi ; le titre, le nom
-  de fichier, l'espace et l'utilisateur ne sont pas envoyés. Rien d'autre ne
-  quitte Atlassian : aucun contenu Confluence, aucune donnée d'utilisateur
-  Atlassian, aucune télémétrie, aucune analyse d'audience, aucun journal
-  externe.
+  Gemini receives content in two cases only. (1) Translation: as soon as an
+  administrator chooses a language for a folder, the text of its documents
+  is sent to it on every synchronisation of that folder. (2) AI reading of a
+  scanned PDF: it is requested document by document, and the pages of the PDF
+  are then sent. A fixed instruction accompanies the request; the title, the file
+  name, the space and the user are not sent. Nothing else
+  leaves Atlassian: no Confluence content, no Atlassian user
+  data, no telemetry, no audience analytics, no external
+  logging.
 </p>
-<!-- Conditions Gemini applicables (palier, entraînement, conservation) : conditions to be confirmed. Ne rien affirmer ici avant. -->
+<!-- Applicable Gemini terms (tier, training, retention): conditions to be confirmed. Assert nothing here before then. -->
 
-<h3>Conservation et suppression</h3>
+<h3>Retention and deletion</h3>
 <ul>
-  <li>Le stockage n'a pas de durée de vie : les enregistrements durent autant
-    que la connexion. Seul l'état anti-CSRF d'OAuth expire (10 minutes).</li>
-  <li>Supprimer une connexion (après l'avoir déconnectée) efface ses
-    enregistrements de documents, ses correspondances de dossiers, ses règles
-    d'exclusion et sa dernière synchronisation.</li>
-  <li>Déconnecter le compte Google révoque le jeton auprès de Google puis le
-    supprime.</li>
-  <li>À la désinstallation, l'application révoque d'abord l'autorisation Google
-    (étape <code>preUninstall</code>), suspend les connexions et retire les
-    canaux de notification. Atlassian supprime ensuite les données stockées
-    après 28 jours, selon le cycle de vie du stockage Forge hébergé
-    (documentation Atlassian).</li>
-  <li>Les pages déjà publiées restent dans l'espace Confluence du client, à qui
-    elles appartiennent.</li>
-  <li>Il n'existe pas d'export en libre-service. Toute demande :
+  <li>Storage has no time-to-live: records last as long as
+    the connection. Only the OAuth anti-CSRF state expires (10 minutes).</li>
+  <li>Deleting a connection (after disconnecting it) erases its
+    document records, its folder mappings, its exclusion rules
+    and its last synchronisation.</li>
+  <li>Disconnecting the Google account revokes the token with Google, then
+    deletes it.</li>
+  <li>On uninstallation, the application first revokes the Google authorisation
+    (<code>preUninstall</code> step), suspends the connections and removes the
+    notification channels. Atlassian then deletes the stored data
+    after 28 days, according to the Forge hosted storage lifecycle
+    (Atlassian documentation).</li>
+  <li>Pages already published remain in the customer's Confluence space, to which
+    they belong.</li>
+  <li>There is no self-service export. Any request:
     <a href="mailto:contact@miksumia.com">contact@miksumia.com</a>.</li>
 </ul>
-<!-- Contrat de traitement des données (DPA) : décision de Mikolaj. Le contrat utilisateur final Marketplace d'Atlassian (Bonterms) renvoie à un DPA « s'il existe » dans les conditions propres au fournisseur ; ne rien promettre ici. -->
+<!-- Data processing agreement (DPA): Mikolaj's decision. Atlassian's Marketplace end user agreement (Bonterms) refers to a DPA "if any" in the vendor's own terms; promise nothing here. -->
 
-<h3>Journaux</h3>
+<h3>Logs</h3>
 <p>
-  Les journaux contiennent des noms d'événements, des identifiants techniques,
-  des compteurs et des codes d'erreur. Les messages d'erreur affichés ou
-  journalisés sont composés par l'application ; le texte venu d'un service
-  amont est classé puis abandonné. Aucun contenu client dans les journaux de
-  production.
+  Logs contain event names, technical identifiers,
+  counters and error codes. Error messages displayed or
+  logged are composed by the application; text coming from an upstream
+  service is classified, then discarded. No customer content in production
+  logs.
 </p>
 
-<h3>Classification des données</h3>
+<h3>Data classification</h3>
 <ul>
-  <li><strong>Secrets.</strong> Identifiants OAuth et jetons d'actualisation
-    Google. Traités selon la section « gestion des secrets » ci-dessous.</li>
-  <li><strong>Contenu client.</strong> Documents lus dans Google Drive et
-    contenu dérivé. Traité en mémoire, publié dans Confluence, conservé
-    seulement dans la mesure décrite plus haut et dans la
-    <a href="/privacy.html">politique de confidentialité</a>.</li>
-  <li><strong>Données techniques.</strong> Identifiants de fichiers, titres de
-    documents et de dossiers, empreintes, compteurs, états de synchronisation.</li>
+  <li><strong>Secrets.</strong> OAuth credentials and Google refresh
+    tokens. Handled according to the “secrets management” section below.</li>
+  <li><strong>Customer content.</strong> Documents read from Google Drive and
+    derived content. Processed in memory, published in Confluence, retained
+    only to the extent described above and in the
+    <a href="/privacy.html">privacy policy</a>.</li>
+  <li><strong>Technical data.</strong> File identifiers, document and folder
+    titles, fingerprints, counters, synchronisation states.</li>
 </ul>
 
-<h3>Contrôle des accès</h3>
+<h3>Access control</h3>
 <p>
-  Les fonctions de l'application sont réservées aux administrateurs du site
-  Confluence, vérifié côté serveur à chaque requête auprès de Confluence
-  lui-même, jamais déduit de l'interface. L'accès à Google Drive est demandé en
-  lecture seule et limité aux dossiers explicitement connectés par
-  l'administrateur.
+  The application's features are restricted to the administrators of the
+  Confluence site, verified server-side on every request with Confluence
+  itself, never inferred from the interface. Access to Google Drive is requested
+  read-only and limited to the folders explicitly connected by
+  the administrator.
 </p>
 <p>
-  Les comptes d'administration de l'éditeur — console développeur Atlassian,
-  console Google Cloud, dépôt de code — sont nominatifs et protégés par
-  authentification à deux facteurs.
-</p>
-
-<h3>Gestion des secrets</h3>
-<p>
-  Aucun secret ne figure dans le code source. Les identifiants client OAuth
-  sont fournis au déploiement par variables d'environnement Forge. Les jetons
-  d'actualisation sont écrits exclusivement dans le stockage chiffré de Forge,
-  révoqués auprès de Google puis supprimés lors de la déconnexion du compte ou
-  de la désinstallation. Aucun secret n'est journalisé, renvoyé dans une
-  réponse, ni inclus dans un message d'erreur.
+  The publisher's administration accounts — Atlassian developer console,
+  Google Cloud console, code repository — are personal and protected by
+  two-factor authentication.
 </p>
 
-<h3>Chiffrement des communications</h3>
+<h3>Secrets management</h3>
 <p>
-  Toutes les communications utilisent HTTPS. Les destinations réseau autorisées sont déclarées au manifeste de
-  l'application et vérifiées par la plateforme à l'exécution : aucune autre
-  destination n'est joignable.
+  No secret appears in the source code. The OAuth client credentials
+  are supplied at deployment through Forge environment variables. Refresh
+  tokens are written exclusively to Forge's encrypted storage,
+  revoked with Google and then deleted when the account is disconnected or
+  the application is uninstalled. No secret is logged, returned in a
+  response, or included in an error message.
 </p>
 
-<h3>Développement</h3>
+<h3>Encryption of communications</h3>
+<p>
+  All communications use HTTPS. The authorised network destinations are declared in the
+  application's manifest and enforced by the platform at runtime: no other
+  destination is reachable.
+</p>
+
+<h3>Development</h3>
 <ul>
-  <li>revue de conception avant implémentation ;</li>
-  <li>tests automatisés exécutés en intégration continue à chaque
-    modification ;</li>
-  <li>analyse statique de sécurité du code source, reproductible et rejouable ;</li>
-  <li>analyse des dépendances, avec suivi des vulnérabilités publiées, y
-    compris celles introduites de façon transitive.</li>
+  <li>design review before implementation;</li>
+  <li>automated tests run in continuous integration on every
+    change;</li>
+  <li>static security analysis of the source code, reproducible and repeatable;</li>
+  <li>dependency analysis, with tracking of published vulnerabilities,
+    including those introduced transitively.</li>
 </ul>
 
-<h3>Évaluation indépendante</h3>
+<h3>Independent assessment</h3>
 <p lang="en">
   Miksumia Publisher V2.7.0 was assessed by TAC Security against the CASA
   specification v2.1.1 at assurance level AL1 (grey-box testing, 7–23 September
@@ -366,26 +369,26 @@
   was carried out for Google's OAuth restricted scopes (Drive read-only).
 </p>
 <p>
-  Les tests ont utilisé la configuration « App Defense Alliance ADA Burp Audit
-  Scan Configuration ».
+  The tests used the “App Defense Alliance ADA Burp Audit
+  Scan Configuration” configuration.
 </p>
 
-<h3>Vérification OAuth de Google</h3>
+<h3>Google OAuth verification</h3>
 <p>
-  La vérification OAuth de l'application par Google a été approuvée le
-  28/09/2026.
+  Google's OAuth verification of the application was approved on
+  28 September 2026.
 </p>
 
-<h3>Revue</h3>
+<h3>Review</h3>
 <p>
-  Ces politiques sont revues au moins une fois par an, et à chaque évolution
-  substantielle de l'architecture de l'application.
+  These policies are reviewed at least once a year, and with every
+  substantial change to the application's architecture.
 </p>
 
 <footer>
-  <a href="/">Accueil</a>
-  <a href="/privacy.html">Politique de confidentialité</a>
-  <a href="/terms.html">Conditions d'utilisation</a>
+  <a href="/">Home</a>
+  <a href="/privacy.html">Privacy policy</a>
+  <a href="/terms.html">Terms of use</a>
   <a href="mailto:contact@miksumia.com">Support</a>
   <p class="legal">
     MIKSUMIA — SARL, SIREN 919 860 452, 70 boulevard Desgranges, 92330 Sceaux, France.
