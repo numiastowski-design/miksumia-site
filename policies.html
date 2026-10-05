@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="alternate" hreflang="en" href="https://miksumia.com/policies.html">
+<link rel="alternate" hreflang="fr" href="https://miksumia.com/policies-fr.html">
+<title>Security policies — Miksumia Publisher</title>
+<meta name="description" content="Miksumia security policies: governance, risk, access, encryption, suppliers, continuity, vulnerabilities, logging, retention, workstation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FDFDFC;
+    --ink:#14202B;
+    --muted:#5C6B7A;
+    --rule:#DDE3E9;
+    --accent:#1F4B99;
+    --accent-soft:#EDF2FA;
+    --serif:"Source Serif 4",Georgia,serif;
+    --sans:"IBM Plex Sans",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--serif);font-size:18px;line-height:1.65;
+  }
+  .wrap{max-width:42rem;margin:0 auto;padding:0 1.5rem}
+  a{color:var(--accent)}
+  a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+  header{padding:3.5rem 0 0}
+  .mark{font-family:var(--sans);font-weight:500;font-size:.95rem;color:var(--muted);text-decoration:none}
+  h1{font-weight:600;font-size:2.1rem;line-height:1.2;letter-spacing:-.015em;margin:1.75rem 0 .5rem}
+  .meta{font-family:var(--sans);font-size:.86rem;color:var(--muted);margin:0 0 2.5rem}
+
+  h2{
+    font-weight:600;font-size:1.22rem;letter-spacing:-.005em;
+    margin:2.75rem 0 .6rem;padding-top:1.4rem;border-top:1px solid var(--rule);
+  }
+  p{margin:0 0 1rem;max-width:66ch}
+  ul{margin:0 0 1rem;padding-left:1.15rem;max-width:66ch}
+  li{margin:.4rem 0}
+
+  footer{
+    margin:4rem 0 0;border-top:1px solid var(--rule);
+    padding:1.5rem 0 3.5rem;font-family:var(--sans);font-size:.88rem;color:var(--muted);
+  }
+  footer a{margin-right:1.25rem}
+  .legal{margin-top:.85rem;line-height:1.7}
+
+  @media (max-width:640px){
+    body{font-size:17px}
+    h1{font-size:1.8rem}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <a class="mark" href="/">Miksumia</a>
+  <span style="float:right;font-family:var(--sans);font-size:.95rem;color:var(--muted)"><a href="/policies-fr.html" hreflang="fr" lang="fr">FR</a> | EN</span>
+  <h1>Security policies</h1>
+  <p class="meta">
+    Publisher MIKSUMIA · “Miksumia Publisher” application · Last review: 6 October 2026
+  </p>
+</header>
+
+<p>
+  These policies describe what MIKSUMIA actually does today to protect the
+  “Miksumia Publisher” application and its customers' data. MIKSUMIA is a
+  one-person company. Vulnerability reporting and incident response are
+  detailed on the <a href="/security.html">security page</a>.
+</p>
+
+<h2 id="scope">1. Scope and governance</h2>
+<p>
+  These policies cover the “Miksumia Publisher” application and the
+  miksumia.com website. One person, the founder, owns security.
+</p>
+<p>
+  These policies are reviewed at least once a year and after any major change
+  to the application. Last review: 6 October 2026.
+</p>
+
+<h2 id="risk">2. Risk management</h2>
+<ul>
+  <li>Security is reviewed at each release.</li>
+  <li>Automated tests run on every change.</li>
+  <li>Dependencies are audited for published vulnerabilities every week.</li>
+  <li>Code goes through review loops before each release, repeated until a
+    round finds no real defect.</li>
+  <li>Known limits of the application are written down.</li>
+</ul>
+
+<h2 id="access">3. Access control</h2>
+<ul>
+  <li>Only the founder has access to production, the source code, and the
+    Google Cloud and Atlassian developer accounts.</li>
+  <li>Two-factor authentication protects the Atlassian, Google and GitHub
+    accounts.</li>
+  <li>The application requests the narrowest OAuth scopes it needs. Google
+    Drive is read-only.</li>
+  <li>Configuring the application is reserved to Confluence site
+    administrators. This is checked on each request.</li>
+</ul>
+
+<h2 id="encryption">4. Encryption and secrets</h2>
+<ul>
+  <li>All communications use HTTPS.</li>
+  <li>Application secrets and Google tokens are kept in the encrypted secrets
+    store of Atlassian Forge.</li>
+  <li>Secrets never appear in the source code or in logs.</li>
+  <li>A leaked or suspected secret is revoked and replaced the same day.</li>
+</ul>
+
+<h2 id="suppliers">5. Supplier management</h2>
+<p>MIKSUMIA uses two sub-processors:</p>
+<ul>
+  <li><strong>Atlassian</strong>: hosting and storage of the application
+    (Forge).</li>
+  <li><strong>Google</strong>: Drive, Sheets, Slides, OAuth authorisation and
+    Gemini API.</li>
+</ul>
+<p>
+  They were chosen for their published security programmes. They are listed
+  in the <a href="/privacy.html">privacy policy</a>. The list is reviewed at
+  the annual policy review.
+</p>
+
+<h2 id="continuity">6. Business continuity and recovery</h2>
+<ul>
+  <li>MIKSUMIA runs no server of its own.</li>
+  <li>Hosting, storage, availability and backups are provided by Atlassian
+    Forge, as described in its
+    <a href="https://developer.atlassian.com/platform/forge/shared-responsibility-model/" rel="noopener">shared responsibility model</a>.</li>
+  <li>The source code is kept in GitHub, with its history.</li>
+  <li>The application can be redeployed from its source code.</li>
+  <li>Pages already published belong to the customer and stay in their
+    Confluence site.</li>
+</ul>
+
+<h2 id="vulnerabilities">7. Vulnerability and incident management</h2>
+<ul>
+  <li>Reports go to <a href="mailto:contact@miksumia.com">contact@miksumia.com</a>.
+    We acknowledge them within two business days.</li>
+  <li>Fixes follow the
+    <a href="https://developer.atlassian.com/platform/marketplace/security-bugfix-policy/" rel="noopener">Atlassian Marketplace security bug fix policy</a>:
+    critical within 10 days, high within 4 weeks, medium within 12 weeks,
+    low within 25 weeks.</li>
+  <li>Affected customers are informed.</li>
+  <li>Atlassian is informed through its Marketplace security process.</li>
+</ul>
+<p>
+  The full procedure is on the <a href="/security.html#incidents">security page</a>.
+</p>
+
+<h2 id="logging">8. Logging</h2>
+<ul>
+  <li>Logs hold event names, technical identifiers, counters and error
+    codes.</li>
+  <li>Production logs hold no customer content.</li>
+  <li>Logs are kept by Atlassian Forge.</li>
+</ul>
+
+<h2 id="retention">9. Data retention and deletion</h2>
+<p>
+  What is kept, and for how long, is described in section 7 of the
+  <a href="/privacy.html">privacy policy</a>.
+</p>
+<p>
+  On uninstallation, the application first revokes the Google token. Atlassian
+  then deletes the stored data after 28 days.
+</p>
+
+<h2 id="workstation">10. Workstation</h2>
+<p>
+  The founder's computer runs Microsoft Defender and the Windows firewall,
+  with automatic updates. Defender and the firewall were checked active on
+  5 October 2026.
+</p>
+
+<footer>
+  <a href="/">Home</a>
+  <a href="/publisher.html">Miksumia Publisher</a>
+  <a href="/guide.html">Guide</a>
+  <a href="/privacy.html">Privacy policy</a>
+  <a href="/terms.html">Terms of use</a>
+  <a href="/security.html">Security</a>
+  <a href="/policies.html">Policies</a>
+  <a href="/support.html">Support</a>
+  <p class="legal">
+    MIKSUMIA — SARL, SIREN 919 860 452, 70 boulevard Desgranges, 92330 Sceaux, France.
+  </p>
+</footer>
+
+</div>
+</body>
+</html>
