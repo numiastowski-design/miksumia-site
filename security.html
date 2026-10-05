@@ -76,7 +76,7 @@
   <a class="mark" href="/">Miksumia</a>
   <h1>Sécurité</h1>
   <p class="meta">
-    Éditeur MIKSUMIA · Application « Miksumia Publisher » · Version du 7 septembre 2026
+    Éditeur MIKSUMIA · Application « Miksumia Publisher » · Version du 5 octobre 2026
   </p>
 </header>
 
@@ -93,10 +93,9 @@
 <h3>Comment nous joindre</h3>
 <p>
   Adressez tout signalement à
-  <a href="mailto:contact@miksumia.com">contact@miksumia.com</a>, avec la
-  mention « sécurité » en objet. Nous accusons réception sous trois jours
-  ouvrés et vous tenons informé de l'avancement. Les signalements anonymes sont
-  acceptés.
+  <a href="mailto:security@miksumia.com">security@miksumia.com</a>.
+  Nous accusons réception sous deux jours ouvrés et vous tenons informé de
+  l'avancement. Les signalements anonymes sont acceptés.
 </p>
 
 <h3>Informations utiles</h3>
@@ -106,6 +105,18 @@
   <li>étapes de reproduction, avec captures ou scripts si possible.</li>
 </ul>
 <p>Le français et l'anglais conviennent également.</p>
+
+<h3>Délais de correction visés</h3>
+<p>
+  Ce sont des objectifs, non des garanties. Ils courent à partir de la
+  qualification du signalement.
+</p>
+<table>
+  <tr><th>Gravité</th><th>Objectif</th></tr>
+  <tr><td>Critique</td><td>7 jours ouvrés</td></tr>
+  <tr><td>Élevée</td><td>30 jours</td></tr>
+  <tr><td>Moyenne ou faible</td><td>à la prochaine version de maintenance</td></tr>
+</table>
 
 <h3>Périmètre</h3>
 <p>
@@ -153,7 +164,7 @@
 <h3>Signalement</h3>
 <p>
   Tout incident suspecté ou confirmé doit être signalé sans délai à
-  <a href="mailto:contact@miksumia.com">contact@miksumia.com</a>, que le
+  <a href="mailto:security@miksumia.com">security@miksumia.com</a>, que le
   signalement vienne d'un client, d'un chercheur en sécurité, d'une plateforme
   tierce ou de notre propre supervision.
 </p>
@@ -198,16 +209,110 @@
   d'Atlassian ; ce qui suit décrit ce qui relève de nous.
 </p>
 
+<h3>Données conservées, emplacement et sous-traitants</h3>
+<p>
+  L'application conserve, par site Confluence, dans le stockage Forge hébergé
+  par Atlassian :
+</p>
+<ul>
+  <li>les réglages de connexion : identifiant du dossier Drive, espace cible,
+    état, réglages de synchronisation et de traduction ;</li>
+  <li>pour chaque document synchronisé : identifiant Drive, <strong>titre du
+    document</strong>, type, dossier parent, identifiant de la page Confluence,
+    empreinte SHA-256 du contenu publié, état technique ;</li>
+  <li>pour chaque dossier : <strong>titre du dossier</strong> et identifiants ;
+    règles d'exclusion (identifiants de fichiers et de dossiers) ;</li>
+  <li>des enregistrements techniques : synchronisations, canaux de
+    notification, compteurs mensuels d'IA, interrupteurs d'urgence, événements
+    d'audit, faits techniques par PDF.</li>
+</ul>
+<p>
+  Le contenu complet des documents n'est pas conservé : il est lu, converti et
+  publié dans Confluence. Le jeton d'actualisation Google est gardé dans le
+  stockage chiffré des secrets de Forge.
+</p>
+<p>
+  Les données sont traitées et conservées sur l'infrastructure Atlassian Forge.
+  Miksumia n'exploite ni serveur ni base de données. Les données ne quittent
+  Atlassian que vers les services Google ci-dessous ; les appels à Confluence
+  passent par Forge et ne sont pas une sortie vers l'extérieur. Pour
+  l'hébergement (emplacement, chiffrement, certifications), voir les pages
+  d'Atlassian :
+  <a href="https://www.atlassian.com/trust" rel="noopener">Atlassian Trust Center</a>
+  et
+  <a href="https://developer.atlassian.com/platform/forge/security/" rel="noopener">sécurité de Forge</a>.
+</p>
+<!-- Région d'hébergement Forge de l'app : à vérifier avant d'en dire quoi que ce soit. -->
+
+<table>
+  <tr><th>Sous-traitant</th><th>Rôle</th></tr>
+  <tr><td>Atlassian</td><td>Hébergement de l'application et stockage (Forge) ; Confluence</td></tr>
+  <tr><td>Google</td><td>Lecture seule de Drive, Sheets et Slides (autorisation OAuth) ; API Gemini pour les seules fonctions activées par un administrateur</td></tr>
+</table>
+
+<h3>Destinations réseau déclarées</h3>
+<p>Exactement les adresses déclarées au manifeste de l'application :</p>
+<ul>
+  <li>www.googleapis.com, oauth2.googleapis.com, sheets.googleapis.com,
+    slides.googleapis.com, docs.google.com et *.googleusercontent.com :
+    lecture des fichiers connectés et autorisation OAuth, en lecture seule.
+    Elles reçoivent le jeton d'accès et des identifiants de fichiers ;</li>
+  <li>generativelanguage.googleapis.com : API Gemini (Gemini Developer API,
+    pas Vertex AI). C'est le seul service qui reçoit du contenu client.</li>
+</ul>
+<p>
+  Gemini reçoit du contenu dans deux cas seulement. (1) Traduction : dès qu'un
+  administrateur choisit une langue pour un dossier, le texte de ses documents
+  lui est envoyé à chaque synchronisation de ce dossier. (2) Lecture par IA d'un
+  PDF numérisé : elle est demandée document par document, et les pages du PDF
+  sont alors envoyées. Une consigne fixe accompagne l'envoi ; le titre, le nom
+  de fichier, l'espace et l'utilisateur ne sont pas envoyés. Rien d'autre ne
+  quitte Atlassian : aucun contenu Confluence, aucune donnée d'utilisateur
+  Atlassian, aucune télémétrie, aucune analyse d'audience, aucun journal
+  externe.
+</p>
+<!-- Conditions Gemini applicables (palier, entraînement, conservation) : conditions to be confirmed. Ne rien affirmer ici avant. -->
+
+<h3>Conservation et suppression</h3>
+<ul>
+  <li>Le stockage n'a pas de durée de vie : les enregistrements durent autant
+    que la connexion. Seul l'état anti-CSRF d'OAuth expire (10 minutes).</li>
+  <li>Supprimer une connexion (après l'avoir déconnectée) efface ses
+    enregistrements de documents, ses correspondances de dossiers, ses règles
+    d'exclusion et sa dernière synchronisation.</li>
+  <li>Déconnecter le compte Google révoque le jeton auprès de Google puis le
+    supprime.</li>
+  <li>À la désinstallation, l'application révoque d'abord l'autorisation Google
+    (étape <code>preUninstall</code>), suspend les connexions et retire les
+    canaux de notification. Atlassian supprime ensuite les données stockées
+    après 28 jours, selon le cycle de vie du stockage Forge hébergé
+    (documentation Atlassian).</li>
+  <li>Les pages déjà publiées restent dans l'espace Confluence du client, à qui
+    elles appartiennent.</li>
+  <li>Il n'existe pas d'export en libre-service. Toute demande :
+    <a href="mailto:contact@miksumia.com">contact@miksumia.com</a>.</li>
+</ul>
+<!-- Contrat de traitement des données (DPA) : décision de Mikolaj. Le contrat utilisateur final Marketplace d'Atlassian (Bonterms) renvoie à un DPA « s'il existe » dans les conditions propres au fournisseur ; ne rien promettre ici. -->
+
+<h3>Journaux</h3>
+<p>
+  Les journaux contiennent des noms d'événements, des identifiants techniques,
+  des compteurs et des codes d'erreur. Les messages d'erreur affichés ou
+  journalisés sont composés par l'application ; le texte venu d'un service
+  amont est classé puis abandonné. Aucun contenu client dans les journaux de
+  production.
+</p>
+
 <h3>Classification des données</h3>
 <ul>
   <li><strong>Secrets.</strong> Identifiants OAuth et jetons d'actualisation
     Google. Traités selon la section « gestion des secrets » ci-dessous.</li>
   <li><strong>Contenu client.</strong> Documents lus dans Google Drive et
-    contenu dérivé. Traité en mémoire, publié dans Confluence, jamais
-    conservé au-delà de ce que décrit la
+    contenu dérivé. Traité en mémoire, publié dans Confluence, conservé
+    seulement dans la mesure décrite plus haut et dans la
     <a href="/privacy.html">politique de confidentialité</a>.</li>
-  <li><strong>Données techniques.</strong> Identifiants de fichiers, empreintes,
-    compteurs, états de synchronisation.</li>
+  <li><strong>Données techniques.</strong> Identifiants de fichiers, titres de
+    documents et de dossiers, empreintes, compteurs, états de synchronisation.</li>
 </ul>
 
 <h3>Contrôle des accès</h3>
@@ -236,8 +341,7 @@
 
 <h3>Chiffrement des communications</h3>
 <p>
-  Toutes les communications utilisent TLS. Aucun point d'accès en clair
-  n'existe. Les destinations réseau autorisées sont déclarées au manifeste de
+  Toutes les communications utilisent HTTPS. Les destinations réseau autorisées sont déclarées au manifeste de
   l'application et vérifiées par la plateforme à l'exécution : aucune autre
   destination n'est joignable.
 </p>
@@ -254,9 +358,11 @@
 
 <h3>Évaluation indépendante</h3>
 <p>
-  L'application fait l'objet d'une évaluation de sécurité indépendante
-  ADA CASA, requise annuellement par Google pour les applications accédant à
-  des portées d'API restreintes.
+  Une évaluation de sécurité indépendante a été validée le 28/09/2026.
+  Libellé exact : <strong>[libellé exact de la lettre de validation, à fournir
+  par Mikolaj]</strong>. Cette validation porte sur la portée Google Drive en
+  lecture seule (<code>drive.readonly</code>), non sur l'ensemble de
+  l'application.
 </p>
 
 <h3>Revue</h3>
