@@ -76,7 +76,7 @@
   <a class="mark" href="/">Miksumia</a>
   <h1>Politique de confidentialité</h1>
   <p class="meta">
-    Application « Miksumia Publisher » · Version du 7 septembre 2026
+    Application « Miksumia Publisher » · Version du 5 octobre 2026
   </p>
 </header>
 
@@ -207,7 +207,8 @@
     la source, langues d'une traduction demandée, et, en cas d'échec, un code et un
     message d'erreur technique. Ces éléments permettent de détecter qu'un document a
     changé et de reprendre un traitement interrompu, sans conserver le contenu du
-    document.
+    document. Conservé tant que la connexion existe, puis effacé à sa
+    suppression ; sans suppression, jusqu'à la désinstallation (section 7).
   </li>
   <li>
     <strong>Journaux d'exécution</strong> : dates de synchronisation, compteurs,
@@ -218,12 +219,11 @@
     plateforme Atlassian Forge et ne nous servent qu'au diagnostic.
   </li>
   <li>
-    <strong>Texte extrait des images</strong> : lorsqu'un document contient des
-    images comportant du texte, le texte reconnu est conservé en cache afin
-    d'éviter de refaire l'analyse à chaque synchronisation. Ce cache est indexé
-    par l'empreinte cryptographique de l'image, et non par le document ou la
-    connexion dont elle provient ; il n'est donc pas effacé par la suppression
-    d'une connexion, et disparaît avec l'ensemble du stockage à la
+    <strong>Texte extrait des images (ancien)</strong> : jusqu'au 17 septembre
+    2026, le texte lu dans des images était conservé en cache, indexé par
+    l'empreinte cryptographique de l'image. L'application n'y écrit plus. Les
+    entrées déjà présentes ne sont pas effacées par la suppression d'une
+    connexion ; elles disparaissent avec l'ensemble du stockage à la
     désinstallation, dans les conditions décrites à la section 7.
   </li>
 </ul>
@@ -249,30 +249,44 @@
 
 <h3>Google Gemini — le seul service qui reçoit du contenu</h3>
 <p>
-  Lorsqu'un document contient des images, ou lorsqu'il s'agit d'un PDF scanné,
-  l'application confie ces images à l'API Google Gemini pour en extraire le
-  texte et en produire une description destinée à l'accessibilité. C'est le
-  seul traitement où du contenu vous appartenant est transmis à un tiers.
+  Deux traitements, et deux seulement, transmettent du contenu vous appartenant
+  à l'API Google Gemini. Tous deux sont activés par un administrateur ;
+  une synchronisation seule n'en déclenche aucun.
 </p>
 <ul>
   <li>
-    <strong>Ce qui est transmis</strong> : les octets de l'image ou des pages
-    scannées, et une consigne textuelle fixe, identique à chaque appel, qui ne
-    contient aucune de vos données.
+    <strong>Lecture par IA d'un PDF scanné</strong> : lorsqu'un administrateur a
+    activé la lecture par IA d'un PDF scanné, l'application envoie les pages de
+    ce document à Gemini pour en extraire le texte. Les images contenues dans
+    les autres documents ne sont jamais envoyées.
+  </li>
+  <li>
+    <strong>Traduction</strong> : lorsqu'un administrateur choisit une langue de
+    traduction pour un dossier, le texte de chaque document (paragraphes,
+    cellules, titres) est envoyé à Gemini pour être traduit.
+  </li>
+</ul>
+<ul>
+  <li>
+    <strong>Ce qui est transmis</strong> : pour la lecture par IA, les pages du
+    PDF scanné ; pour la traduction, le texte du document ; dans les deux cas,
+    une consigne textuelle fixe, identique à chaque appel, qui ne contient
+    aucune de vos données.
   </li>
   <li>
     <strong>Ce qui n'est pas transmis</strong> : ni le titre du document, ni le
     nom du fichier Drive, ni l'espace Confluence de destination, ni aucune
-    information sur l'utilisateur. L'appel ne transporte que des pixels.
+    information sur l'utilisateur.
   </li>
   <li>
-    <strong>Ce qui revient</strong> : le texte lu dans l'image, une description
-    courte, et un indice de fiabilité.
+    <strong>Ce qui revient</strong> : pour la lecture par IA, le texte lu, une
+    description courte et un indice de fiabilité ; pour la traduction, le texte
+    traduit.
   </li>
   <li>
-    <strong>Quand cela se produit</strong> : uniquement pour les documents
-    contenant des images ou les PDF scannés. Un document purement textuel ne
-    déclenche jamais cet appel.
+    <strong>Quand cela se produit</strong> : uniquement pour un PDF scanné dont
+    un administrateur a activé la lecture par IA, et pour les documents d'un
+    dossier dont un administrateur a choisi une langue de traduction.
   </li>
 </ul>
 
@@ -350,7 +364,8 @@
     <a href="https://myaccount.google.com/permissions" rel="noopener">les autorisations de votre compte Google</a>.
   </li>
   <li>
-    <strong>Désinstaller l'application</strong> déclenche la suppression, par Atlassian,
+    <strong>Désinstaller l'application</strong> révoque d'abord l'autorisation
+    Google de l'application, puis déclenche la suppression, par Atlassian,
     de l'ensemble des données stockées par l'application sur votre site. Cette suppression
     n'est pas instantanée : Atlassian procède d'abord à une suppression logique, puis
     conserve les données <strong>28 jours</strong> avant leur effacement définitif. Durant
@@ -380,7 +395,8 @@
   Conformément au Règlement général sur la protection des données, vous disposez
   d'un droit d'accès, de rectification, d'effacement, de limitation et
   d'opposition concernant les données vous concernant. Adressez votre demande à
-  <a href="mailto:contact@miksumia.com">contact@miksumia.com</a>. Vous pouvez
+  <a href="mailto:contact@miksumia.com">contact@miksumia.com</a> : l'application
+  n'offre pas d'export en libre-service, et nous répondons sous 30 jours. Vous pouvez
   également introduire une réclamation auprès de la
   <a href="https://www.cnil.fr" rel="noopener">CNIL</a>.
 </p>
