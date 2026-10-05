@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="alternate" hreflang="en" href="https://miksumia.com/guide.html">
+<link rel="alternate" hreflang="fr" href="https://miksumia.com/guide-fr.html">
+<title>Guide d'utilisation — Miksumia Publisher</title>
+<meta name="description" content="Comment relier des dossiers Google Drive à Confluence avec Miksumia Publisher.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FDFDFC;
+    --ink:#14202B;
+    --muted:#5C6B7A;
+    --rule:#DDE3E9;
+    --accent:#1F4B99;
+    --accent-soft:#EDF2FA;
+    --serif:"Source Serif 4",Georgia,serif;
+    --sans:"IBM Plex Sans",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--serif);font-size:18px;line-height:1.65;
+  }
+  .wrap{max-width:42rem;margin:0 auto;padding:0 1.5rem}
+  a{color:var(--accent)}
+  a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+  header{padding:3.5rem 0 0}
+  .mark{font-family:var(--sans);font-weight:500;font-size:.95rem;color:var(--muted);text-decoration:none}
+  h1{font-weight:600;font-size:2.1rem;line-height:1.2;letter-spacing:-.015em;margin:1.75rem 0 .5rem}
+  .lede{font-size:1.12rem;color:var(--muted);margin:0 0 2.5rem;max-width:56ch}
+
+  h2{
+    font-weight:600;font-size:1.22rem;letter-spacing:-.005em;
+    margin:2.75rem 0 .6rem;padding-top:1.4rem;border-top:1px solid var(--rule);
+  }
+  h3{font-weight:600;font-size:1.02rem;margin:1.6rem 0 .4rem}
+  p{margin:0 0 1rem;max-width:66ch}
+  ul{margin:0 0 1rem;padding-left:1.15rem;max-width:66ch}
+  li{margin:.4rem 0}
+
+  .note{
+    background:var(--accent-soft);
+    border:1px solid #D6E0F0;
+    border-radius:4px;
+    padding:1.25rem 1.4rem;
+    margin:1.25rem 0;
+  }
+  .note p:last-child{margin-bottom:0}
+
+  footer{
+    margin:4rem 0 0;border-top:1px solid var(--rule);
+    padding:1.5rem 0 3.5rem;font-family:var(--sans);font-size:.88rem;color:var(--muted);
+  }
+  footer a{margin-right:1.25rem}
+  .legal{margin-top:.85rem;line-height:1.7}
+
+  @media (max-width:640px){
+    body{font-size:17px}
+    h1{font-size:1.8rem}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <a class="mark" href="/index-fr.html">Miksumia</a>
+  <span style="float:right;font-family:var(--sans);font-size:.95rem;color:var(--muted)">FR | <a href="/guide.html" hreflang="en" lang="en">EN</a></span>
+  <h1>Guide d'utilisation</h1>
+  <p class="lede">
+    Comment relier des dossiers Google Drive à Confluence avec <a href="/publisher-fr.html">Miksumia Publisher</a>.
+  </p>
+</header>
+
+<h2>Ce que fait l'application</h2>
+<p>
+  Vos dossiers Google Drive deviennent des pages Confluence et se tiennent à jour tout seuls. L'application lit les fichiers d'un dossier et de ses sous-dossiers et les transforme en pages Confluence avec ses propres lecteurs, sans IA pour la structure (titres, listes, tableaux, images, liens). Les sous-dossiers deviennent des pages parentes : l'arborescence de Drive se retrouve dans l'espace. Les pages sont du vrai texte : la recherche Confluence et Rovo les trouvent.
+</p>
+<p>
+  L'application n'ajoute jamais rien de visible à vos pages (ni bandeau, ni étiquette). Drive reste la référence du contenu.
+</p>
+
+<h2>Prérequis</h2>
+<ul>
+  <li>Un site Confluence Cloud dont vous êtes administrateur. La page de réglages de l'application est réservée aux administrateurs.</li>
+  <li>Un compte Google qui peut lire le dossier Drive à publier. L'écran de connexion recommande un « compte robot » dédié plutôt qu'un compte personnel.</li>
+  <li>Un espace Confluence pour recevoir les pages. Un espace porte une seule connexion, et un dossier Drive ne se connecte qu'à un seul espace.</li>
+  <li>Des fichiers dans un format pris en charge : Google Docs, Sheets et Slides ; Word (.docx), Excel (.xlsx) et PowerPoint (.pptx) ; PDF ; PNG et JPEG. Les autres formats, comme .doc, .xls et .csv, sont listés comme non pris en charge et ne sont pas publiés.</li>
+</ul>
+
+<h2>Installer et connecter Google</h2>
+<ol>
+  <li>Installez Miksumia Publisher depuis l'Atlassian Marketplace sur votre site Confluence.</li>
+  <li>Ouvrez la page de l'application dans l'administration de Confluence (une page de réglages globale nommée « Miksumia Publisher »).</li>
+  <li>Connectez votre compte Google. L'application ouvre l'écran de consentement de Google et demande trois autorisations :
+    <ul>
+      <li>l'accès en lecture seule à Google Drive ;</li>
+      <li>« openid », que Google exige pour fournir l'adresse e-mail ci-dessous ;</li>
+      <li>l'adresse e-mail du compte, affichée pour que vous sachiez quel compte est connecté.</li>
+    </ul>
+  </li>
+  <li>Sur l'écran de consentement de Google, vérifiez que la case de l'autorisation Google Drive est cochée. Sinon l'application indique que l'accès à Drive n'a pas été accordé et vous demande de vous reconnecter.</li>
+</ol>
+<div class="note">
+  <p>
+    L'application ne peut rien créer, modifier ni supprimer dans votre Google Drive. Vous pouvez déconnecter le compte Google depuis l'application à tout moment, ou révoquer l'accès dans les autorisations de votre compte Google.
+  </p>
+</div>
+
+<h2>Connecter un dossier à un espace</h2>
+<p>Cliquez sur « Connect a folder ». L'assistant compte cinq étapes. Les libellés de l'interface sont indiqués en anglais.</p>
+<ol>
+  <li><strong>Connecter Google</strong> (ignorée si déjà connecté). Cliquez sur « I've connected — check again » une fois fait.</li>
+  <li><strong>Choisir un dossier Drive</strong> : parcourez Mon Drive ou un Drive partagé. Seuls les Drives partagés dont le compte connecté est lui-même membre (lecteur ou plus) apparaissent. Un dossier situé dans un dossier déjà connecté, ou qui en contient un, est refusé, tout comme un dossier déjà connecté à un autre espace.</li>
+  <li><strong>Choisir un espace Confluence</strong> : un espace qui a déjà une connexion est refusé.</li>
+  <li><strong>Vérifier</strong> : l'application liste ce qu'elle publierait (le nombre de documents et de pages de dossier, le titre de la page racine) et une liste « Won't be published » (formats non pris en charge). Rien n'a encore été écrit dans Confluence. Décochez les fichiers ou dossiers que vous ne voulez pas ; les fichiers ajoutés plus tard à un dossier décoché ne sont pas publiés non plus, et vous pourrez les inclure plus tard dans « Sync manager ». Les documents décochés ne comptent pas dans la limite de documents.</li>
+  <li><strong>Appliquer</strong> : « Sync now » lance la première synchronisation. Vous pouvez partir ; la synchronisation continue et le tableau de bord la suit.</li>
+</ol>
+
+<h2>Ce qui est publié</h2>
+<ul>
+  <li><strong>Word, Google Docs</strong> : titres, listes, tableaux, images et liens, sous forme de texte. Une partie qui ne peut pas être publiée est signalée sur le tableau de bord.</li>
+  <li><strong>Excel, Google Sheets</strong> : un onglet par feuille sur la page (6 onglets, 100 lignes sur 10 colonnes chacun au plus).</li>
+  <li><strong>PowerPoint, Google Slides</strong> : un onglet par diapositive (21 au plus) ; une diapositive de plus de 500 éléments n'est pas publiée, et le tableau de bord le dit.</li>
+  <li><strong>PDF</strong> : jusqu'à 15 pages.</li>
+  <li><strong>Images PNG et JPEG</strong> : publiées comme page d'image.</li>
+  <li><strong>Pages incomplètes</strong> : quand des mots ou des parties de la source manquent dans une page, le tableau de bord affiche une ligne sous le fichier et un bouton « See » les liste. Ce contrôle ne bloque jamais la publication.</li>
+  <li><strong>Une page modifiée à la main dans Confluence est réécrite au prochain changement de son fichier Drive.</strong> La version précédente reste dans l'historique de la page. D'ici là, la modification est laissée telle quelle. Une page déplacée dans l'espace reste où elle a été mise.</li>
+  <li><strong>Un fichier supprimé dans Drive</strong> envoie sa page à la corbeille de l'espace, d'où on peut la restaurer.</li>
+</ul>
+
+<h2>Gérer les documents</h2>
+<p>Ouvrez « Sync manager » sur la carte d'une connexion pour voir la liste de ses fichiers.</p>
+<ul>
+  <li><strong>Cocher / décocher.</strong> Décocher un fichier publié détache sa page : elle reste dans Confluence, sans plus être mise à jour ; rien n'est supprimé. Décocher un dossier détache toutes les pages qu'il contient. Recocher un fichier réécrit la même page depuis Drive. Les changements s'appliquent avec « Sync now ».</li>
+  <li><strong>Sync now</strong> : lance tout de suite une synchronisation de tout le dossier. Sinon, une synchronisation démarre d'elle-même dans les minutes qui suivent un changement dans Drive, et chaque heure l'application contrôle ses dossiers.</li>
+  <li><strong>Republish</strong> (sur la ligne d'un document) : réécrit cette seule page tout de suite depuis Drive, même si le fichier n'a pas changé ; elle remplace une page modifiée à la main.</li>
+  <li><strong>Audit log</strong> (page d'accueil) : tout ce que l'application a fait, le plus récent d'abord.</li>
+</ul>
+
+<h2>Limites</h2>
+<ul>
+  <li>PDF : 15 pages par document. Un document plus long est refusé, avec un message qui nomme la limite.</li>
+  <li>50 documents par connexion, sous-dossiers compris. À la confirmation, la connexion est refusée si elle dépasse ; pendant une synchronisation, les documents au-delà de la limite ne sont pas publiés, et rien n'est supprimé ni détaché. Les pages de dossier ne comptent jamais.</li>
+  <li>Excel et Google Sheets : 6 onglets par page, 100 lignes et 10 colonnes par feuille.</li>
+  <li>PowerPoint et Google Slides : 21 onglets de diapositives par page, 500 éléments par diapositive.</li>
+</ul>
+
+<h3>Essai et licence</h3>
+<ul>
+  <li>L'application est payante via Atlassian. L'essai gratuit est celui d'Atlassian, 30 jours ; une licence d'évaluation compte comme active.</li>
+  <li>Sans licence active (essai terminé, abonnement échu), les synchronisations s'arrêtent : aucune ne démarre, ni manuelle ni automatique. Un avertissement sur la page d'accueil l'indique. Les pages déjà publiées restent telles quelles et rien n'est supprimé.</li>
+  <li>Pour reprendre, abonnez-vous depuis l'Atlassian Marketplace ; les synchronisations redémarrent.</li>
+</ul>
+
+<h2>Déconnecter, désinstaller et vos données</h2>
+<ul>
+  <li><strong>Déconnecter un dossier</strong> (« More actions » sur sa carte) : ses pages sont figées dans Confluence, jamais supprimées. Une connexion déconnectée peut être retirée de la liste sans toucher à aucune page.</li>
+  <li><strong>Déconnecter le compte Google</strong> (« Disconnect Google » dans l'en-tête) : le jeton est révoqué chez Google et supprimé, et toutes les connexions qui en dépendent sont suspendues. Reconnecter Google les réveille.</li>
+  <li><strong>Désinstaller</strong> : avant la fin de la désinstallation, l'application révoque le jeton Google et supprime ses canaux de notification. Atlassian supprime ensuite en douceur les données restantes de l'application et les conserve 28 jours. Les pages déjà publiées restent dans votre espace.</li>
+  <li><strong>Vos données</strong> : l'application conserve les réglages des connexions, les titres et identifiants techniques des documents, et des enregistrements techniques ; pas le contenu de vos documents. Détails dans notre <a href="/privacy-fr.html">politique de confidentialité</a>.</li>
+</ul>
+
+<h2>Obtenir de l'aide</h2>
+<p>
+  Consultez la <a href="/support-fr.html">page de support</a> ou écrivez à <a href="mailto:contact@miksumia.com">contact@miksumia.com</a>. Voir aussi les <a href="/terms-fr.html">conditions d'utilisation</a>.
+</p>
+
+<footer>
+  <a href="/index-fr.html">Accueil</a>
+  <a href="/publisher-fr.html">Miksumia Publisher</a>
+  <a href="/guide-fr.html">Guide</a>
+  <a href="/privacy-fr.html">Politique de confidentialité</a>
+  <a href="/terms-fr.html">Conditions d'utilisation</a>
+  <a href="/security-fr.html">Sécurité</a>
+  <p class="legal">
+    MIKSUMIA — SARL, SIREN 919 860 452, 70 boulevard Desgranges, 92330 Sceaux, France.
+  </p>
+</footer>
+
+</div>
+</body>
+</html>

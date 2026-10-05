@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="alternate" hreflang="en" href="https://miksumia.com/guide.html">
+<link rel="alternate" hreflang="fr" href="https://miksumia.com/guide-fr.html">
+<title>User guide — Miksumia Publisher</title>
+<meta name="description" content="How to connect Google Drive folders to Confluence with Miksumia Publisher.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FDFDFC;
+    --ink:#14202B;
+    --muted:#5C6B7A;
+    --rule:#DDE3E9;
+    --accent:#1F4B99;
+    --accent-soft:#EDF2FA;
+    --serif:"Source Serif 4",Georgia,serif;
+    --sans:"IBM Plex Sans",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--serif);font-size:18px;line-height:1.65;
+  }
+  .wrap{max-width:42rem;margin:0 auto;padding:0 1.5rem}
+  a{color:var(--accent)}
+  a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+  header{padding:3.5rem 0 0}
+  .mark{font-family:var(--sans);font-weight:500;font-size:.95rem;color:var(--muted);text-decoration:none}
+  h1{font-weight:600;font-size:2.1rem;line-height:1.2;letter-spacing:-.015em;margin:1.75rem 0 .5rem}
+  .lede{font-size:1.12rem;color:var(--muted);margin:0 0 2.5rem;max-width:56ch}
+
+  h2{
+    font-weight:600;font-size:1.22rem;letter-spacing:-.005em;
+    margin:2.75rem 0 .6rem;padding-top:1.4rem;border-top:1px solid var(--rule);
+  }
+  h3{font-weight:600;font-size:1.02rem;margin:1.6rem 0 .4rem}
+  p{margin:0 0 1rem;max-width:66ch}
+  ul{margin:0 0 1rem;padding-left:1.15rem;max-width:66ch}
+  li{margin:.4rem 0}
+
+  .note{
+    background:var(--accent-soft);
+    border:1px solid #D6E0F0;
+    border-radius:4px;
+    padding:1.25rem 1.4rem;
+    margin:1.25rem 0;
+  }
+  .note p:last-child{margin-bottom:0}
+
+  footer{
+    margin:4rem 0 0;border-top:1px solid var(--rule);
+    padding:1.5rem 0 3.5rem;font-family:var(--sans);font-size:.88rem;color:var(--muted);
+  }
+  footer a{margin-right:1.25rem}
+  .legal{margin-top:.85rem;line-height:1.7}
+
+  @media (max-width:640px){
+    body{font-size:17px}
+    h1{font-size:1.8rem}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <a class="mark" href="/">Miksumia</a>
+  <span style="float:right;font-family:var(--sans);font-size:.95rem;color:var(--muted)"><a href="/guide-fr.html" hreflang="fr" lang="fr">FR</a> | EN</span>
+  <h1>User guide</h1>
+  <p class="lede">
+    How to connect Google Drive folders to Confluence with <a href="/publisher.html">Miksumia Publisher</a>.
+  </p>
+</header>
+
+<h2>What the app does</h2>
+<p>
+  Your Google Drive folders become Confluence pages and stay up to date on their own. The app reads the files of a folder and its subfolders and turns them into Confluence pages with its own readers, without AI for the structure (headings, lists, tables, images, links). Subfolders become parent pages, so the Drive tree is found again in the space. Pages are real text: Confluence search and Rovo find them.
+</p>
+<p>
+  The app never adds anything visible to your pages (no banner, no label). Drive stays the master of the content.
+</p>
+
+<h2>Prerequisites</h2>
+<ul>
+  <li>A Confluence Cloud site where you are a Confluence administrator. The app's settings page is reserved to administrators.</li>
+  <li>A Google account that can read the Drive folder you want to publish. The connection screen recommends a dedicated "robot account" rather than a personal one.</li>
+  <li>A Confluence space to receive the pages. One space holds one connection, and one Drive folder connects to one space only.</li>
+  <li>Files in a supported format: Google Docs, Sheets and Slides; Word (.docx), Excel (.xlsx) and PowerPoint (.pptx); PDF; PNG and JPEG. Other formats, such as .doc, .xls and .csv, are listed as unsupported and are not published.</li>
+</ul>
+
+<h2>Install and connect Google</h2>
+<ol>
+  <li>Install Miksumia Publisher from the Atlassian Marketplace on your Confluence site.</li>
+  <li>Open the app's page in Confluence administration (a global settings page named "Miksumia Publisher").</li>
+  <li>Connect your Google account. The app opens Google's consent screen and asks for three permissions:
+    <ul>
+      <li>read-only access to Google Drive;</li>
+      <li>"openid", which Google requires to give the e-mail address below;</li>
+      <li>the e-mail address of the account, shown to you so you know which account is connected.</li>
+    </ul>
+  </li>
+  <li>On Google's consent screen, make sure the Google Drive permission checkbox is checked. Otherwise the app says Drive access wasn't granted and asks you to connect again.</li>
+</ol>
+<div class="note">
+  <p>
+    The app cannot create, change or delete anything in your Google Drive. You can disconnect the Google account from the app at any time, or revoke access in your Google account permissions.
+  </p>
+</div>
+
+<h2>Connect a folder to a space</h2>
+<p>Click "Connect a folder". The wizard has five steps.</p>
+<ol>
+  <li><strong>Connect Google</strong> (skipped when already connected). Click "I've connected — check again" once done.</li>
+  <li><strong>Choose a Drive folder</strong>: browse My Drive or a Shared Drive. Only Shared Drives of which the connected account is itself a member (Viewer or higher) appear. A folder that is inside, or contains, an already connected folder is refused, and so is a folder already connected to another space.</li>
+  <li><strong>Choose a Confluence space</strong>: a space that already has a connection is refused.</li>
+  <li><strong>Review</strong>: the app lists what it would publish (the number of documents and folder pages, the root page title) and a "Won't be published" list (unsupported formats). Nothing has been written to Confluence yet. Uncheck any file or folder you do not want; files added later to an unchecked folder are not published either, and you can include them later in Sync manager. Unchecked documents do not count toward the document limit.</li>
+  <li><strong>Apply</strong>: "Sync now" starts the first sync. You can leave; the sync continues and the dashboard follows it.</li>
+</ol>
+
+<h2>What gets published</h2>
+<ul>
+  <li><strong>Word, Google Docs</strong>: headings, lists, tables, images and links, as text. A part that cannot be published is reported on the dashboard.</li>
+  <li><strong>Excel, Google Sheets</strong>: one tab per sheet on the page (6 tabs, 100 rows by 10 columns each at most).</li>
+  <li><strong>PowerPoint, Google Slides</strong>: one tab per slide (21 slides at most); a slide of more than 500 elements is not published, and the dashboard says so.</li>
+  <li><strong>PDF</strong>: up to 15 pages.</li>
+  <li><strong>PNG and JPEG images</strong>: published as an image page.</li>
+  <li><strong>Incomplete pages</strong>: when words or parts of the source are missing from a page, the dashboard shows a line under the file and a "See" button lists them. Publication is never blocked by this check.</li>
+  <li><strong>A page edited by hand in Confluence is rewritten at the next change of its Drive file.</strong> The earlier version stays in the page history. Until then the edit is left alone. A page moved inside the space stays where it was put.</li>
+  <li><strong>A file deleted in Drive</strong> sends its page to the space trash, where it can be restored.</li>
+</ul>
+
+<h2>Manage documents</h2>
+<p>Open "Sync manager" on a connection card to see the list of its files.</p>
+<ul>
+  <li><strong>Check / uncheck.</strong> Unchecking a published file detaches its page: the page stays in Confluence, no longer updated; nothing is deleted. Unchecking a folder detaches every page inside it. Checking a file again rewrites the same page from Drive. Changes apply with "Sync now".</li>
+  <li><strong>Sync now</strong>: starts a sync of the whole folder right away. Otherwise a sync starts by itself within minutes of a Drive change, and every hour the app checks its folders.</li>
+  <li><strong>Republish</strong> (on a document's row): rewrites that one page now from Drive, even if the file did not change; it replaces a hand-edited page.</li>
+  <li><strong>Audit log</strong> (home page): everything the app did, newest first.</li>
+</ul>
+
+<h2>Limits</h2>
+<ul>
+  <li>PDF: 15 pages per document. A longer document is refused, with a message naming the limit.</li>
+  <li>50 documents per connection, subfolders included. At confirmation the connection is refused if it is over; during a sync, documents past the limit are not published, and nothing is deleted or detached. Folder pages never count.</li>
+  <li>Excel and Google Sheets: 6 tabs per page, 100 rows and 10 columns per sheet.</li>
+  <li>PowerPoint and Google Slides: 21 slide tabs per page, 500 elements per slide.</li>
+</ul>
+
+<h3>Trial and license</h3>
+<ul>
+  <li>The app is paid via Atlassian. The free trial is Atlassian's standard 30 days; an evaluation license counts as active.</li>
+  <li>With no active license (trial ended, subscription lapsed), syncs stop: none starts, manual or automatic. A warning on the home page says so. Pages already published stay as they are and nothing is deleted.</li>
+  <li>To resume, subscribe from the Atlassian Marketplace; syncs restart.</li>
+</ul>
+
+<h2>Disconnect, uninstall and your data</h2>
+<ul>
+  <li><strong>Disconnect a folder</strong> ("More actions" on its card): its pages are frozen in Confluence, never deleted. A disconnected connection can be removed from the list without touching any page.</li>
+  <li><strong>Disconnect the Google account</strong> ("Disconnect Google" in the header): the token is revoked at Google and deleted, and every dependent connection is suspended. Reconnecting Google wakes them again.</li>
+  <li><strong>Uninstall</strong>: before the uninstall completes, the app revokes the Google token and removes its notification channels. Atlassian then soft-deletes the remaining app data and keeps it 28 days. Pages already published stay in your space.</li>
+  <li><strong>Your data</strong>: the app stores connection settings, document titles and technical ids, and technical records; not the content of your documents. Details in our <a href="/privacy.html">privacy policy</a>.</li>
+</ul>
+
+<h2>Getting help</h2>
+<p>
+  See the <a href="/support.html">support page</a> or write to <a href="mailto:contact@miksumia.com">contact@miksumia.com</a>. See also the <a href="/terms.html">terms of use</a>.
+</p>
+
+<footer>
+  <a href="/">Home</a>
+  <a href="/publisher.html">Miksumia Publisher</a>
+  <a href="/guide.html">Guide</a>
+  <a href="/privacy.html">Privacy policy</a>
+  <a href="/terms.html">Terms of use</a>
+  <a href="/security.html">Security</a>
+  <p class="legal">
+    MIKSUMIA — SARL, SIREN 919 860 452, 70 boulevard Desgranges, 92330 Sceaux, France.
+  </p>
+</footer>
+
+</div>
+</body>
+</html>
