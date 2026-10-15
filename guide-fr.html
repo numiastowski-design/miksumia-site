@@ -120,7 +120,7 @@
   <li><strong>Connecter Google</strong> (ignorée si déjà connecté). Cliquez sur « I've connected — check again » une fois fait.</li>
   <li><strong>Choisir un dossier Drive</strong> : parcourez Mon Drive ou un Drive partagé. Seuls les Drives partagés dont le compte connecté est lui-même membre (lecteur ou plus) apparaissent. Un dossier situé dans un dossier déjà connecté, ou qui en contient un, est refusé, tout comme un dossier déjà connecté à un autre espace.</li>
   <li><strong>Choisir un espace Confluence</strong> : un espace qui a déjà une connexion est refusé.</li>
-  <li><strong>Vérifier</strong> : l'application liste ce qu'elle publierait (le nombre de documents et de pages de dossier, le titre de la page racine) et une liste « Won't be published » (formats non pris en charge). Rien n'a encore été écrit dans Confluence. Décochez les fichiers ou dossiers que vous ne voulez pas ; les fichiers ajoutés plus tard à un dossier décoché ne sont pas publiés non plus, et vous pourrez les inclure plus tard dans « Sync manager ». Les documents décochés ne comptent pas dans la limite de documents.</li>
+  <li><strong>Vérifier</strong> : l'application liste ce qu'elle publierait (le nombre de documents et de pages de dossier, le titre de la page racine) et une liste « Won't be published » (formats non pris en charge). Rien n'a encore été écrit dans Confluence. Si la connexion échoue ensuite, l'application retire la page racine vide qu'elle a créée ; si elle n'y arrive pas, elle vous demande de la supprimer. Décochez les fichiers ou dossiers que vous ne voulez pas ; les fichiers ajoutés plus tard à un dossier décoché ne sont pas publiés non plus, et vous pourrez les inclure plus tard dans « Sync manager ». Les documents décochés ne comptent pas dans la limite de documents.</li>
   <li><strong>Appliquer</strong> : « Sync now » lance la première synchronisation. Vous pouvez partir ; la synchronisation continue et le tableau de bord la suit.</li>
 </ol>
 
@@ -131,7 +131,8 @@
   <li><strong>PowerPoint, Google Slides</strong> : un onglet par diapositive (21 au plus) ; une diapositive de plus de 500 éléments n'est pas publiée, et le tableau de bord le dit.</li>
   <li><strong>PDF</strong> : jusqu'à 15 pages.</li>
   <li><strong>Images PNG et JPEG</strong> : publiées comme page d'image.</li>
-  <li><strong>Pages incomplètes</strong> : quand des mots ou des parties de la source manquent dans une page, le tableau de bord affiche une ligne sous le fichier et un bouton « See » les liste. Ce contrôle ne bloque jamais la publication.</li>
+  <li><strong>Codes QR</strong> dans un PDF : publiés comme des images. L'application ne les décode pas.</li>
+  <li><strong>Pages incomplètes</strong> : quand des mots ou des parties de la source manquent dans une page, le tableau de bord affiche une ligne sous le fichier et un bouton « See » les liste. Ce contrôle ne bloque jamais la publication. Autres remarques possibles sous un fichier : une image de PDF illisible, absente de la page ; « le contrôle des mots perdus n'a pas pu être fait » (l'application n'a pas pu relire le fichier ou la page publiée, donc elle ne peut pas dire si des mots manquent) ; « la traduction n'a pas pu être faite » (la page est publiée dans sa langue d'origine).</li>
   <li><strong>Une page modifiée à la main dans Confluence est réécrite au prochain changement de son fichier Drive.</strong> La version précédente reste dans l'historique de la page. D'ici là, la modification est laissée telle quelle. Une page déplacée dans l'espace reste où elle a été mise.</li>
   <li><strong>Un fichier supprimé dans Drive</strong> envoie sa page à la corbeille de l'espace, d'où on peut la restaurer.</li>
 </ul>
@@ -139,10 +140,14 @@
 <h2>Gérer les documents</h2>
 <p>Ouvrez « Sync manager » sur la carte d'une connexion pour voir la liste de ses fichiers.</p>
 <ul>
+  <li><strong>Dates.</strong> « Modified in Drive » est le jour du dernier changement du fichier dans Drive. « Published on » est le jour de la dernière écriture de sa page par l'application. Un tiret : aucune publication depuis l'ajout de cette colonne. Une synchronisation en échec garde la date du dernier succès. Un renommage ou un déplacement seul ne la change pas. Jours en UTC.</li>
+  <li><strong>Lecture IA</strong> (interrupteur avec l'icône IA, sur un PDF) : active la lecture par IA des pages scannées. Elle s'applique au prochain « Republish ».</li>
   <li><strong>Cocher / décocher.</strong> Décocher un fichier publié détache sa page : elle reste dans Confluence, sans plus être mise à jour ; rien n'est supprimé. Décocher un dossier détache toutes les pages qu'il contient. Recocher un fichier réécrit la même page depuis Drive. Les changements s'appliquent avec « Sync now ».</li>
-  <li><strong>Sync now</strong> : lance tout de suite une synchronisation de tout le dossier. Sinon, une synchronisation démarre d'elle-même dans les minutes qui suivent un changement dans Drive, et chaque heure l'application contrôle ses dossiers.</li>
+  <li><strong>Sync now</strong> : lance tout de suite une synchronisation de tout le dossier. Sans licence active, il le dit et ne lance rien. Sinon, une synchronisation démarre d'elle-même dans les minutes qui suivent un changement dans Drive, et chaque heure l'application contrôle ses dossiers.</li>
   <li><strong>Republish</strong> (sur la ligne d'un document) : réécrit cette seule page tout de suite depuis Drive, même si le fichier n'a pas changé ; elle remplace une page modifiée à la main.</li>
-  <li><strong>Audit log</strong> (page d'accueil) : tout ce que l'application a fait, le plus récent d'abord.</li>
+  <li><strong>Audit log</strong> (page d'accueil) : tout ce que l'application a fait, le plus récent d'abord, y compris la déconnexion du compte Google et la confirmation ou non de Google.</li>
+  <li><strong>Carte d'une connexion</strong> (page d'accueil). « La page du dossier ... n'a pas pu être créée » : un dossier n'a pas encore de page ; ses documents sont publiés dès qu'elle existe, et la prochaine synchronisation réessaie. « Google ne répond pas pour le moment » : panne passagère, rien à faire, rechargez dans quelques minutes. « Connect Google account » (à droite de l'en-tête, avant le menu « ... ») apparaît quand l'accès Google est perdu.</li>
+  <li><strong>Espace qui exige une approbation.</strong> Si l'espace Confluence a « Require approval before publishing », Confluence refuse les mises à jour de l'application (erreur 409). La page garde sa version précédente. Désactivez cette option dans les paramètres de l'espace, ou connectez le dossier à un autre espace.</li>
 </ul>
 
 <h2>Limites</h2>
@@ -156,14 +161,14 @@
 <h3>Essai et licence</h3>
 <ul>
   <li>L'application est payante via Atlassian. L'essai gratuit est celui d'Atlassian, 30 jours ; une licence d'évaluation compte comme active.</li>
-  <li>Sans licence active (essai terminé, abonnement échu), les synchronisations s'arrêtent : aucune ne démarre, ni manuelle ni automatique. Un avertissement sur la page d'accueil l'indique. Les pages déjà publiées restent telles quelles et rien n'est supprimé.</li>
+  <li>Sans licence active (essai terminé, abonnement échu), les synchronisations s'arrêtent : aucune ne démarre, ni manuelle ni automatique. Un avertissement sur la page d'accueil l'indique, et « Sync now » répond « No active license: nothing syncs ». Les pages déjà publiées restent telles quelles et rien n'est supprimé.</li>
   <li>Pour reprendre, abonnez-vous depuis l'Atlassian Marketplace ; les synchronisations redémarrent.</li>
 </ul>
 
 <h2>Déconnecter, désinstaller et vos données</h2>
 <ul>
   <li><strong>Déconnecter un dossier</strong> (« More actions » sur sa carte) : ses pages sont figées dans Confluence, jamais supprimées. Une connexion déconnectée peut être retirée de la liste sans toucher à aucune page.</li>
-  <li><strong>Déconnecter le compte Google</strong> (« Disconnect Google » dans l'en-tête) : le jeton est révoqué chez Google et supprimé, et toutes les connexions qui en dépendent sont suspendues. Reconnecter Google les réveille.</li>
+  <li><strong>Déconnecter le compte Google</strong> (« Disconnect Google » dans l'en-tête) : le jeton est révoqué chez Google et supprimé, et toutes les connexions qui en dépendent sont suspendues. Reconnecter Google les réveille. Si Google ne confirme pas avoir retiré l'accès, l'application le dit ; ouvrez alors myaccount.google.com/permissions et retirez « Miksumia Publisher ».</li>
   <li><strong>Désinstaller</strong> : avant la fin de la désinstallation, l'application révoque le jeton Google et supprime ses canaux de notification. Atlassian supprime ensuite en douceur les données restantes de l'application et les conserve 28 jours. Les pages déjà publiées restent dans votre espace.</li>
   <li><strong>Vos données</strong> : l'application conserve les réglages des connexions, les titres et identifiants techniques des documents, et des enregistrements techniques ; pas le contenu de vos documents. Détails dans notre <a href="/privacy-fr.html">politique de confidentialité</a>.</li>
 </ul>

@@ -120,7 +120,7 @@
   <li><strong>Connect Google</strong> (skipped when already connected). Click "I've connected — check again" once done.</li>
   <li><strong>Choose a Drive folder</strong>: browse My Drive or a Shared Drive. Only Shared Drives of which the connected account is itself a member (Viewer or higher) appear. A folder that is inside, or contains, an already connected folder is refused, and so is a folder already connected to another space.</li>
   <li><strong>Choose a Confluence space</strong>: a space that already has a connection is refused.</li>
-  <li><strong>Review</strong>: the app lists what it would publish (the number of documents and folder pages, the root page title) and a "Won't be published" list (unsupported formats). Nothing has been written to Confluence yet. Uncheck any file or folder you do not want; files added later to an unchecked folder are not published either, and you can include them later in Sync manager. Unchecked documents do not count toward the document limit.</li>
+  <li><strong>Review</strong>: the app lists what it would publish (the number of documents and folder pages, the root page title) and a "Won't be published" list (unsupported formats). Nothing has been written to Confluence yet. If the connection then fails, the app removes the empty root page it created; if it cannot, it tells you to delete it. Uncheck any file or folder you do not want; files added later to an unchecked folder are not published either, and you can include them later in Sync manager. Unchecked documents do not count toward the document limit.</li>
   <li><strong>Apply</strong>: "Sync now" starts the first sync. You can leave; the sync continues and the dashboard follows it.</li>
 </ol>
 
@@ -131,7 +131,8 @@
   <li><strong>PowerPoint, Google Slides</strong>: one tab per slide (21 slides at most); a slide of more than 500 elements is not published, and the dashboard says so.</li>
   <li><strong>PDF</strong>: up to 15 pages.</li>
   <li><strong>PNG and JPEG images</strong>: published as an image page.</li>
-  <li><strong>Incomplete pages</strong>: when words or parts of the source are missing from a page, the dashboard shows a line under the file and a "See" button lists them. Publication is never blocked by this check.</li>
+  <li><strong>QR codes</strong> in a PDF are published as pictures. The app does not decode them.</li>
+  <li><strong>Incomplete pages</strong>: when words or parts of the source are missing from a page, the dashboard shows a line under the file and a "See" button lists them. Publication is never blocked by this check. Other remarks you may see under a file: a PDF image that could not be read and is missing from the page; "the check for lost words could not be done" (the app could not read the file again or the published page back, so it cannot say whether words are missing); "the translation could not be done" (the page is published in its original language).</li>
   <li><strong>A page edited by hand in Confluence is rewritten at the next change of its Drive file.</strong> The earlier version stays in the page history. Until then the edit is left alone. A page moved inside the space stays where it was put.</li>
   <li><strong>A file deleted in Drive</strong> sends its page to the space trash, where it can be restored.</li>
 </ul>
@@ -139,10 +140,14 @@
 <h2>Manage documents</h2>
 <p>Open "Sync manager" on a connection card to see the list of its files.</p>
 <ul>
+  <li><strong>Dates.</strong> "Modified in Drive" is the day the file last changed in Drive. "Published on" is the day the app last wrote its page. A dash means no publication since this column was added. A failed sync keeps the date of the last success. A rename or a move alone does not change it. Days are in UTC.</li>
+  <li><strong>AI reading</strong> (switch with the AI icon, on a PDF): turns on AI reading of the scanned pages. It applies at the next Republish.</li>
   <li><strong>Check / uncheck.</strong> Unchecking a published file detaches its page: the page stays in Confluence, no longer updated; nothing is deleted. Unchecking a folder detaches every page inside it. Checking a file again rewrites the same page from Drive. Changes apply with "Sync now".</li>
-  <li><strong>Sync now</strong>: starts a sync of the whole folder right away. Otherwise a sync starts by itself within minutes of a Drive change, and every hour the app checks its folders.</li>
+  <li><strong>Sync now</strong>: starts a sync of the whole folder right away. With no active license, it says so and starts nothing. Otherwise a sync starts by itself within minutes of a Drive change, and every hour the app checks its folders.</li>
   <li><strong>Republish</strong> (on a document's row): rewrites that one page now from Drive, even if the file did not change; it replaces a hand-edited page.</li>
-  <li><strong>Audit log</strong> (home page): everything the app did, newest first.</li>
+  <li><strong>Audit log</strong> (home page): everything the app did, newest first, including when the Google account was disconnected and whether Google confirmed it.</li>
+  <li><strong>Connection card</strong> (home page). "The page of the folder ... could not be created" means a folder has no page yet: its documents are published once it exists, and the next sync tries again. "Google is not answering right now" is a passing outage: nothing to do, reload in a few minutes. "Connect Google account" (right of the header, before the "..." menu) appears when Google access was lost.</li>
+  <li><strong>Space that requires approval.</strong> If the Confluence space has "Require approval before publishing", Confluence refuses the app's updates (error 409). The page keeps its previous version. Turn that option off in Space settings, or connect the folder to another space.</li>
 </ul>
 
 <h2>Limits</h2>
@@ -156,14 +161,14 @@
 <h3>Trial and license</h3>
 <ul>
   <li>The app is paid via Atlassian. The free trial is Atlassian's standard 30 days; an evaluation license counts as active.</li>
-  <li>With no active license (trial ended, subscription lapsed), syncs stop: none starts, manual or automatic. A warning on the home page says so. Pages already published stay as they are and nothing is deleted.</li>
+  <li>With no active license (trial ended, subscription lapsed), syncs stop: none starts, manual or automatic. A warning on the home page says so, and "Sync now" says "No active license: nothing syncs". Pages already published stay as they are and nothing is deleted.</li>
   <li>To resume, subscribe from the Atlassian Marketplace; syncs restart.</li>
 </ul>
 
 <h2>Disconnect, uninstall and your data</h2>
 <ul>
   <li><strong>Disconnect a folder</strong> ("More actions" on its card): its pages are frozen in Confluence, never deleted. A disconnected connection can be removed from the list without touching any page.</li>
-  <li><strong>Disconnect the Google account</strong> ("Disconnect Google" in the header): the token is revoked at Google and deleted, and every dependent connection is suspended. Reconnecting Google wakes them again.</li>
+  <li><strong>Disconnect the Google account</strong> ("Disconnect Google" in the header): the token is revoked at Google and deleted, and every dependent connection is suspended. Reconnecting Google wakes them again. If Google does not confirm that it removed the access, the app says so; then open myaccount.google.com/permissions and remove "Miksumia Publisher".</li>
   <li><strong>Uninstall</strong>: before the uninstall completes, the app revokes the Google token and removes its notification channels. Atlassian then soft-deletes the remaining app data and keeps it 28 days. Pages already published stay in your space.</li>
   <li><strong>Your data</strong>: the app stores connection settings, document titles and technical ids, and technical records; not the content of your documents. Details in our <a href="/privacy.html">privacy policy</a>.</li>
 </ul>
