@@ -42,7 +42,7 @@
   }
   h3{font-weight:600;font-size:1.02rem;margin:1.6rem 0 .4rem}
   p{margin:0 0 1rem;max-width:66ch}
-  ul{margin:0 0 1rem;padding-left:1.15rem;max-width:66ch}
+  ul,ol{margin:0 0 1rem;padding-left:1.15rem;max-width:66ch}
   li{margin:.4rem 0}
 
   .note{
@@ -75,201 +75,31 @@
   <span style="float:right;font-family:var(--sans);font-size:.95rem;color:var(--muted)"><a href="/terms-fr.html" hreflang="fr" lang="fr">FR</a> | EN</span>
   <h1>Terms of use</h1>
   <p class="meta">
-    “Miksumia Publisher” application · Version of 6 September 2026
+    “Miksumia Publisher” application · Version of 20 October 2026
   </p>
 </header>
 
 <p>
-  These terms govern the use of the
-  Miksumia Publisher application (“the application”), published by Miksumia SARL
-  (“the publisher”, “we”). Installing or using the application constitutes
-  acceptance of these terms.
+  The Miksumia Publisher application (“the application”), published by MIKSUMIA, is licensed under the
+  <a href="https://www.atlassian.com/licensing/marketplace/end-user-agreement-v1" rel="noopener">Bonterms Standard End User Agreement</a>
+  adopted by the Atlassian Marketplace (“the Standard Agreement”), together with the Provider-Specific Terms below, which are also
+  shown on the application's Marketplace listing. Where they differ, the Provider-Specific Terms prevail (Standard Agreement, section 1.4).
 </p>
 
-<h2>1. Publisher</h2>
-<p>
-  MIKSUMIA, société à responsabilité limitée (limited liability company), SIREN 919 860 452, whose registered office
-  is at 70 boulevard Desgranges, 92330 Sceaux, France.
-  Contact: <a href="mailto:contact@miksumia.com">contact@miksumia.com</a>.
-</p>
+<h2>Provider-Specific Terms</h2>
+<ol>
+  <li><strong>Google dependency.</strong> The app reads documents through the Google Drive and Google Workspace APIs, with read-only access granted by the customer's administrator. It stops working for a connection if Google access is revoked or the Google APIs are unavailable.</li>
+  <li><strong>Google Gemini.</strong> The app calls the Google Gemini API only for features a Confluence administrator turns on: reading the pages of a scanned PDF; translating the text of the documents of a folder; and converting a document with AI, when the administrator chooses that mode for that document (the whole document is then sent). No other customer content is sent to Gemini.</li>
+  <li><strong>Usage limits.</strong> Usage limits are described in the <a href="/guide.html">user guide</a> and may change; a limit never deletes a page already published.</li>
+  <li><strong>License.</strong> Without an active Marketplace license, synchronization stops; published pages are left untouched.</li>
+  <li><strong>Privacy.</strong> Data processing is described in the <a href="/privacy.html">privacy policy</a>. For the content of the published documents, the customer is the controller and MIKSUMIA the processor within the meaning of the GDPR. Contact: <a href="mailto:contact@miksumia.com">contact@miksumia.com</a>.</li>
+  <li><strong>Governing law.</strong> These terms and the Standard Agreement are governed by French law; the courts with jurisdiction over MIKSUMIA's registered office (Sceaux, France) are competent, subject to applicable mandatory rules (Standard Agreement, section 19.2).</li>
+</ol>
 
-<h2>2. Purpose of the application</h2>
+<h2>Provider</h2>
 <p>
-  The application reads the content of Google Drive folders designated by the customer
-  and publishes this content in a Confluence Cloud space as native
-  pages. It then keeps these pages up to date when the source documents
-  are modified.
-</p>
-<p>
-  The application runs on the Atlassian Forge platform. It is installed
-  on a Confluence Cloud site by an administrator of that site, who acts on behalf
-  of their organisation.
-</p>
-
-<h2>3. Access and prerequisites</h2>
-<ul>
-  <li>
-    Installation requires an active Confluence Cloud site and administration
-    rights on that site.
-  </li>
-  <li>
-    Use requires a Google account with access to the folders
-    to be published, and explicit authorisation of this read-only access.
-  </li>
-  <li>
-    The application is currently distributed by invitation, through an installation
-    link. The publisher may end this distribution or
-    change its terms at any time.
-  </li>
-</ul>
-
-<h2>4. What the application does and does not do</h2>
-<ul>
-  <li>
-    Access to Google Drive is <strong>read-only</strong>. The application
-    does not modify, move or delete any file in Google Drive.
-  </li>
-  <li>
-    The application creates and updates pages and attachments in the
-    Confluence space designated by the customer. It may, upon the administrator's action,
-    move to the trash pages that it created itself.
-  </li>
-  <li>
-    The conversion of a document into a Confluence page is an automatic
-    transformation. The fidelity of the rendering depends on the format and structure of the
-    source document; the publisher does not guarantee an identical reproduction of
-    all formatting.
-  </li>
-  <li>
-    The application is not a substitute for a backup. Google Drive remains the
-    reference source of the published content.
-  </li>
-</ul>
-
-<h2>5. Customer obligations</h2>
-<ul>
-  <li>
-    Ensure that it holds the necessary rights to the documents it has
-    published, and that this publication complies with its own obligations
-    regarding confidentiality and data protection.
-  </li>
-  <li>
-    Connect only folders whose content may legitimately be made
-    accessible to the people who have access to the destination Confluence space.
-    Drive permissions are not carried over: the permissions that apply
-    to the published content are those of the Confluence space.
-  </li>
-  <li>
-    Restrict administration of the application to authorised persons.
-  </li>
-  <li>
-    Not attempt to circumvent the technical limits of the application, nor
-    to disrupt its operation or that of the third-party platforms it
-    uses.
-  </li>
-</ul>
-
-<h2>6. Third-party services</h2>
-<p>
-  The operation of the application depends on services provided by Atlassian
-  and by Google. The use of these services is governed by their own terms,
-  to which the customer is also subject. An interruption, a change or
-  a restriction of these services may affect the application without the
-  publisher incurring any liability.
-</p>
-
-<h2>7. Personal data</h2>
-<p>
-  Data processing is described in our
-  <a href="/privacy.html">privacy policy</a>, which forms an integral
-  part of these terms.
-</p>
-<p>
-  Where the published content includes personal data, the
-  customer acts as controller and the publisher as
-  processor within the meaning of the General Data Protection Regulation (GDPR).
-</p>
-
-<h2>8. Availability and support</h2>
-<p>
-  The publisher uses reasonable means to ensure the proper
-  operation of the application, without any guarantee of continuous availability.
-  Interruptions may occur for maintenance, updates, or because
-  of the third-party platforms.
-</p>
-<p>
-  Support is provided by email at
-  <a href="mailto:contact@miksumia.com">contact@miksumia.com</a>. The publisher
-  endeavours to respond within five business days.
-</p>
-
-<h2>9. Intellectual property</h2>
-<p>
-  The application, its code and its documentation remain the exclusive property
-  of the publisher. These terms grant a personal,
-  non-exclusive and non-transferable right of use, limited to the duration of the installation.
-</p>
-<p>
-  The customer retains all of its rights to its documents and to the
-  content published in its Confluence space. The publisher acquires no rights
-  to this content.
-</p>
-
-<h2>10. Pricing</h2>
-<p>
-  The application is currently made available free of
-  charge, as part of a distribution by invitation. Any
-  future pricing will be announced in advance and will not
-  apply retroactively.
-</p>
-
-<h2>11. Term and termination</h2>
-<p>
-  The customer may stop using the application at any time by
-  uninstalling it from the administration of its Confluence site.
-  Uninstallation revokes the authorisation to access Google Drive; the data
-  stored by the application on that site is then deleted by the
-  Atlassian Forge platform, within the period described in section 7 of the
-  <a href="/privacy.html">privacy policy</a>. Pages already
-  published remain in the customer's Confluence space. Disconnecting a
-  connection, which is distinct from uninstallation, may however detach or
-  move to the trash the pages it created, depending on the customer's choice at
-  the time of the operation.
-</p>
-<p>
-  The publisher may suspend or terminate access in the event of a breach of
-  these terms, or in the event of use likely to compromise the
-  security or integrity of the service.
-</p>
-
-<h2>12. Liability</h2>
-<p>
-  The application is provided as is. To the extent permitted by
-  applicable law, the publisher shall not be liable for indirect damages,
-  including loss of data, operating loss, loss of revenue
-  or damage to reputation.
-</p>
-<p>
-  It is the customer's responsibility to check the result of publications and to
-  keep its source documents. No clause of these terms limits the
-  publisher's liability in the event of gross negligence, wilful misconduct or personal
-  injury.
-</p>
-
-<h2>13. Changes to the terms</h2>
-<p>
-  The publisher may modify these terms. Any substantial
-  change will be published on this page with an updated version
-  date, and the administrators of the sites where the application is installed will
-  be informed. Continued use constitutes acceptance.
-</p>
-
-<h2>14. Governing law</h2>
-<p>
-  These terms are governed by French law. Failing
-  amicable resolution, any dispute falls within the jurisdiction of the courts
-  with territorial competence over the publisher's registered office, subject to
-  applicable mandatory rules.
+  MIKSUMIA, société à responsabilité limitée (limited liability company), SIREN 919 860 452, 70 boulevard Desgranges, 92330 Sceaux, France.
+  Contact: <a href="mailto:contact@miksumia.com">contact@miksumia.com</a>. Support: <a href="/support.html">support page</a>.
 </p>
 
 <footer>

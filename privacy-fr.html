@@ -107,7 +107,7 @@
 <p>
   Pour le contenu des documents publiés par l'application, le client est
   responsable du traitement et MIKSUMIA sous-traitant
-  (<a href="/terms-fr.html">conditions d'utilisation</a>, section 7). MIKSUMIA
+  (<a href="/terms-fr.html">conditions d'utilisation</a>, condition propre au fournisseur 5). MIKSUMIA
   est responsable du traitement pour les données de connexion décrites plus
   bas : jetons Google et adresse e-mail du compte connecté.
 </p>
@@ -262,9 +262,9 @@
 
 <h3>Google Gemini — le seul service qui reçoit du contenu</h3>
 <p>
-  Deux traitements, et deux seulement, transmettent du contenu vous appartenant
-  à l'API Google Gemini. Tous deux dépendent d'un choix d'un administrateur :
-  la lecture par IA se demande document par document ; la traduction, une fois
+  Trois traitements, et trois seulement, transmettent du contenu vous appartenant
+  à l'API Google Gemini. Tous dépendent d'un choix d'un administrateur :
+  la lecture par IA et la conversion par l'IA se choisissent document par document ; la traduction, une fois
   une langue choisie pour un dossier, s'applique à chaque synchronisation de ce
   dossier.
 </p>
@@ -276,6 +276,12 @@
     les autres documents ne sont jamais envoyées.
   </li>
   <li>
+    <strong>Conversion par l'IA</strong> : lorsqu'un administrateur choisit ce
+    mode de publication pour un PDF, l'application envoie toutes les pages de ce
+    PDF à Gemini chaque fois qu'une synchronisation lit le document, et écrit la
+    page à partir du texte lu.
+  </li>
+  <li>
     <strong>Traduction</strong> : lorsqu'un administrateur choisit une langue de
     traduction pour un dossier, le texte de chaque document (paragraphes,
     cellules, titres) est envoyé à Gemini pour être traduit.
@@ -284,7 +290,7 @@
 <ul>
   <li>
     <strong>Ce qui est transmis</strong> : pour la lecture par IA, les pages du
-    PDF scanné ; pour la traduction, le texte du document ; dans les deux cas,
+    PDF scanné ; pour la conversion par l'IA, les pages du PDF ; pour la traduction, le texte du document ; dans tous les cas,
     une consigne textuelle fixe, identique à chaque appel, qui ne contient
     aucune de vos données.
   </li>
@@ -294,13 +300,14 @@
     information sur l'utilisateur.
   </li>
   <li>
-    <strong>Ce qui revient</strong> : pour la lecture par IA, le texte lu, une
+    <strong>Ce qui revient</strong> : pour la lecture par IA et la conversion par l'IA, le texte lu, une
     description courte et un indice de fiabilité ; pour la traduction, le texte
     traduit.
   </li>
   <li>
     <strong>Quand cela se produit</strong> : uniquement pour un PDF scanné dont
-    un administrateur a activé la lecture par IA, et pour les documents d'un
+    un administrateur a activé la lecture par IA, pour un PDF dont un administrateur
+    a choisi la conversion par l'IA, et pour les documents d'un
     dossier dont un administrateur a choisi une langue de traduction.
   </li>
 </ul>

@@ -266,11 +266,13 @@
     not Vertex AI). It is the only service that receives customer content.</li>
 </ul>
 <p>
-  Gemini receives content in two cases only. (1) Translation: as soon as an
+  Gemini receives content in three cases only. (1) Translation: as soon as an
   administrator chooses a language for a folder, the text of its documents
   is sent to it on every synchronisation of that folder. (2) AI reading of a
   scanned PDF: it is requested document by document, and the pages of the PDF
-  are then sent. A fixed instruction accompanies the request; the title, the file
+  are then sent. (3) Conversion by AI: chosen document by document for a PDF;
+  every page of that PDF is sent each time a synchronisation reads it.
+  A fixed instruction accompanies the request; the title, the file
   name, the space and the user are not sent. Nothing else
   leaves Atlassian: no Confluence content, no Atlassian user
   data, no telemetry, no audience analytics, no external
