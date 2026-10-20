@@ -233,8 +233,8 @@
 </ul>
 <p>
   Le contenu complet des documents n'est pas conservé : il est lu, converti et
-  publié dans Confluence. Le jeton d'actualisation Google est gardé dans le
-  stockage chiffré des secrets de Forge.
+  publié dans Confluence. Le jeton d'actualisation Google et l'adresse e-mail
+  du compte Google connecté sont gardés dans le stockage chiffré des secrets de Forge.
 </p>
 <p>
   Les données sont traitées et conservées sur l'infrastructure Atlassian Forge.
@@ -286,7 +286,7 @@
     enregistrements de documents, ses correspondances de dossiers, ses règles
     d'exclusion et sa dernière synchronisation.</li>
   <li>Déconnecter le compte Google révoque le jeton auprès de Google puis le
-    supprime.</li>
+    supprime, avec l'adresse e-mail conservée.</li>
   <li>À la désinstallation, l'application révoque d'abord l'autorisation Google
     (étape <code>preUninstall</code>), suspend les connexions et retire les
     canaux de notification. Atlassian supprime ensuite les données stockées

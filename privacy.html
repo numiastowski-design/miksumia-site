@@ -79,7 +79,7 @@
   <span style="float:right;font-family:var(--sans);font-size:.95rem;color:var(--muted)"><a href="/privacy-fr.html" hreflang="fr" lang="fr">FR</a> | EN</span>
   <h1>Privacy policy</h1>
   <p class="meta">
-    “Miksumia Publisher” application · Version of 14 October 2026
+    “Miksumia Publisher” application · Version of 20 October 2026
   </p>
 </header>
 
@@ -131,7 +131,10 @@
   <li>
     <code>https://www.googleapis.com/auth/userinfo.email</code> — the email
     address of the connected account, in order to display it to the administrator. It is
-    read on demand and never retained.
+    kept in the encrypted secrets storage of Atlassian Forge, next to the tokens, so the
+    administrator still sees which account is connected when Google is briefly unreachable.
+    It is deleted when the Google account is disconnected, or when Google reports the
+    authorisation as withdrawn.
   </li>
 </ul>
 
@@ -235,7 +238,7 @@
 <h3>What we do not retain</h3>
 <ul>
   <li>The full content of your documents is not stored durably: it is read, converted, published in Confluence, then discarded.</li>
-  <li>Google access and refresh tokens are kept in the encrypted secrets storage provided by Atlassian Forge. They are never logged or exposed to the interface.</li>
+  <li>Google access and refresh tokens, and the email address of the connected account, are kept in the encrypted secrets storage provided by Atlassian Forge. The tokens are never logged or exposed to the interface; the address is shown only to the administrator.</li>
 </ul>
 
 <p>
@@ -365,7 +368,7 @@
   </li>
   <li>
     <strong>Disconnecting the Google account</strong> revokes the authorisation and
-    deletes the corresponding tokens. You can also revoke access
+    deletes the corresponding tokens and the stored email address. You can also revoke access
     at any time from
     <a href="https://myaccount.google.com/permissions" rel="noopener">your Google account permissions</a>.
   </li>

@@ -79,7 +79,7 @@
   <span style="float:right;font-family:var(--sans);font-size:.95rem;color:var(--muted)">FR | <a href="/privacy.html" hreflang="en" lang="en">EN</a></span>
   <h1>Politique de confidentialité</h1>
   <p class="meta">
-    Application « Miksumia Publisher » · Version du 14 octobre 2026
+    Application « Miksumia Publisher » · Version du 20 octobre 2026
   </p>
 </header>
 
@@ -131,7 +131,10 @@
   <li>
     <code>https://www.googleapis.com/auth/userinfo.email</code> — l'adresse
     e-mail du compte connecté, afin de l'afficher à l'administrateur. Elle est
-    lue à la demande et n'est jamais conservée.
+    conservée dans le stockage chiffré de secrets d'Atlassian Forge, avec les jetons, pour
+    que l'administrateur voie quel compte est connecté même quand Google ne répond pas
+    un instant. Elle est effacée quand le compte Google est déconnecté, ou quand Google
+    signale que l'autorisation a été retirée.
   </li>
 </ul>
 
@@ -241,7 +244,7 @@
 <h3>Ce que nous ne conservons pas</h3>
 <ul>
   <li>Le contenu intégral de vos documents n'est pas stocké de façon durable : il est lu, converti, publié dans Confluence, puis écarté.</li>
-  <li>Les jetons d'accès et de rafraîchissement Google sont conservés dans le stockage chiffré de secrets fourni par Atlassian Forge. Ils ne sont jamais journalisés ni exposés à l'interface.</li>
+  <li>Les jetons d'accès et de rafraîchissement Google, et l'adresse e-mail du compte connecté, sont conservés dans le stockage chiffré de secrets fourni par Atlassian Forge. Les jetons ne sont jamais journalisés ni exposés à l'interface ; l'adresse n'est montrée qu'à l'administrateur.</li>
 </ul>
 
 <p>
@@ -371,7 +374,7 @@
   </li>
   <li>
     <strong>Déconnecter le compte Google</strong> révoque l'autorisation et
-    supprime les jetons correspondants. Vous pouvez également révoquer l'accès
+    supprime les jetons correspondants et l'adresse e-mail conservée. Vous pouvez également révoquer l'accès
     à tout moment depuis
     <a href="https://myaccount.google.com/permissions" rel="noopener">les autorisations de votre compte Google</a>.
   </li>

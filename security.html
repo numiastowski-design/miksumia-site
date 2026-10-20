@@ -233,8 +233,8 @@
 </ul>
 <p>
   The full content of documents is not retained: it is read, converted and
-  published in Confluence. The Google refresh token is kept in Forge's
-  encrypted secrets storage.
+  published in Confluence. The Google refresh token and the email address
+  of the connected Google account are kept in Forge's encrypted secrets storage.
 </p>
 <p>
   Data is processed and stored on the Atlassian Forge infrastructure.
@@ -286,7 +286,7 @@
     document records, its folder mappings, its exclusion rules
     and its last synchronisation.</li>
   <li>Disconnecting the Google account revokes the token with Google, then
-    deletes it.</li>
+    deletes it and the stored email address.</li>
   <li>On uninstallation, the application first revokes the Google authorisation
     (<code>preUninstall</code> step), suspends the connections and removes the
     notification channels. Atlassian then deletes the stored data
