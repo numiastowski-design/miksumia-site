@@ -256,9 +256,9 @@
 
 <h3>Google Gemini — the only service that receives content</h3>
 <p>
-  Three processes, and only three, send content belonging to you
-  to the Google Gemini API. All depend on a choice made by an administrator:
-  AI reading and conversion by AI are chosen document by document; translation, once
+  Two processes, and only two, send content belonging to you
+  to the Google Gemini API. Both depend on a choice made by an administrator:
+  AI reading is requested document by document; translation, once
   a language has been chosen for a folder, applies to every synchronisation of that
   folder.
 </p>
@@ -270,12 +270,6 @@
     other documents are never sent.
   </li>
   <li>
-    <strong>Conversion by AI</strong>: when an administrator chooses this
-    publishing mode for a PDF, the application sends every page of that PDF to
-    Gemini each time a synchronisation reads the document, and writes the page
-    from the text read.
-  </li>
-  <li>
     <strong>Translation</strong>: when an administrator chooses a translation
     language for a folder, the text of each document (paragraphs,
     cells, headings) is sent to Gemini to be translated.
@@ -284,7 +278,7 @@
 <ul>
   <li>
     <strong>What is sent</strong>: for AI reading, the pages of the
-    scanned PDF; for conversion by AI, the pages of the PDF; for translation, the text of the document; in every case,
+    scanned PDF; for translation, the text of the document; in both cases,
     a fixed text instruction, identical on every call, which contains
     none of your data.
   </li>
@@ -294,14 +288,13 @@
     information about the user.
   </li>
   <li>
-    <strong>What comes back</strong>: for AI reading and conversion by AI, the text read, a
+    <strong>What comes back</strong>: for AI reading, the text read, a
     short description and a reliability score; for translation, the translated
     text.
   </li>
   <li>
     <strong>When this happens</strong>: only for a scanned PDF for which
-    an administrator has enabled AI reading, for a PDF for which an administrator
-    has chosen conversion by AI, and for the documents of a
+    an administrator has enabled AI reading, and for the documents of a
     folder for which an administrator has chosen a translation language.
   </li>
 </ul>
