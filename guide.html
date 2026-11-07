@@ -193,7 +193,8 @@
 <ul>
   <li><strong>The page title</strong> is the file name without its extension. If a page of the space has it already, a number is added: "Report (2)".</li>
   <li><strong>Scanned PDFs.</strong> A PDF of 3 pages or fewer is published even if it is entirely scanned (an attestation, a receipt, a signed page). Beyond 3 pages, a PDF whose pages are more than half scans is refused, and the screen says why. A scanned page is published as its picture, so its words are not searchable; a PDF that carries a text layer (OCR done beforehand) is read in full.</li>
-  <li><strong>Workbooks.</strong> A workbook with no sheet small enough for a page is refused, and the screen says why: no empty page is ever created.</li>
+  <li><strong>Workbooks.</strong> A workbook with no sheet to publish is refused, and the screen says why: no empty page is ever created.</li>
+  <li><strong>Size.</strong> Every page and tab of a document is published: no slide, sheet, PDF page or table row is left out. The only limit is the size of the page Confluence receives (see Limits).</li>
   <li><strong>Parts the app cannot convert</strong> (a chart type, an embedded object) and missing pictures are left out, and a line under the file says so.</li>
   <li><strong>Words the source hides</strong> (hidden sheets, hidden text) are never published: the app publishes what the editor shows, not what the file stores.</li>
 </ul>
@@ -206,13 +207,9 @@
   <tbody>
     <tr><td>Files per upload</td><td>5</td><td>The sixth and the next ones are left out, at step 1.</td></tr>
     <tr><td>File size</td><td>50 MB</td><td>The file is refused at step 1.</td></tr>
-    <tr><td>Pages per PDF</td><td>15</td><td>The PDF is refused, with a message naming the limit.</td></tr>
+    <tr><td>Content of one page</td><td>2.5 MB of text and layout (pictures are attached, not counted); half of what Confluence accepts</td><td>The document is refused whole: "its page would be too large for Confluence".</td></tr>
     <tr><td>Scanned PDF</td><td>all pages up to 3; beyond, at most half of its pages</td><td>The PDF is refused, and the screen says why.</td></tr>
     <tr><td>Uploads per month, per site</td><td>10,000 files</td><td>Nothing is started; the screen says so, and the count starts again on the 1st (UTC).</td></tr>
-    <tr><td>Tabs per PowerPoint page</td><td>21</td><td>Slides beyond have no tab; a line under the tabs says so.</td></tr>
-    <tr><td>Elements on one slide</td><td>500</td><td>That slide is not published; the result says so.</td></tr>
-    <tr><td>Tabs per Excel page</td><td>20</td><td>Sheets beyond the twentieth have no tab.</td></tr>
-    <tr><td>Sheet size</td><td>55 rows by 21 columns</td><td>That sheet is not published.</td></tr>
     <tr><td>Children shown per level in the tree (step 2)</td><td>250</td><td>"Only the first 250 are shown. Use the filter above."</td></tr>
     <tr><td>Spaces listed (step 2)</td><td>1,000</td><td>A line says so; only the first 1,000 appear.</td></tr>
   </tbody>
@@ -242,9 +239,12 @@
     <tr><td>The monthly limit of 10,000 uploads for this site is reached. It starts again on the 1st (UTC).</td><td>Wait for the 1st of next month (UTC).</td></tr>
     <tr><td>the parent page or folder was not found</td><td>It was moved or deleted: choose another place.</td></tr>
     <tr><td>the file could not be read</td><td>The file is damaged: open it, save it again, upload the copy.</td></tr>
-    <tr><td>the file is too large</td><td>The PDF has more than 15 pages: split it.</td></tr>
+    <tr><td>the file is too large</td><td>The file is over 50 MB: reduce it, or split it.</td></tr>
+    <tr><td>it is protected by a password</td><td>Remove the password, save, upload the copy.</td></tr>
+    <tr><td>its page would be too large for Confluence</td><td>Split the document.</td></tr>
+    <tr><td>Confluence is busy, try again</td><td>Upload the file again in a few minutes.</td></tr>
     <tr><td>too many of its pages are scans</td><td>Use a PDF with a text layer, or publish a shorter one.</td></tr>
-    <tr><td>no sheet of the workbook fits on a page</td><td>Reduce the sheets to 55 rows and 21 columns, or split the workbook.</td></tr>
+    <tr><td>no sheet of the workbook fits on a page</td><td>Check that the workbook has a visible sheet with data.</td></tr>
     <tr><td>another page took its title, try again</td><td>A page with the same title appeared meanwhile: upload again.</td></tr>
     <tr><td>could not be sent / could not be started</td><td>Click "Try again with these files"; contact support if it persists.</td></tr>
     <tr><td>no answer yet, it may still be published</td><td>Look under the parent page; it may have been published.</td></tr>

@@ -193,7 +193,8 @@
 <ul>
   <li><strong>Le titre de la page</strong> est le nom du fichier sans son extension. Si une page de l'espace le porte déjà, un numéro est ajouté : « Report (2) ».</li>
   <li><strong>PDF numérisés.</strong> Un PDF de 3 pages ou moins est publié même s'il est entièrement numérisé (une attestation, un reçu, une page signée). Au-delà de 3 pages, un PDF dont plus de la moitié des pages sont des scans est refusé, et l'écran dit pourquoi. Une page numérisée est publiée comme son image : ses mots ne sont donc pas retrouvables par la recherche ; un PDF qui porte une couche de texte (reconnaissance de caractères faite au préalable) est lu en entier.</li>
-  <li><strong>Classeurs.</strong> Un classeur dont aucune feuille n'est assez petite pour une page est refusé, et l'écran dit pourquoi : aucune page vide n'est jamais créée.</li>
+  <li><strong>Classeurs.</strong> Un classeur sans feuille à publier est refusé, et l'écran dit pourquoi : aucune page vide n'est jamais créée.</li>
+  <li><strong>Taille.</strong> Chaque page et chaque onglet d'un document sont publiés : aucune diapositive, feuille, page de PDF ni ligne de tableau n'est laissée de côté. La seule limite est la taille de la page que reçoit Confluence (voir Limites).</li>
   <li><strong>Les parties que l'application ne sait pas convertir</strong> (un type de graphique, un objet incorporé) et les images manquantes sont laissées de côté, et une ligne sous le fichier le dit.</li>
   <li><strong>Les mots que la source cache</strong> (feuilles masquées, texte masqué) ne sont jamais publiés : l'application publie ce que l'éditeur montre, pas ce que le fichier stocke.</li>
 </ul>
@@ -206,13 +207,9 @@
   <tbody>
     <tr><td>Fichiers par téléversement</td><td>5</td><td>Le sixième et les suivants sont laissés de côté, à l'étape 1.</td></tr>
     <tr><td>Taille d'un fichier</td><td>50 Mo</td><td>Le fichier est refusé à l'étape 1.</td></tr>
-    <tr><td>Pages par PDF</td><td>15</td><td>Le PDF est refusé, avec un message qui nomme la limite.</td></tr>
+    <tr><td>Contenu d'une page</td><td>2,5 Mo de texte et de mise en page (les images sont jointes, non comptées) ; la moitié de ce que Confluence accepte</td><td>Le document est refusé en entier : « its page would be too large for Confluence » (sa page serait trop grande pour Confluence).</td></tr>
     <tr><td>PDF numérisé</td><td>toutes les pages jusqu'à 3 ; au-delà, la moitié de ses pages au plus</td><td>Le PDF est refusé, et l'écran dit pourquoi.</td></tr>
     <tr><td>Téléversements par mois, par site</td><td>10 000 fichiers</td><td>Rien n'est démarré ; l'écran le dit, et le compte repart le 1er (UTC).</td></tr>
-    <tr><td>Onglets par page PowerPoint</td><td>21</td><td>Les diapositives au-delà n'ont pas d'onglet ; une ligne sous les onglets le dit.</td></tr>
-    <tr><td>Éléments sur une diapositive</td><td>500</td><td>Cette diapositive n'est pas publiée ; le résultat le dit.</td></tr>
-    <tr><td>Onglets par page Excel</td><td>20</td><td>Les feuilles au-delà de la vingtième n'ont pas d'onglet.</td></tr>
-    <tr><td>Taille d'une feuille</td><td>55 lignes sur 21 colonnes</td><td>Cette feuille n'est pas publiée.</td></tr>
     <tr><td>Enfants affichés par niveau dans l'arbre (étape 2)</td><td>250</td><td>« Only the first 250 are shown. Use the filter above. » (seuls les 250 premiers sont affichés ; utilisez le filtre)</td></tr>
     <tr><td>Espaces listés (étape 2)</td><td>1 000</td><td>Une ligne le dit ; seuls les 1 000 premiers apparaissent.</td></tr>
   </tbody>
@@ -245,9 +242,12 @@
     <tr><td>The monthly limit of 10,000 uploads for this site is reached. It starts again on the 1st (UTC).</td><td>Attendez le 1er du mois prochain (UTC).</td></tr>
     <tr><td>the parent page or folder was not found</td><td>Elle ou il a été déplacé ou supprimé : choisissez un autre endroit.</td></tr>
     <tr><td>the file could not be read</td><td>Le fichier est abîmé : ouvrez-le, enregistrez-le de nouveau, téléversez la copie.</td></tr>
-    <tr><td>the file is too large</td><td>Le PDF a plus de 15 pages : découpez-le.</td></tr>
+    <tr><td>the file is too large</td><td>Le fichier dépasse 50 Mo : réduisez-le, ou découpez-le.</td></tr>
+    <tr><td>it is protected by a password</td><td>Retirez le mot de passe, enregistrez, téléversez la copie.</td></tr>
+    <tr><td>its page would be too large for Confluence</td><td>Découpez le document.</td></tr>
+    <tr><td>Confluence is busy, try again</td><td>Téléversez de nouveau dans quelques minutes.</td></tr>
     <tr><td>too many of its pages are scans</td><td>Utilisez un PDF avec une couche de texte, ou publiez-en un plus court.</td></tr>
-    <tr><td>no sheet of the workbook fits on a page</td><td>Réduisez les feuilles à 55 lignes et 21 colonnes, ou découpez le classeur.</td></tr>
+    <tr><td>no sheet of the workbook fits on a page</td><td>Vérifiez que le classeur a une feuille visible qui contient des données.</td></tr>
     <tr><td>another page took its title, try again</td><td>Une page du même titre est apparue entre-temps : téléversez de nouveau.</td></tr>
     <tr><td>could not be sent / could not be started</td><td>Cliquez sur « Try again with these files » ; contactez le support si cela persiste.</td></tr>
     <tr><td>no answer yet, it may still be published</td><td>Regardez sous la page parente : elle a peut-être été publiée.</td></tr>
