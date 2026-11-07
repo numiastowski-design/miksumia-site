@@ -6,7 +6,7 @@
 <link rel="alternate" hreflang="en" href="https://miksumia.com/guide.html">
 <link rel="alternate" hreflang="fr" href="https://miksumia.com/guide-fr.html">
 <title>User guide — Miksumia Publisher</title>
-<meta name="description" content="How to connect Google Drive folders to Confluence with Miksumia Publisher.">
+<meta name="description" content="How to upload Word, PowerPoint, Excel, PDF and image files as Confluence pages with Miksumia Publisher.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
@@ -45,6 +45,10 @@
   ul{margin:0 0 1rem;padding-left:1.15rem;max-width:66ch}
   li{margin:.4rem 0}
 
+  table{border-collapse:collapse;margin:0 0 1.25rem;font-size:.95rem;line-height:1.5}
+  th,td{border:1px solid var(--rule);padding:.45rem .7rem;text-align:left;vertical-align:top}
+  th{background:var(--accent-soft);font-family:var(--sans);font-weight:500}
+
   .note{
     background:var(--accent-soft);
     border:1px solid #D6E0F0;
@@ -64,6 +68,7 @@
   @media (max-width:640px){
     body{font-size:17px}
     h1{font-size:1.8rem}
+    table{display:block;overflow-x:auto}
   }
 </style>
 </head>
@@ -75,107 +80,189 @@
   <span style="float:right;font-family:var(--sans);font-size:.95rem;color:var(--muted)"><a href="/guide-fr.html" hreflang="fr" lang="fr">FR</a> | EN</span>
   <h1>User guide</h1>
   <p class="lede">
-    How to connect Google Drive folders to Confluence with <a href="/publisher.html">Miksumia Publisher</a>.
+    How to upload files and publish them as Confluence pages with <a href="/publisher.html">Miksumia Publisher</a>.
   </p>
 </header>
 
 <h2>What the app does</h2>
 <p>
-  Your Google Drive folders become Confluence pages and stay up to date on their own. The app reads the files of a folder and its subfolders and turns them into Confluence pages with its own readers, without AI for the structure (headings, lists, tables, images, links). Subfolders become parent pages, so the Drive tree is found again in the space. Pages are real text: Confluence search and Rovo find them.
+  Drop up to five files, choose where they go in Confluence, and each one becomes a Confluence page. Word, PowerPoint, Excel, PDF and images are read by the app's own readers, without AI: headings, lists, tables, images and links come out as real Confluence content, so Confluence search and Rovo find every word.
 </p>
 <p>
-  The app never adds anything visible to your pages (no banner, no label). Drive stays the master of the content.
+  The app adds nothing visible to your pages (no banner, no label), and it keeps nothing of your files.
+</p>
+<p>
+  It does not connect to Google Drive, does not synchronise anything, does not translate and does not use AI. You upload files by hand, and each upload is final: the app never updates a page afterwards.
 </p>
 
-<h2>Prerequisites</h2>
-<ul>
-  <li>A Confluence Cloud site where you are a Confluence administrator. The app's settings page is reserved to administrators.</li>
-  <li>A Google account that can read the Drive folder you want to publish. The connection screen recommends a dedicated "robot account" rather than a personal one.</li>
-  <li>A Confluence space to receive the pages. One space holds one connection, and one Drive folder connects to one space only.</li>
-  <li>Files in a supported format: Google Docs, Sheets and Slides; Word (.docx), Excel (.xlsx) and PowerPoint (.pptx); PDF; PNG and JPEG. Other formats, such as .doc, .xls and .csv, are listed as unsupported and are not published.</li>
-</ul>
+<h2>At a glance</h2>
+<table>
+  <tbody>
+    <tr><td>Files per upload</td><td>up to 5, 50 MB each</td></tr>
+    <tr><td>Formats</td><td>Word (.docx), PowerPoint (.pptx), Excel (.xlsx), PDF, PNG, JPEG</td></tr>
+    <tr><td>Where pages go</td><td>under a page or a folder you choose, in any space where you can create pages</td></tr>
+    <tr><td>Multi-part documents</td><td>one Confluence tab per slide, per sheet, per PDF page</td></tr>
+    <tr><td>AI</td><td>none: the app's own readers</td></tr>
+    <tr><td>Kept by the app</td><td>nothing of your files</td></tr>
+    <tr><td>Price</td><td>free</td></tr>
+  </tbody>
+</table>
 
-<h2>Install and connect Google</h2>
-<ol>
-  <li>Install Miksumia Publisher from the Atlassian Marketplace on your Confluence site.</li>
-  <li>Open the app's page in Confluence administration (a global settings page named "Miksumia Publisher").</li>
-  <li>Connect your Google account. The app opens Google's consent screen and asks for three permissions:
-    <ul>
-      <li>read-only access to Google Drive;</li>
-      <li>"openid", which Google requires to give the e-mail address below;</li>
-      <li>the e-mail address of the account, shown to you so you know which account is connected.</li>
-    </ul>
-  </li>
-  <li>On Google's consent screen, make sure the Google Drive permission checkbox is checked. Otherwise the app says Drive access wasn't granted and asks you to connect again.</li>
-</ol>
-<div class="note">
-  <p>
-    The app cannot create, change or delete anything in your Google Drive. You can disconnect the Google account from the app at any time, or revoke access in your Google account permissions.
-  </p>
-</div>
+<h2>Install and permissions</h2>
+<p>
+  A site administrator installs the app from the Atlassian Marketplace. After that, anyone who can create a page in a space can publish there with the app. The app checks your Confluence permission on the place you choose, and Confluence checks it again when the page is created: you can never publish where you could not create a page by hand.
+</p>
+<p>
+  The first time you use the app, Confluence asks you to allow it to act on your behalf ("Allow access"): that is what lets the app check your permission. Confluence may ask again after an update of the app that needs new permissions. The app's "Help" link opens this guide.
+</p>
 
-<h2>Connect a folder to a space</h2>
-<p>Click "Connect a folder". The wizard has five steps.</p>
-<ol>
-  <li><strong>Connect Google</strong> (skipped when already connected). Click "I've connected — check again" once done.</li>
-  <li><strong>Choose a Drive folder</strong>: browse My Drive or a Shared Drive. Only Shared Drives of which the connected account is itself a member (Viewer or higher) appear. A folder that is inside, or contains, an already connected folder is refused, and so is a folder already connected to another space.</li>
-  <li><strong>Choose a Confluence space</strong>: a space that already has a connection is refused.</li>
-  <li><strong>Review</strong>: the app lists what it would publish (the number of documents and folder pages, the root page title) and a "Won't be published" list (unsupported formats). Nothing has been written to Confluence yet. If the connection then fails, the app removes the empty root page it created; if it cannot, it tells you to delete it. Uncheck any file or folder you do not want; files added later to an unchecked folder are not published either, and you can include them later in Sync manager. Unchecked documents do not count toward the document limit.</li>
-  <li><strong>Apply</strong>: "Sync now" starts the first sync. You can leave; the sync continues and the dashboard follows it.</li>
-</ol>
+<h2>Two ways to open it</h2>
+<table>
+  <thead>
+    <tr><th>From</th><th>Where</th><th>You choose</th><th>Steps</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>The Apps menu</td><td>"Miksumia Publisher"</td><td>the files, the space, the page or folder</td><td>3: Files, Where, Publish</td></tr>
+    <tr><td>A page</td><td>its "•••" menu → Apps → "Publish files here"</td><td>the files (the page you are on is the parent)</td><td>2: Files, Publish</td></tr>
+  </tbody>
+</table>
+
+<h2>Publish files, step by step</h2>
+
+<h3>Step 1 — Files</h3>
+<p>
+  Drag files onto the frame, or click "Or choose files". Each file shows an icon for its type. A file the app cannot take is refused at once, with the reason, before anything is sent:
+</p>
+<table>
+  <thead>
+    <tr><th>Case</th><th>Reason shown</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>a type the app does not read</td><td>this type of file is not supported</td></tr>
+    <tr><td>over 50 MB</td><td>over the 50 MB limit</td></tr>
+    <tr><td>an empty file</td><td>is empty</td></tr>
+    <tr><td>a name over 255 characters</td><td>the name is too long</td></tr>
+    <tr><td>a sixth file, and beyond</td><td>an upload holds 5 at most</td></tr>
+  </tbody>
+</table>
+<p>
+  Scanned PDFs and workbooks can only be judged once read: they are checked after the upload, and the screen says so.
+</p>
+
+<h3>Step 2 — Where (from the Apps menu only)</h3>
+<p>
+  Choose a space (each one shows the Confluence icon). Under it, the frame "Parent page or folder" is there from the start, saying "Choose a space to see its pages". Once a space is chosen, the frame shows its pages in the same order as in Confluence's sidebar, folders included, and they open level by level. The space's home page is the first row.
+</p>
+<p>
+  One field, "Filter by title", sits at the top of the frame. Empty, you see the tree. From two letters on, the pages and folders whose title starts with what you typed replace the tree's rows; pick one there, then clear the field to come back to the tree. A line under the field reminds you what the list shows.
+</p>
+<p>
+  A line reminds you where the pages will go, as "space › page". The app tells you at once if you cannot create a page at the place you chose. If it could not read your permission, it says so and offers "Check again".
+</p>
+
+<h3>Step 3 — Publish</h3>
+<p>
+  A sentence reminds you how many files go under which place. Click "Publish". The screen then says what it is doing, file by file: "Uploading…", "Uploaded, waiting its turn", "Reading the file…", "Creating the page…", then "Published".
+</p>
+<p>
+  When it is done, a green block says how many pages were published and under which place, with an "Open the page" link on each. Files that could not be published are listed under it in an orange block, with their reason; if none could, a red block says "Nothing was published". "Upload more files" starts again.
+</p>
+<p>
+  When some files could not be sent or started, "Try again with these files" goes back to the last step with those files only, for the same place.
+</p>
+<p>
+  You can go back from step 2 to step 1, and from step 3 to either, until you click Publish. The screen's heading says where you are ("Step 2 of 3: Where").
+</p>
 
 <h2>What gets published</h2>
+<table>
+  <thead>
+    <tr><th>File</th><th>Becomes</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Word (.docx)</td><td>one page: headings, lists, tables, images, links, footnotes</td></tr>
+    <tr><td>PowerPoint (.pptx)</td><td>one page, one Confluence tab per slide</td></tr>
+    <tr><td>Excel (.xlsx)</td><td>one page, one Confluence tab per sheet</td></tr>
+    <tr><td>PDF</td><td>one page, one Confluence tab per PDF page</td></tr>
+    <tr><td>PNG, JPEG</td><td>an image page</td></tr>
+  </tbody>
+</table>
+<p>
+  A Google Doc, Sheet or Slides file can be published by downloading it first as .docx, .xlsx or .pptx.
+</p>
 <ul>
-  <li><strong>Word, Google Docs</strong>: headings, lists, tables, images and links, as text. A part that cannot be published is reported on the dashboard.</li>
-  <li><strong>Excel, Google Sheets</strong>: one tab per sheet on the page (6 tabs, 100 rows by 10 columns each at most).</li>
-  <li><strong>PowerPoint, Google Slides</strong>: one tab per slide (21 slides at most); a slide of more than 500 elements is not published, and the dashboard says so.</li>
-  <li><strong>PDF</strong>: up to 15 pages.</li>
-  <li><strong>PNG and JPEG images</strong>: published as an image page.</li>
-  <li><strong>QR codes</strong> in a PDF are published as pictures. The app does not decode them.</li>
-  <li><strong>Incomplete pages</strong>: when words or parts of the source are missing from a page, the dashboard shows a line under the file and a "See" button lists them. Publication is never blocked by this check. Other remarks you may see under a file: a PDF image that could not be read and is missing from the page; "the check for lost words could not be done" (the app could not read the file again or the published page back, so it cannot say whether words are missing); "the translation could not be done" (the page is published in its original language).</li>
-  <li><strong>A page edited by hand in Confluence is rewritten at the next change of its Drive file.</strong> The earlier version stays in the page history. Until then the edit is left alone. A page moved inside the space stays where it was put.</li>
-  <li><strong>A file deleted in Drive</strong> sends its page to the space trash, where it can be restored.</li>
-</ul>
-
-<h2>Manage documents</h2>
-<p>Open "Sync manager" on a connection card to see the list of its files.</p>
-<ul>
-  <li><strong>Dates.</strong> "Modified in Drive" is the day the file last changed in Drive. "Published on" is the day the app last wrote its page. A dash means no publication since this column was added. A failed sync keeps the date of the last success. A rename or a move alone does not change it. Days are in UTC.</li>
-  <li><strong>AI reading</strong> (switch with the AI icon, on a PDF): turns on AI reading of the scanned pages. It applies at the next Republish.</li>
-  <li><strong>Check / uncheck.</strong> Unchecking a published file detaches its page: the page stays in Confluence, no longer updated; nothing is deleted. Unchecking a folder detaches every page inside it. Checking a file again rewrites the same page from Drive. Changes apply with "Sync now".</li>
-  <li><strong>Sync now</strong>: starts a sync of the whole folder right away. With no active license, it says so and starts nothing. Otherwise a sync starts by itself within minutes of a Drive change, and every hour the app checks its folders.</li>
-  <li><strong>Republish</strong> (on a document's row): rewrites that one page now from Drive, even if the file did not change; it replaces a hand-edited page.</li>
-  <li><strong>Audit log</strong> (home page): everything the app did, newest first, including when the Google account was disconnected and whether Google confirmed it.</li>
-  <li><strong>Connection card</strong> (home page). "The page of the folder ... could not be created" means a folder has no page yet: its documents are published once it exists, and the next sync tries again. "Google is not answering right now" is a passing outage: nothing to do, reload in a few minutes. "Connect Google account" (right of the header, before the "..." menu) appears when Google access was lost.</li>
-  <li><strong>Space that requires approval.</strong> If the Confluence space has "Require approval before publishing", Confluence refuses the app's updates (error 409). The page keeps its previous version. Turn that option off in Space settings, or connect the folder to another space.</li>
+  <li><strong>The page title</strong> is the file name without its extension. If a page of the space has it already, a number is added: "Report (2)".</li>
+  <li><strong>Scanned PDFs.</strong> A PDF of 3 pages or fewer is published even if it is entirely scanned (an attestation, a receipt, a signed page). Beyond 3 pages, a PDF whose pages are more than half scans is refused, and the screen says why. A scanned page is published as its picture, so its words are not searchable; a PDF that carries a text layer (OCR done beforehand) is read in full.</li>
+  <li><strong>Workbooks.</strong> A workbook with no sheet small enough for a page is refused, and the screen says why: no empty page is ever created.</li>
+  <li><strong>Parts the app cannot convert</strong> (a chart type, an embedded object) and missing pictures are left out, and a line under the file says so.</li>
+  <li><strong>Words the source hides</strong> (hidden sheets, hidden text) are never published: the app publishes what the editor shows, not what the file stores.</li>
 </ul>
 
 <h2>Limits</h2>
-<ul>
-  <li>PDF: 15 pages per document. A longer document is refused, with a message naming the limit.</li>
-  <li>50 documents per connection, subfolders included. At confirmation the connection is refused if it is over; during a sync, documents past the limit are not published, and nothing is deleted or detached. Folder pages never count.</li>
-  <li>Excel and Google Sheets: 6 tabs per page, 100 rows and 10 columns per sheet.</li>
-  <li>PowerPoint and Google Slides: 21 slide tabs per page, 500 elements per slide.</li>
-</ul>
+<table>
+  <thead>
+    <tr><th>Limit</th><th>Value</th><th>Past it</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Files per upload</td><td>5</td><td>The sixth and the next ones are left out, at step 1.</td></tr>
+    <tr><td>File size</td><td>50 MB</td><td>The file is refused at step 1.</td></tr>
+    <tr><td>Pages per PDF</td><td>15</td><td>The PDF is refused, with a message naming the limit.</td></tr>
+    <tr><td>Scanned PDF</td><td>all pages up to 3; beyond, at most half of its pages</td><td>The PDF is refused, and the screen says why.</td></tr>
+    <tr><td>Uploads per month, per site</td><td>10,000 files</td><td>Nothing is started; the screen says so, and the count starts again on the 1st (UTC).</td></tr>
+    <tr><td>Tabs per PowerPoint page</td><td>21</td><td>Slides beyond have no tab; a line under the tabs says so.</td></tr>
+    <tr><td>Elements on one slide</td><td>500</td><td>That slide is not published; the result says so.</td></tr>
+    <tr><td>Tabs per Excel page</td><td>20</td><td>Sheets beyond the twentieth have no tab.</td></tr>
+    <tr><td>Sheet size</td><td>55 rows by 21 columns</td><td>That sheet is not published.</td></tr>
+    <tr><td>Children shown per level in the tree (step 2)</td><td>250</td><td>"Only the first 250 are shown. Use the filter above."</td></tr>
+    <tr><td>Spaces listed (step 2)</td><td>1,000</td><td>A line says so; only the first 1,000 appear.</td></tr>
+  </tbody>
+</table>
 
-<h3>Trial and license</h3>
-<ul>
-  <li>The app is paid via Atlassian. The free trial is Atlassian's standard 30 days; an evaluation license counts as active.</li>
-  <li>With no active license (trial ended, subscription lapsed), syncs stop: none starts, manual or automatic. A warning on the home page says so, and "Sync now" says "No active license: nothing syncs". Pages already published stay as they are and nothing is deleted.</li>
-  <li>To resume, subscribe from the Atlassian Marketplace; syncs restart.</li>
-</ul>
-
-<h2>Disconnect, uninstall and your data</h2>
-<ul>
-  <li><strong>Disconnect a folder</strong> ("More actions" on its card): its pages are frozen in Confluence, never deleted. A disconnected connection can be removed from the list without touching any page.</li>
-  <li><strong>Disconnect the Google account</strong> ("Disconnect Google" in the header): the token is revoked at Google and deleted, and every dependent connection is suspended. Reconnecting Google wakes them again. If Google does not confirm that it removed the access, the app says so; then open myaccount.google.com/permissions and remove "Miksumia Publisher".</li>
-  <li><strong>Uninstall</strong>: before the uninstall completes, the app revokes the Google token and removes its notification channels. Atlassian then soft-deletes the remaining app data and keeps it 28 days. Pages already published stay in your space.</li>
-  <li><strong>Your data</strong>: the app stores connection settings, document titles and technical ids, and technical records; not the content of your documents. Details in our <a href="/privacy.html">privacy policy</a>.</li>
-</ul>
-
-<h2>Getting help</h2>
+<h2>Your files and your data</h2>
 <p>
-  See the <a href="/support.html">support page</a> or write to <a href="mailto:contact@miksumia.com">contact@miksumia.com</a>. See also the <a href="/terms.html">terms of use</a>.
+  Your file never passes through the app's functions: your browser puts it in the app's temporary storage, inside Atlassian; a background task reads it, publishes the page, and erases the file. A file left behind expires by itself within one hour. The result (the page link and its warnings) is kept only until your screen has read it, 24 hours at most.
+</p>
+<p>
+  Nothing of your documents is kept: no copy, no extracted text, no log of their content. The pages created are yours, like any page of your space, and they stay if the app is uninstalled. Your documents never leave Atlassian. Details in our <a href="/privacy.html">privacy policy</a>.
+</p>
+
+<h2>Messages and what to do</h2>
+<table>
+  <thead>
+    <tr><th>Message</th><th>What to do</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>this type of file is not supported</td><td>Save the file as .docx, .xlsx, .pptx, .pdf, .png or .jpg.</td></tr>
+    <tr><td>over the 50 MB limit</td><td>Reduce the file, or split it.</td></tr>
+    <tr><td>is empty</td><td>Check the file opens on your computer.</td></tr>
+    <tr><td>the name is too long</td><td>Rename the file (255 characters at most).</td></tr>
+    <tr><td>an upload holds 5 at most</td><td>Publish the others in a second upload.</td></tr>
+    <tr><td>You cannot create a page here</td><td>Choose another place, or ask the space administrator for the right to create pages.</td></tr>
+    <tr><td>The permission could not be checked</td><td>Click "Check again".</td></tr>
+    <tr><td>The monthly limit of 10,000 uploads for this site is reached. It starts again on the 1st (UTC).</td><td>Wait for the 1st of next month (UTC).</td></tr>
+    <tr><td>the parent page or folder was not found</td><td>It was moved or deleted: choose another place.</td></tr>
+    <tr><td>the file could not be read</td><td>The file is damaged: open it, save it again, upload the copy.</td></tr>
+    <tr><td>the file is too large</td><td>The PDF has more than 15 pages: split it.</td></tr>
+    <tr><td>too many of its pages are scans</td><td>Use a PDF with a text layer, or publish a shorter one.</td></tr>
+    <tr><td>no sheet of the workbook fits on a page</td><td>Reduce the sheets to 55 rows and 21 columns, or split the workbook.</td></tr>
+    <tr><td>another page took its title, try again</td><td>A page with the same title appeared meanwhile: upload again.</td></tr>
+    <tr><td>could not be sent / could not be started</td><td>Click "Try again with these files"; contact support if it persists.</td></tr>
+    <tr><td>no answer yet, it may still be published</td><td>Look under the parent page; it may have been published.</td></tr>
+    <tr><td>The spaces could not be listed / This level could not be read / The search did not answer</td><td>Click "Try again".</td></tr>
+  </tbody>
+</table>
+
+<h2>Price, support and terms</h2>
+<p>
+  The app is free: no subscription, no trial, no licence. See the <a href="/support.html">support page</a> or write to <a href="mailto:contact@miksumia.com">contact@miksumia.com</a>. See also the <a href="/terms.html">terms of use</a>.
+</p>
+
+<h2>Built on</h2>
+<p>
+  The app is built on <strong>skryba</strong>, its open-source document reader (AGPL-3.0): <a href="https://www.npmjs.com/package/skryba">npmjs.com/package/skryba</a>.
+</p>
+<p>
+  Three of skryba's reading decisions come from Side Liu, Jiangpeng Liu, Jinwen Xin, Guojun Peng and Jiang Ming, "Beyond the Editing Canvas: Evidence Divergence in OOXML-to-LLM Ingestion", <a href="https://arxiv.org/abs/2608.25880">arXiv:2608.25880</a>, starting with the one above: publish what the editor shows, never what the file stores.
 </p>
 
 <footer>

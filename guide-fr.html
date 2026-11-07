@@ -6,7 +6,7 @@
 <link rel="alternate" hreflang="en" href="https://miksumia.com/guide.html">
 <link rel="alternate" hreflang="fr" href="https://miksumia.com/guide-fr.html">
 <title>Guide d'utilisation — Miksumia Publisher</title>
-<meta name="description" content="Comment relier des dossiers Google Drive à Confluence avec Miksumia Publisher.">
+<meta name="description" content="Comment téléverser des fichiers Word, PowerPoint, Excel, PDF et image comme pages Confluence avec Miksumia Publisher.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
@@ -45,6 +45,10 @@
   ul{margin:0 0 1rem;padding-left:1.15rem;max-width:66ch}
   li{margin:.4rem 0}
 
+  table{border-collapse:collapse;margin:0 0 1.25rem;font-size:.95rem;line-height:1.5}
+  th,td{border:1px solid var(--rule);padding:.45rem .7rem;text-align:left;vertical-align:top}
+  th{background:var(--accent-soft);font-family:var(--sans);font-weight:500}
+
   .note{
     background:var(--accent-soft);
     border:1px solid #D6E0F0;
@@ -64,6 +68,7 @@
   @media (max-width:640px){
     body{font-size:17px}
     h1{font-size:1.8rem}
+    table{display:block;overflow-x:auto}
   }
 </style>
 </head>
@@ -75,107 +80,192 @@
   <span style="float:right;font-family:var(--sans);font-size:.95rem;color:var(--muted)">FR | <a href="/guide.html" hreflang="en" lang="en">EN</a></span>
   <h1>Guide d'utilisation</h1>
   <p class="lede">
-    Comment relier des dossiers Google Drive à Confluence avec <a href="/publisher-fr.html">Miksumia Publisher</a>.
+    Comment téléverser des fichiers et les publier comme pages Confluence avec <a href="/publisher-fr.html">Miksumia Publisher</a>.
   </p>
 </header>
 
 <h2>Ce que fait l'application</h2>
 <p>
-  Vos dossiers Google Drive deviennent des pages Confluence et se tiennent à jour tout seuls. L'application lit les fichiers d'un dossier et de ses sous-dossiers et les transforme en pages Confluence avec ses propres lecteurs, sans IA pour la structure (titres, listes, tableaux, images, liens). Les sous-dossiers deviennent des pages parentes : l'arborescence de Drive se retrouve dans l'espace. Les pages sont du vrai texte : la recherche Confluence et Rovo les trouvent.
+  Déposez jusqu'à cinq fichiers, choisissez où ils vont dans Confluence, et chacun devient une page Confluence. Word, PowerPoint, Excel, PDF et images sont lus par les lecteurs de l'application, sans IA : titres, listes, tableaux, images et liens ressortent en vrai contenu Confluence, si bien que la recherche Confluence et Rovo trouvent chaque mot.
 </p>
 <p>
-  L'application n'ajoute jamais rien de visible à vos pages (ni bandeau, ni étiquette). Drive reste la référence du contenu.
+  L'application n'ajoute rien de visible à vos pages (ni bandeau, ni étiquette), et elle ne conserve rien de vos fichiers.
+</p>
+<p>
+  Elle ne se connecte pas à Google Drive, ne synchronise rien, ne traduit pas et n'utilise pas d'IA. Vous téléversez les fichiers à la main, et chaque téléversement est définitif : l'application ne met jamais une page à jour ensuite.
 </p>
 
-<h2>Prérequis</h2>
-<ul>
-  <li>Un site Confluence Cloud dont vous êtes administrateur. La page de réglages de l'application est réservée aux administrateurs.</li>
-  <li>Un compte Google qui peut lire le dossier Drive à publier. L'écran de connexion recommande un « compte robot » dédié plutôt qu'un compte personnel.</li>
-  <li>Un espace Confluence pour recevoir les pages. Un espace porte une seule connexion, et un dossier Drive ne se connecte qu'à un seul espace.</li>
-  <li>Des fichiers dans un format pris en charge : Google Docs, Sheets et Slides ; Word (.docx), Excel (.xlsx) et PowerPoint (.pptx) ; PDF ; PNG et JPEG. Les autres formats, comme .doc, .xls et .csv, sont listés comme non pris en charge et ne sont pas publiés.</li>
-</ul>
+<h2>En un coup d'œil</h2>
+<table>
+  <tbody>
+    <tr><td>Fichiers par téléversement</td><td>5 au plus, 50 Mo chacun</td></tr>
+    <tr><td>Formats</td><td>Word (.docx), PowerPoint (.pptx), Excel (.xlsx), PDF, PNG, JPEG</td></tr>
+    <tr><td>Où vont les pages</td><td>sous une page ou un dossier de votre choix, dans tout espace où vous pouvez créer des pages</td></tr>
+    <tr><td>Documents en plusieurs parties</td><td>un onglet Confluence par diapositive, par feuille, par page de PDF</td></tr>
+    <tr><td>IA</td><td>aucune : les lecteurs de l'application</td></tr>
+    <tr><td>Conservé par l'application</td><td>rien de vos fichiers</td></tr>
+    <tr><td>Prix</td><td>gratuit</td></tr>
+  </tbody>
+</table>
 
-<h2>Installer et connecter Google</h2>
-<ol>
-  <li>Installez Miksumia Publisher depuis l'Atlassian Marketplace sur votre site Confluence.</li>
-  <li>Ouvrez la page de l'application dans l'administration de Confluence (une page de réglages globale nommée « Miksumia Publisher »).</li>
-  <li>Connectez votre compte Google. L'application ouvre l'écran de consentement de Google et demande trois autorisations :
-    <ul>
-      <li>l'accès en lecture seule à Google Drive ;</li>
-      <li>« openid », que Google exige pour fournir l'adresse e-mail ci-dessous ;</li>
-      <li>l'adresse e-mail du compte, affichée pour que vous sachiez quel compte est connecté.</li>
-    </ul>
-  </li>
-  <li>Sur l'écran de consentement de Google, vérifiez que la case de l'autorisation Google Drive est cochée. Sinon l'application indique que l'accès à Drive n'a pas été accordé et vous demande de vous reconnecter.</li>
-</ol>
-<div class="note">
-  <p>
-    L'application ne peut rien créer, modifier ni supprimer dans votre Google Drive. Vous pouvez déconnecter le compte Google depuis l'application à tout moment, ou révoquer l'accès dans les autorisations de votre compte Google.
-  </p>
-</div>
+<h2>Installation et autorisations</h2>
+<p>
+  Un administrateur du site installe l'application depuis l'Atlassian Marketplace. Ensuite, toute personne qui peut créer une page dans un espace peut y publier avec l'application. L'application vérifie votre autorisation Confluence sur l'endroit choisi, et Confluence la vérifie de nouveau à la création de la page : vous ne pouvez jamais publier là où vous ne pourriez pas créer une page à la main.
+</p>
+<p>
+  À la première utilisation, Confluence vous demande d'autoriser l'application à agir en votre nom (« Allow access ») : c'est ce qui lui permet de vérifier votre autorisation. Confluence peut le redemander après une mise à jour de l'application qui exige de nouvelles autorisations. Le lien « Help » de l'application ouvre ce guide.
+</p>
 
-<h2>Connecter un dossier à un espace</h2>
-<p>Cliquez sur « Connect a folder ». L'assistant compte cinq étapes. Les libellés de l'interface sont indiqués en anglais.</p>
-<ol>
-  <li><strong>Connecter Google</strong> (ignorée si déjà connecté). Cliquez sur « I've connected — check again » une fois fait.</li>
-  <li><strong>Choisir un dossier Drive</strong> : parcourez Mon Drive ou un Drive partagé. Seuls les Drives partagés dont le compte connecté est lui-même membre (lecteur ou plus) apparaissent. Un dossier situé dans un dossier déjà connecté, ou qui en contient un, est refusé, tout comme un dossier déjà connecté à un autre espace.</li>
-  <li><strong>Choisir un espace Confluence</strong> : un espace qui a déjà une connexion est refusé.</li>
-  <li><strong>Vérifier</strong> : l'application liste ce qu'elle publierait (le nombre de documents et de pages de dossier, le titre de la page racine) et une liste « Won't be published » (formats non pris en charge). Rien n'a encore été écrit dans Confluence. Si la connexion échoue ensuite, l'application retire la page racine vide qu'elle a créée ; si elle n'y arrive pas, elle vous demande de la supprimer. Décochez les fichiers ou dossiers que vous ne voulez pas ; les fichiers ajoutés plus tard à un dossier décoché ne sont pas publiés non plus, et vous pourrez les inclure plus tard dans « Sync manager ». Les documents décochés ne comptent pas dans la limite de documents.</li>
-  <li><strong>Appliquer</strong> : « Sync now » lance la première synchronisation. Vous pouvez partir ; la synchronisation continue et le tableau de bord la suit.</li>
-</ol>
+<h2>Deux façons de l'ouvrir</h2>
+<table>
+  <thead>
+    <tr><th>Depuis</th><th>Où</th><th>Vous choisissez</th><th>Étapes</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Le menu Apps</td><td>« Miksumia Publisher »</td><td>les fichiers, l'espace, la page ou le dossier</td><td>3 : Files, Where, Publish</td></tr>
+    <tr><td>Une page</td><td>son menu « ••• » → Apps → « Publish files here »</td><td>les fichiers (la page où vous êtes est le parent)</td><td>2 : Files, Publish</td></tr>
+  </tbody>
+</table>
+
+<h2>Publier des fichiers, pas à pas</h2>
+
+<h3>Étape 1 — Files (les fichiers)</h3>
+<p>
+  Faites glisser les fichiers sur le cadre, ou cliquez sur « Or choose files ». Chaque fichier affiche une icône de son type. Un fichier que l'application ne peut pas prendre est refusé aussitôt, avec la raison, avant que rien ne soit envoyé :
+</p>
+<table>
+  <thead>
+    <tr><th>Cas</th><th>Raison affichée</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>un type que l'application ne lit pas</td><td>this type of file is not supported (ce type de fichier n'est pas pris en charge)</td></tr>
+    <tr><td>plus de 50 Mo</td><td>over the 50 MB limit (au-delà de la limite de 50 Mo)</td></tr>
+    <tr><td>un fichier vide</td><td>is empty (est vide)</td></tr>
+    <tr><td>un nom de plus de 255 caractères</td><td>the name is too long (le nom est trop long)</td></tr>
+    <tr><td>un sixième fichier, et les suivants</td><td>an upload holds 5 at most (un téléversement en contient 5 au plus)</td></tr>
+  </tbody>
+</table>
+<p>
+  Les PDF numérisés et les classeurs ne peuvent être jugés qu'une fois lus : ils sont contrôlés après le téléversement, et l'écran le dit.
+</p>
+
+<h3>Étape 2 — Where (l'emplacement, depuis le menu Apps seulement)</h3>
+<p>
+  Choisissez un espace (chacun porte l'icône Confluence). En dessous, le cadre « Parent page or folder » est là dès le départ et dit « Choose a space to see its pages ». Une fois l'espace choisi, le cadre montre ses pages dans le même ordre que la barre latérale de Confluence, dossiers compris, et elles s'ouvrent niveau par niveau. La page d'accueil de l'espace est la première ligne.
+</p>
+<p>
+  Un seul champ, « Filter by title », se trouve en haut du cadre. Vide, vous voyez l'arbre. Dès deux lettres, les pages et dossiers dont le titre commence par ce que vous avez tapé remplacent les lignes de l'arbre ; choisissez-en un, puis videz le champ pour revenir à l'arbre. Une ligne sous le champ rappelle ce que montre la liste.
+</p>
+<p>
+  Une ligne rappelle où iront les pages, sous la forme « espace › page ». L'application vous dit aussitôt si vous ne pouvez pas créer de page à l'endroit choisi. Si elle n'a pas pu lire votre autorisation, elle le dit et propose « Check again ».
+</p>
+
+<h3>Étape 3 — Publish (la publication)</h3>
+<p>
+  Une phrase rappelle combien de fichiers vont sous quel emplacement. Cliquez sur « Publish ». L'écran dit alors ce qu'il fait, fichier par fichier : « Uploading… », « Uploaded, waiting its turn », « Reading the file… », « Creating the page… », puis « Published ».
+</p>
+<p>
+  Quand c'est fini, un bloc vert dit combien de pages ont été publiées et sous quel emplacement, avec un lien « Open the page » pour chacune. Les fichiers qui n'ont pas pu être publiés sont listés dessous dans un bloc orange, avec leur raison ; si aucun n'a pu l'être, un bloc rouge dit « Nothing was published ». « Upload more files » recommence.
+</p>
+<p>
+  Quand certains fichiers n'ont pas pu être envoyés ou démarrés, « Try again with these files » revient à la dernière étape avec ces fichiers seulement, pour le même emplacement.
+</p>
+<p>
+  Vous pouvez revenir de l'étape 2 à l'étape 1, et de l'étape 3 à l'une ou l'autre, jusqu'au clic sur Publish. Le titre de l'écran dit où vous en êtes (« Step 2 of 3: Where »).
+</p>
 
 <h2>Ce qui est publié</h2>
+<table>
+  <thead>
+    <tr><th>Fichier</th><th>Devient</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Word (.docx)</td><td>une page : titres, listes, tableaux, images, liens, notes de bas de page</td></tr>
+    <tr><td>PowerPoint (.pptx)</td><td>une page, un onglet Confluence par diapositive</td></tr>
+    <tr><td>Excel (.xlsx)</td><td>une page, un onglet Confluence par feuille</td></tr>
+    <tr><td>PDF</td><td>une page, un onglet Confluence par page de PDF</td></tr>
+    <tr><td>PNG, JPEG</td><td>une page d'image</td></tr>
+  </tbody>
+</table>
+<p>
+  Un fichier Google Docs, Sheets ou Slides peut être publié en le téléchargeant d'abord en .docx, .xlsx ou .pptx.
+</p>
 <ul>
-  <li><strong>Word, Google Docs</strong> : titres, listes, tableaux, images et liens, sous forme de texte. Une partie qui ne peut pas être publiée est signalée sur le tableau de bord.</li>
-  <li><strong>Excel, Google Sheets</strong> : un onglet par feuille sur la page (6 onglets, 100 lignes sur 10 colonnes chacun au plus).</li>
-  <li><strong>PowerPoint, Google Slides</strong> : un onglet par diapositive (21 au plus) ; une diapositive de plus de 500 éléments n'est pas publiée, et le tableau de bord le dit.</li>
-  <li><strong>PDF</strong> : jusqu'à 15 pages.</li>
-  <li><strong>Images PNG et JPEG</strong> : publiées comme page d'image.</li>
-  <li><strong>Codes QR</strong> dans un PDF : publiés comme des images. L'application ne les décode pas.</li>
-  <li><strong>Pages incomplètes</strong> : quand des mots ou des parties de la source manquent dans une page, le tableau de bord affiche une ligne sous le fichier et un bouton « See » les liste. Ce contrôle ne bloque jamais la publication. Autres remarques possibles sous un fichier : une image de PDF illisible, absente de la page ; « le contrôle des mots perdus n'a pas pu être fait » (l'application n'a pas pu relire le fichier ou la page publiée, donc elle ne peut pas dire si des mots manquent) ; « la traduction n'a pas pu être faite » (la page est publiée dans sa langue d'origine).</li>
-  <li><strong>Une page modifiée à la main dans Confluence est réécrite au prochain changement de son fichier Drive.</strong> La version précédente reste dans l'historique de la page. D'ici là, la modification est laissée telle quelle. Une page déplacée dans l'espace reste où elle a été mise.</li>
-  <li><strong>Un fichier supprimé dans Drive</strong> envoie sa page à la corbeille de l'espace, d'où on peut la restaurer.</li>
-</ul>
-
-<h2>Gérer les documents</h2>
-<p>Ouvrez « Sync manager » sur la carte d'une connexion pour voir la liste de ses fichiers.</p>
-<ul>
-  <li><strong>Dates.</strong> « Modified in Drive » est le jour du dernier changement du fichier dans Drive. « Published on » est le jour de la dernière écriture de sa page par l'application. Un tiret : aucune publication depuis l'ajout de cette colonne. Une synchronisation en échec garde la date du dernier succès. Un renommage ou un déplacement seul ne la change pas. Jours en UTC.</li>
-  <li><strong>Lecture IA</strong> (interrupteur avec l'icône IA, sur un PDF) : active la lecture par IA des pages scannées. Elle s'applique au prochain « Republish ».</li>
-  <li><strong>Cocher / décocher.</strong> Décocher un fichier publié détache sa page : elle reste dans Confluence, sans plus être mise à jour ; rien n'est supprimé. Décocher un dossier détache toutes les pages qu'il contient. Recocher un fichier réécrit la même page depuis Drive. Les changements s'appliquent avec « Sync now ».</li>
-  <li><strong>Sync now</strong> : lance tout de suite une synchronisation de tout le dossier. Sans licence active, il le dit et ne lance rien. Sinon, une synchronisation démarre d'elle-même dans les minutes qui suivent un changement dans Drive, et chaque heure l'application contrôle ses dossiers.</li>
-  <li><strong>Republish</strong> (sur la ligne d'un document) : réécrit cette seule page tout de suite depuis Drive, même si le fichier n'a pas changé ; elle remplace une page modifiée à la main.</li>
-  <li><strong>Audit log</strong> (page d'accueil) : tout ce que l'application a fait, le plus récent d'abord, y compris la déconnexion du compte Google et la confirmation ou non de Google.</li>
-  <li><strong>Carte d'une connexion</strong> (page d'accueil). « La page du dossier ... n'a pas pu être créée » : un dossier n'a pas encore de page ; ses documents sont publiés dès qu'elle existe, et la prochaine synchronisation réessaie. « Google ne répond pas pour le moment » : panne passagère, rien à faire, rechargez dans quelques minutes. « Connect Google account » (à droite de l'en-tête, avant le menu « ... ») apparaît quand l'accès Google est perdu.</li>
-  <li><strong>Espace qui exige une approbation.</strong> Si l'espace Confluence a « Require approval before publishing », Confluence refuse les mises à jour de l'application (erreur 409). La page garde sa version précédente. Désactivez cette option dans les paramètres de l'espace, ou connectez le dossier à un autre espace.</li>
+  <li><strong>Le titre de la page</strong> est le nom du fichier sans son extension. Si une page de l'espace le porte déjà, un numéro est ajouté : « Report (2) ».</li>
+  <li><strong>PDF numérisés.</strong> Un PDF de 3 pages ou moins est publié même s'il est entièrement numérisé (une attestation, un reçu, une page signée). Au-delà de 3 pages, un PDF dont plus de la moitié des pages sont des scans est refusé, et l'écran dit pourquoi. Une page numérisée est publiée comme son image : ses mots ne sont donc pas retrouvables par la recherche ; un PDF qui porte une couche de texte (reconnaissance de caractères faite au préalable) est lu en entier.</li>
+  <li><strong>Classeurs.</strong> Un classeur dont aucune feuille n'est assez petite pour une page est refusé, et l'écran dit pourquoi : aucune page vide n'est jamais créée.</li>
+  <li><strong>Les parties que l'application ne sait pas convertir</strong> (un type de graphique, un objet incorporé) et les images manquantes sont laissées de côté, et une ligne sous le fichier le dit.</li>
+  <li><strong>Les mots que la source cache</strong> (feuilles masquées, texte masqué) ne sont jamais publiés : l'application publie ce que l'éditeur montre, pas ce que le fichier stocke.</li>
 </ul>
 
 <h2>Limites</h2>
-<ul>
-  <li>PDF : 15 pages par document. Un document plus long est refusé, avec un message qui nomme la limite.</li>
-  <li>50 documents par connexion, sous-dossiers compris. À la confirmation, la connexion est refusée si elle dépasse ; pendant une synchronisation, les documents au-delà de la limite ne sont pas publiés, et rien n'est supprimé ni détaché. Les pages de dossier ne comptent jamais.</li>
-  <li>Excel et Google Sheets : 6 onglets par page, 100 lignes et 10 colonnes par feuille.</li>
-  <li>PowerPoint et Google Slides : 21 onglets de diapositives par page, 500 éléments par diapositive.</li>
-</ul>
+<table>
+  <thead>
+    <tr><th>Limite</th><th>Valeur</th><th>Au-delà</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Fichiers par téléversement</td><td>5</td><td>Le sixième et les suivants sont laissés de côté, à l'étape 1.</td></tr>
+    <tr><td>Taille d'un fichier</td><td>50 Mo</td><td>Le fichier est refusé à l'étape 1.</td></tr>
+    <tr><td>Pages par PDF</td><td>15</td><td>Le PDF est refusé, avec un message qui nomme la limite.</td></tr>
+    <tr><td>PDF numérisé</td><td>toutes les pages jusqu'à 3 ; au-delà, la moitié de ses pages au plus</td><td>Le PDF est refusé, et l'écran dit pourquoi.</td></tr>
+    <tr><td>Téléversements par mois, par site</td><td>10 000 fichiers</td><td>Rien n'est démarré ; l'écran le dit, et le compte repart le 1er (UTC).</td></tr>
+    <tr><td>Onglets par page PowerPoint</td><td>21</td><td>Les diapositives au-delà n'ont pas d'onglet ; une ligne sous les onglets le dit.</td></tr>
+    <tr><td>Éléments sur une diapositive</td><td>500</td><td>Cette diapositive n'est pas publiée ; le résultat le dit.</td></tr>
+    <tr><td>Onglets par page Excel</td><td>20</td><td>Les feuilles au-delà de la vingtième n'ont pas d'onglet.</td></tr>
+    <tr><td>Taille d'une feuille</td><td>55 lignes sur 21 colonnes</td><td>Cette feuille n'est pas publiée.</td></tr>
+    <tr><td>Enfants affichés par niveau dans l'arbre (étape 2)</td><td>250</td><td>« Only the first 250 are shown. Use the filter above. » (seuls les 250 premiers sont affichés ; utilisez le filtre)</td></tr>
+    <tr><td>Espaces listés (étape 2)</td><td>1 000</td><td>Une ligne le dit ; seuls les 1 000 premiers apparaissent.</td></tr>
+  </tbody>
+</table>
 
-<h3>Essai et licence</h3>
-<ul>
-  <li>L'application est payante via Atlassian. L'essai gratuit est celui d'Atlassian, 30 jours ; une licence d'évaluation compte comme active.</li>
-  <li>Sans licence active (essai terminé, abonnement échu), les synchronisations s'arrêtent : aucune ne démarre, ni manuelle ni automatique. Un avertissement sur la page d'accueil l'indique, et « Sync now » répond « No active license: nothing syncs ». Les pages déjà publiées restent telles quelles et rien n'est supprimé.</li>
-  <li>Pour reprendre, abonnez-vous depuis l'Atlassian Marketplace ; les synchronisations redémarrent.</li>
-</ul>
-
-<h2>Déconnecter, désinstaller et vos données</h2>
-<ul>
-  <li><strong>Déconnecter un dossier</strong> (« More actions » sur sa carte) : ses pages sont figées dans Confluence, jamais supprimées. Une connexion déconnectée peut être retirée de la liste sans toucher à aucune page.</li>
-  <li><strong>Déconnecter le compte Google</strong> (« Disconnect Google » dans l'en-tête) : le jeton est révoqué chez Google et supprimé, et toutes les connexions qui en dépendent sont suspendues. Reconnecter Google les réveille. Si Google ne confirme pas avoir retiré l'accès, l'application le dit ; ouvrez alors myaccount.google.com/permissions et retirez « Miksumia Publisher ».</li>
-  <li><strong>Désinstaller</strong> : avant la fin de la désinstallation, l'application révoque le jeton Google et supprime ses canaux de notification. Atlassian supprime ensuite en douceur les données restantes de l'application et les conserve 28 jours. Les pages déjà publiées restent dans votre espace.</li>
-  <li><strong>Vos données</strong> : l'application conserve les réglages des connexions, les titres et identifiants techniques des documents, et des enregistrements techniques ; pas le contenu de vos documents. Détails dans notre <a href="/privacy-fr.html">politique de confidentialité</a>.</li>
-</ul>
-
-<h2>Obtenir de l'aide</h2>
+<h2>Vos fichiers et vos données</h2>
 <p>
-  Consultez la <a href="/support-fr.html">page de support</a> ou écrivez à <a href="mailto:contact@miksumia.com">contact@miksumia.com</a>. Voir aussi les <a href="/terms-fr.html">conditions d'utilisation</a>.
+  Votre fichier ne passe jamais par les fonctions de l'application : votre navigateur le dépose dans le stockage temporaire de l'application, chez Atlassian ; une tâche en arrière-plan le lit, publie la page et efface le fichier. Un fichier resté en place expire de lui-même en moins d'une heure. Le résultat (le lien de la page et ses avertissements) n'est gardé que jusqu'à ce que votre écran l'ait lu, 24 heures au plus.
+</p>
+<p>
+  Rien de vos documents n'est conservé : ni copie, ni texte extrait, ni journal de leur contenu. Les pages créées sont à vous, comme toute page de votre espace, et elles restent si l'application est désinstallée. Vos documents ne quittent jamais Atlassian. Détails dans notre <a href="/privacy-fr.html">politique de confidentialité</a>.
+</p>
+
+<h2>Messages et que faire</h2>
+<p>
+  Les messages s'affichent en anglais, tels que ci-dessous.
+</p>
+<table>
+  <thead>
+    <tr><th>Message</th><th>Que faire</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>this type of file is not supported</td><td>Enregistrez le fichier en .docx, .xlsx, .pptx, .pdf, .png ou .jpg.</td></tr>
+    <tr><td>over the 50 MB limit</td><td>Réduisez le fichier, ou découpez-le.</td></tr>
+    <tr><td>is empty</td><td>Vérifiez que le fichier s'ouvre sur votre ordinateur.</td></tr>
+    <tr><td>the name is too long</td><td>Renommez le fichier (255 caractères au plus).</td></tr>
+    <tr><td>an upload holds 5 at most</td><td>Publiez les autres dans un second téléversement.</td></tr>
+    <tr><td>You cannot create a page here</td><td>Choisissez un autre endroit, ou demandez à l'administrateur de l'espace le droit de créer des pages.</td></tr>
+    <tr><td>The permission could not be checked</td><td>Cliquez sur « Check again ».</td></tr>
+    <tr><td>The monthly limit of 10,000 uploads for this site is reached. It starts again on the 1st (UTC).</td><td>Attendez le 1er du mois prochain (UTC).</td></tr>
+    <tr><td>the parent page or folder was not found</td><td>Elle ou il a été déplacé ou supprimé : choisissez un autre endroit.</td></tr>
+    <tr><td>the file could not be read</td><td>Le fichier est abîmé : ouvrez-le, enregistrez-le de nouveau, téléversez la copie.</td></tr>
+    <tr><td>the file is too large</td><td>Le PDF a plus de 15 pages : découpez-le.</td></tr>
+    <tr><td>too many of its pages are scans</td><td>Utilisez un PDF avec une couche de texte, ou publiez-en un plus court.</td></tr>
+    <tr><td>no sheet of the workbook fits on a page</td><td>Réduisez les feuilles à 55 lignes et 21 colonnes, ou découpez le classeur.</td></tr>
+    <tr><td>another page took its title, try again</td><td>Une page du même titre est apparue entre-temps : téléversez de nouveau.</td></tr>
+    <tr><td>could not be sent / could not be started</td><td>Cliquez sur « Try again with these files » ; contactez le support si cela persiste.</td></tr>
+    <tr><td>no answer yet, it may still be published</td><td>Regardez sous la page parente : elle a peut-être été publiée.</td></tr>
+    <tr><td>The spaces could not be listed / This level could not be read / The search did not answer</td><td>Cliquez sur « Try again ».</td></tr>
+  </tbody>
+</table>
+
+<h2>Prix, assistance et conditions</h2>
+<p>
+  L'application est gratuite : ni abonnement, ni essai, ni licence. Consultez la <a href="/support-fr.html">page de support</a> ou écrivez à <a href="mailto:contact@miksumia.com">contact@miksumia.com</a>. Voir aussi les <a href="/terms-fr.html">conditions d'utilisation</a>.
+</p>
+
+<h2>Bâti sur</h2>
+<p>
+  L'application repose sur <strong>skryba</strong>, son lecteur de documents open source (AGPL-3.0) : <a href="https://www.npmjs.com/package/skryba">npmjs.com/package/skryba</a>.
+</p>
+<p>
+  Trois des décisions de lecture de skryba viennent de Side Liu, Jiangpeng Liu, Jinwen Xin, Guojun Peng et Jiang Ming, « Beyond the Editing Canvas: Evidence Divergence in OOXML-to-LLM Ingestion », <a href="https://arxiv.org/abs/2608.25880">arXiv:2608.25880</a>, à commencer par celle citée plus haut : publier ce que l'éditeur montre, jamais ce que le fichier stocke.
 </p>
 
 <footer>
