@@ -79,7 +79,7 @@
   <span style="float:right;font-family:var(--sans);font-size:.95rem;color:var(--muted)"><a href="/security-fr.html" hreflang="fr" lang="fr">FR</a> | EN</span>
   <h1>Security</h1>
   <p class="meta">
-    Publisher MIKSUMIA · “Miksumia Publisher” application · Version of 5 October 2026
+    Publisher MIKSUMIA · “Miksumia Publisher” application · Version of 8 November 2026
   </p>
 </header>
 
@@ -126,10 +126,9 @@
 <h3>Scope</h3>
 <p>
   This policy covers the “Miksumia Publisher” application and the
-  <a href="/">miksumia.com</a> website. The third-party platforms on which
-  the application runs or whose APIs it consumes — Atlassian, Google —
-  fall outside this scope: contact their respective
-  programmes directly.
+  <a href="/">miksumia.com</a> website. The platform on which the
+  application runs — Atlassian — falls outside this scope: contact its
+  programme directly.
 </p>
 
 <h3>What we ask of you</h3>
@@ -180,8 +179,8 @@
     and extent, and determine whether personal data is
     involved.</li>
   <li><strong>Contain.</strong> Suspend or revoke the access concerned.
-    The application can be disabled on an installation, and the Google
-    authorisation revoked, without waiting for the fix.</li>
+    The previous version of the application can be redeployed without
+    waiting for the fix.</li>
   <li><strong>Fix.</strong> Develop the fix, verify it with
     tests, then deploy it to development before production.</li>
   <li><strong>Communicate.</strong> Inform the administrators of the sites
@@ -220,27 +219,25 @@
   by Atlassian:
 </p>
 <ul>
-  <li>the connection settings: Drive folder identifier, target space,
-    status, synchronisation and translation settings;</li>
-  <li>for each synchronised document: Drive identifier, <strong>document
-    title</strong>, type, parent folder, Confluence page identifier,
-    SHA-256 fingerprint of the published content, technical state;</li>
-  <li>for each folder: <strong>folder title</strong> and identifiers;
-    exclusion rules (file and folder identifiers);</li>
-  <li>technical records: synchronisations, notification
-    channels, monthly AI counters, emergency switches, audit
-    events, technical facts per PDF.</li>
+  <li>the uploaded file, in the Forge Object Store, until it is read: it is
+    erased once read, whether its page is published or not, and expires by
+    itself after one hour;</li>
+  <li>the result of each upload: uploader's account identifier, destination
+    and created page identifiers, <strong>page title</strong> (the file name
+    without its extension), our status and error codes. Erased when the screen
+    has shown it, and expiring after 24 hours;</li>
+  <li>a counter of the site's uploads per month, for the monthly limit.</li>
 </ul>
 <p>
-  The full content of documents is not retained: it is read, converted and
-  published in Confluence. The Google refresh token and the email address
-  of the connected Google account are kept in Forge's encrypted secrets storage.
+  The content of documents is not retained: it is read, converted and
+  published in Confluence. An object erased from the Forge Object Store stays
+  restorable by Atlassian for 21 days, on a support request only.
 </p>
 <p>
   Data is processed and stored on the Atlassian Forge infrastructure.
-  Miksumia operates neither a server nor a database. Data leaves
-  Atlassian only to the Google services below; calls to Confluence
-  go through Forge and are not an egress to the outside. For
+  Miksumia operates neither a server nor a database. No data leaves
+  Atlassian; calls to Confluence go through Forge and are not an egress to
+  the outside. For
   hosting (location, encryption, certifications), see Atlassian's
   pages:
   <a href="https://www.atlassian.com/trust" rel="noopener">Atlassian Trust Center</a>
@@ -252,46 +249,24 @@
 <table>
   <tr><th>Subprocessor</th><th>Role</th></tr>
   <tr><td>Atlassian</td><td>Application hosting and storage (Forge); Confluence</td></tr>
-  <tr><td>Google</td><td>Read-only access to Drive, Sheets and Slides (OAuth authorisation); Gemini API for only the features enabled by an administrator</td></tr>
 </table>
 
 <h3>Declared network destinations</h3>
-<p>Exactly the addresses declared in the application's manifest:</p>
-<ul>
-  <li>www.googleapis.com, oauth2.googleapis.com, sheets.googleapis.com,
-    slides.googleapis.com, docs.google.com and *.googleusercontent.com:
-    reading of the connected files and OAuth authorisation, read-only.
-    They receive the access token and file identifiers;</li>
-  <li>generativelanguage.googleapis.com: Gemini API (Gemini Developer API,
-    not Vertex AI). It is the only service that receives customer content.</li>
-</ul>
 <p>
-  Gemini receives content in two cases only. (1) Translation: as soon as an
-  administrator chooses a language for a folder, the text of its documents
-  is sent to it on every synchronisation of that folder. (2) AI reading of a
-  scanned PDF: it is requested document by document, and the pages of the PDF
-  are then sent. A fixed instruction accompanies the request; the title, the file
-  name, the space and the user are not sent. Nothing else
-  leaves Atlassian: no Confluence content, no Atlassian user
-  data, no telemetry, no audience analytics, no external
+  None. The application's manifest declares no external address, and the
+  platform enforces it at runtime: the application can reach nothing outside
+  Atlassian. No AI service, no telemetry, no audience analytics, no external
   logging.
 </p>
-<!-- Applicable Gemini terms (tier, training, retention): conditions to be confirmed. Assert nothing here before then. -->
 
 <h3>Retention and deletion</h3>
 <ul>
-  <li>Storage has no time-to-live: records last as long as
-    the connection. Only the OAuth anti-CSRF state expires (10 minutes).</li>
-  <li>Deleting a connection (after disconnecting it) erases its
-    document records, its folder mappings, its exclusion rules
-    and its last synchronisation.</li>
-  <li>Disconnecting the Google account revokes the token with Google, then
-    deletes it and the stored email address.</li>
-  <li>On uninstallation, the application first revokes the Google authorisation
-    (<code>preUninstall</code> step), suspends the connections and removes the
-    notification channels. Atlassian then deletes the stored data
-    after 28 days, according to the Forge hosted storage lifecycle
-    (Atlassian documentation).</li>
+  <li>An uploaded file is erased once read, and expires after one hour at the
+    latest. The result of an upload expires after 24 hours.</li>
+  <li>The application never updates or deletes a published page.</li>
+  <li>On uninstallation, Atlassian deletes the stored data after 28 days,
+    according to the Forge hosted storage lifecycle (Atlassian
+    documentation).</li>
   <li>Pages already published remain in the customer's Confluence space, to which
     they belong.</li>
   <li>There is no self-service export. Any request:
@@ -310,38 +285,34 @@
 
 <h3>Data classification</h3>
 <ul>
-  <li><strong>Secrets.</strong> OAuth credentials and Google refresh
-    tokens. Handled according to the “secrets management” section below.</li>
-  <li><strong>Customer content.</strong> Documents read from Google Drive and
-    derived content. Processed in memory, published in Confluence, retained
+  <li><strong>Customer content.</strong> The uploaded files and the content
+    derived from them. Processed in memory, published in Confluence, retained
     only to the extent described above and in the
     <a href="/privacy.html">privacy policy</a>.</li>
-  <li><strong>Technical data.</strong> File identifiers, document and folder
-    titles, fingerprints, counters, synchronisation states.</li>
+  <li><strong>Technical data.</strong> Account and page identifiers, page
+    titles, status and error codes, monthly counters.</li>
 </ul>
 
 <h3>Access control</h3>
 <p>
-  The application's features are restricted to the administrators of the
-  Confluence site, verified server-side on every request with Confluence
-  itself, never inferred from the interface. Access to Google Drive is requested
-  read-only and limited to the folders explicitly connected by
-  the administrator.
+  Any user who may create a page in a space can publish there with the
+  application. Before an upload starts, the application checks server-side,
+  with the uploader's own Confluence rights, that they may create a page at
+  the chosen place; the screen checks it too, but is never trusted alone. An
+  uploaded file is stored under the uploader's own account and read back only
+  for them.
 </p>
 <p>
-  The publisher's administration accounts — Atlassian developer console,
-  Google Cloud console, code repository — are personal and protected by
-  two-factor authentication.
+  The publisher's administration accounts — Atlassian developer console and
+  code repository — are personal and protected by two-factor authentication.
 </p>
 
 <h3>Secrets management</h3>
 <p>
-  No secret appears in the source code. The OAuth client credentials
-  are supplied at deployment through Forge environment variables. Refresh
-  tokens are written exclusively to Forge's encrypted storage,
-  revoked with Google and then deleted when the account is disconnected or
-  the application is uninstalled. No secret is logged, returned in a
-  response, or included in an error message.
+  No secret appears in the source code. The application holds no
+  third-party token. Deployment secrets are kept in Forge's encrypted
+  environment variables. No secret is logged, returned in a response, or
+  included in an error message.
 </p>
 
 <h3>Encryption of communications</h3>
@@ -370,13 +341,9 @@
 </p>
 <p>
   The tests used the “App Defense Alliance ADA Burp Audit
-  Scan Configuration” configuration.
-</p>
-
-<h3>Google OAuth verification</h3>
-<p>
-  Google's OAuth verification of the application was approved on
-  28 September 2026.
+  Scan Configuration” configuration. That version read Google Drive; the
+  current version, which no longer connects to Google, has not been assessed
+  again.
 </p>
 
 <h3>Cloud Security Alliance STAR registry</h3>

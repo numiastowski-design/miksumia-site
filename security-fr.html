@@ -79,7 +79,7 @@
   <span style="float:right;font-family:var(--sans);font-size:.95rem;color:var(--muted)">FR | <a href="/security.html" hreflang="en" lang="en">EN</a></span>
   <h1>Sécurité</h1>
   <p class="meta">
-    Éditeur MIKSUMIA · Application « Miksumia Publisher » · Version du 5 octobre 2026
+    Éditeur MIKSUMIA · Application « Miksumia Publisher » · Version du 8 novembre 2026
   </p>
 </header>
 
@@ -126,10 +126,9 @@
 <h3>Périmètre</h3>
 <p>
   Cette politique couvre l'application « Miksumia Publisher » et le site
-  <a href="/index-fr.html">miksumia.com</a>. Les plateformes tierces sur lesquelles
-  l'application s'exécute ou dont elle consomme les API — Atlassian, Google —
-  ne relèvent pas de ce périmètre : adressez-vous directement à leurs
-  programmes respectifs.
+  <a href="/index-fr.html">miksumia.com</a>. La plateforme sur laquelle
+  l'application s'exécute — Atlassian — ne relève pas de ce périmètre :
+  adressez-vous directement à son programme.
 </p>
 
 <h3>Ce que nous vous demandons</h3>
@@ -180,8 +179,8 @@
     et l'étendue, et déterminer si des données personnelles sont
     concernées.</li>
   <li><strong>Contenir.</strong> Suspendre ou révoquer les accès concernés.
-    L'application peut être désactivée sur une installation, et l'autorisation
-    Google révoquée, sans attendre la correction.</li>
+    La version précédente de l'application peut être redéployée sans
+    attendre la correction.</li>
   <li><strong>Corriger.</strong> Développer le correctif, le vérifier par des
     tests, puis le déployer en développement avant la production.</li>
   <li><strong>Communiquer.</strong> Informer les administrateurs des sites
@@ -220,27 +219,26 @@
   par Atlassian :
 </p>
 <ul>
-  <li>les réglages de connexion : identifiant du dossier Drive, espace cible,
-    état, réglages de synchronisation et de traduction ;</li>
-  <li>pour chaque document synchronisé : identifiant Drive, <strong>titre du
-    document</strong>, type, dossier parent, identifiant de la page Confluence,
-    empreinte SHA-256 du contenu publié, état technique ;</li>
-  <li>pour chaque dossier : <strong>titre du dossier</strong> et identifiants ;
-    règles d'exclusion (identifiants de fichiers et de dossiers) ;</li>
-  <li>des enregistrements techniques : synchronisations, canaux de
-    notification, compteurs mensuels d'IA, interrupteurs d'urgence, événements
-    d'audit, faits techniques par PDF.</li>
+  <li>le fichier déposé, dans le Forge Object Store, jusqu'à sa lecture : il
+    est effacé une fois lu, que sa page soit publiée ou non, et expire de
+    lui-même au bout d'une heure ;</li>
+  <li>le résultat de chaque dépôt : identifiant du compte de la personne qui
+    dépose, identifiants de la destination et de la page créée, <strong>titre
+    de la page</strong> (le nom du fichier sans son extension), nos codes
+    d'état et d'erreur. Effacé dès que l'écran l'a montré, et expiré au bout
+    de 24 heures ;</li>
+  <li>un compteur des dépôts du site par mois, pour la limite mensuelle.</li>
 </ul>
 <p>
-  Le contenu complet des documents n'est pas conservé : il est lu, converti et
-  publié dans Confluence. Le jeton d'actualisation Google et l'adresse e-mail
-  du compte Google connecté sont gardés dans le stockage chiffré des secrets de Forge.
+  Le contenu des documents n'est pas conservé : il est lu, converti et publié
+  dans Confluence. Un objet effacé du Forge Object Store reste restaurable par
+  Atlassian pendant 21 jours, sur demande au support uniquement.
 </p>
 <p>
   Les données sont traitées et conservées sur l'infrastructure Atlassian Forge.
-  Miksumia n'exploite ni serveur ni base de données. Les données ne quittent
-  Atlassian que vers les services Google ci-dessous ; les appels à Confluence
-  passent par Forge et ne sont pas une sortie vers l'extérieur. Pour
+  Miksumia n'exploite ni serveur ni base de données. Aucune donnée ne quitte
+  Atlassian ; les appels à Confluence passent par Forge et ne sont pas une
+  sortie vers l'extérieur. Pour
   l'hébergement (emplacement, chiffrement, certifications), voir les pages
   d'Atlassian :
   <a href="https://www.atlassian.com/trust" rel="noopener">Atlassian Trust Center</a>
@@ -252,46 +250,24 @@
 <table>
   <tr><th>Sous-traitant</th><th>Rôle</th></tr>
   <tr><td>Atlassian</td><td>Hébergement de l'application et stockage (Forge) ; Confluence</td></tr>
-  <tr><td>Google</td><td>Lecture seule de Drive, Sheets et Slides (autorisation OAuth) ; API Gemini pour les seules fonctions activées par un administrateur</td></tr>
 </table>
 
 <h3>Destinations réseau déclarées</h3>
-<p>Exactement les adresses déclarées au manifeste de l'application :</p>
-<ul>
-  <li>www.googleapis.com, oauth2.googleapis.com, sheets.googleapis.com,
-    slides.googleapis.com, docs.google.com et *.googleusercontent.com :
-    lecture des fichiers connectés et autorisation OAuth, en lecture seule.
-    Elles reçoivent le jeton d'accès et des identifiants de fichiers ;</li>
-  <li>generativelanguage.googleapis.com : API Gemini (Gemini Developer API,
-    pas Vertex AI). C'est le seul service qui reçoit du contenu client.</li>
-</ul>
 <p>
-  Gemini reçoit du contenu dans deux cas seulement. (1) Traduction : dès qu'un
-  administrateur choisit une langue pour un dossier, le texte de ses documents
-  lui est envoyé à chaque synchronisation de ce dossier. (2) Lecture par IA d'un
-  PDF numérisé : elle est demandée document par document, et les pages du PDF
-  sont alors envoyées. Une consigne fixe accompagne l'envoi ; le titre, le nom
-  de fichier, l'espace et l'utilisateur ne sont pas envoyés. Rien d'autre ne
-  quitte Atlassian : aucun contenu Confluence, aucune donnée d'utilisateur
-  Atlassian, aucune télémétrie, aucune analyse d'audience, aucun journal
-  externe.
+  Aucune. Le manifeste de l'application ne déclare aucune adresse externe, et
+  la plateforme l'impose à l'exécution : l'application ne peut rien joindre
+  hors d'Atlassian. Aucun service d'IA, aucune télémétrie, aucune analyse
+  d'audience, aucun journal externe.
 </p>
-<!-- Conditions Gemini applicables (palier, entraînement, conservation) : conditions to be confirmed. Ne rien affirmer ici avant. -->
 
 <h3>Conservation et suppression</h3>
 <ul>
-  <li>Le stockage n'a pas de durée de vie : les enregistrements durent autant
-    que la connexion. Seul l'état anti-CSRF d'OAuth expire (10 minutes).</li>
-  <li>Supprimer une connexion (après l'avoir déconnectée) efface ses
-    enregistrements de documents, ses correspondances de dossiers, ses règles
-    d'exclusion et sa dernière synchronisation.</li>
-  <li>Déconnecter le compte Google révoque le jeton auprès de Google puis le
-    supprime, avec l'adresse e-mail conservée.</li>
-  <li>À la désinstallation, l'application révoque d'abord l'autorisation Google
-    (étape <code>preUninstall</code>), suspend les connexions et retire les
-    canaux de notification. Atlassian supprime ensuite les données stockées
-    après 28 jours, selon le cycle de vie du stockage Forge hébergé
-    (documentation Atlassian).</li>
+  <li>Un fichier déposé est effacé une fois lu, et expire au plus tard au bout
+    d'une heure. Le résultat d'un dépôt expire au bout de 24 heures.</li>
+  <li>L'application ne modifie ni ne supprime jamais une page publiée.</li>
+  <li>À la désinstallation, Atlassian supprime les données stockées après
+    28 jours, selon le cycle de vie du stockage Forge hébergé (documentation
+    Atlassian).</li>
   <li>Les pages déjà publiées restent dans l'espace Confluence du client, à qui
     elles appartiennent.</li>
   <li>Il n'existe pas d'export en libre-service. Toute demande :
@@ -310,38 +286,35 @@
 
 <h3>Classification des données</h3>
 <ul>
-  <li><strong>Secrets.</strong> Identifiants OAuth et jetons d'actualisation
-    Google. Traités selon la section « gestion des secrets » ci-dessous.</li>
-  <li><strong>Contenu client.</strong> Documents lus dans Google Drive et
-    contenu dérivé. Traité en mémoire, publié dans Confluence, conservé
+  <li><strong>Contenu client.</strong> Les fichiers déposés et le contenu qui
+    en est tiré. Traité en mémoire, publié dans Confluence, conservé
     seulement dans la mesure décrite plus haut et dans la
     <a href="/privacy-fr.html">politique de confidentialité</a>.</li>
-  <li><strong>Données techniques.</strong> Identifiants de fichiers, titres de
-    documents et de dossiers, empreintes, compteurs, états de synchronisation.</li>
+  <li><strong>Données techniques.</strong> Identifiants de comptes et de
+    pages, titres de pages, codes d'état et d'erreur, compteurs mensuels.</li>
 </ul>
 
 <h3>Contrôle des accès</h3>
 <p>
-  Les fonctions de l'application sont réservées aux administrateurs du site
-  Confluence, vérifié côté serveur à chaque requête auprès de Confluence
-  lui-même, jamais déduit de l'interface. L'accès à Google Drive est demandé en
-  lecture seule et limité aux dossiers explicitement connectés par
-  l'administrateur.
+  Toute personne qui peut créer une page dans un espace peut y publier avec
+  l'application. Avant le début d'un envoi, l'application vérifie côté
+  serveur, avec les droits Confluence propres à la personne qui dépose,
+  qu'elle peut créer une page à l'endroit choisi ; l'écran le vérifie aussi,
+  mais ne fait jamais foi seul. Un fichier déposé est rangé sous le compte de
+  la personne qui dépose et relu pour elle seule.
 </p>
 <p>
-  Les comptes d'administration de l'éditeur — console développeur Atlassian,
-  console Google Cloud, dépôt de code — sont nominatifs et protégés par
-  authentification à deux facteurs.
+  Les comptes d'administration de l'éditeur — console développeur Atlassian
+  et dépôt de code — sont nominatifs et protégés par authentification à deux
+  facteurs.
 </p>
 
 <h3>Gestion des secrets</h3>
 <p>
-  Aucun secret ne figure dans le code source. Les identifiants client OAuth
-  sont fournis au déploiement par variables d'environnement Forge. Les jetons
-  d'actualisation sont écrits exclusivement dans le stockage chiffré de Forge,
-  révoqués auprès de Google puis supprimés lors de la déconnexion du compte ou
-  de la désinstallation. Aucun secret n'est journalisé, renvoyé dans une
-  réponse, ni inclus dans un message d'erreur.
+  Aucun secret ne figure dans le code source. L'application ne détient aucun
+  jeton d'un tiers. Les secrets de déploiement sont gardés dans les variables
+  d'environnement chiffrées de Forge. Aucun secret n'est journalisé, renvoyé
+  dans une réponse, ni inclus dans un message d'erreur.
 </p>
 
 <h3>Chiffrement des communications</h3>
@@ -370,13 +343,8 @@
 </p>
 <p>
   Les tests ont utilisé la configuration « App Defense Alliance ADA Burp Audit
-  Scan Configuration ».
-</p>
-
-<h3>Vérification OAuth de Google</h3>
-<p>
-  La vérification OAuth de l'application par Google a été approuvée le
-  28/09/2026.
+  Scan Configuration ». Cette version lisait Google Drive ; la version
+  actuelle, qui ne se connecte plus à Google, n'a pas été réévaluée.
 </p>
 
 <h3>Registre STAR de la Cloud Security Alliance</h3>

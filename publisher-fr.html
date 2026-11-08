@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="alternate" hreflang="en" href="https://miksumia.com/publisher.html">
 <link rel="alternate" hreflang="fr" href="https://miksumia.com/publisher-fr.html">
-<title>Miksumia Publisher — vos dossiers Drive en pages Confluence</title>
-<meta name="description" content="Miksumia Publisher convertit vos dossiers Google Drive en pages Confluence natives, en conservant l'arborescence et en resynchronisant les modifications.">
+<title>Miksumia Publisher — vos fichiers en pages Confluence</title>
+<meta name="description" content="Miksumia Publisher transforme vos fichiers Word, PowerPoint, Excel et PDF en pages Confluence natives, trouvées par la recherche Confluence et Rovo. Gratuit, sans IA, rien n'est conservé.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
@@ -153,31 +153,24 @@
   <header>
     <a class="mark" href="/index-fr.html">Miksumia</a>
     <span style="float:right;font-family:var(--sans);font-size:.95rem;color:var(--muted)">FR | <a href="/publisher.html" hreflang="en" lang="en">EN</a></span>
-    <h1>Vos dossiers Drive deviennent de vraies pages Confluence.</h1>
+    <h1>Vos fichiers deviennent de vraies pages Confluence.</h1>
     <p class="lede">
-      Miksumia Publisher lit un dossier Google Drive et publie son
-      contenu dans Confluence sous forme de pages natives — cherchables,
-      commentables, gouvernées comme le reste de votre espace. L'arborescence
-      des dossiers devient l'arborescence des pages, et chaque modification
-      dans Drive est resynchronisée.
+      Déposez jusqu'à cinq fichiers Word, PowerPoint, Excel ou PDF, choisissez
+      une page ou un dossier, et chaque fichier devient une page Confluence
+      native — trouvée par la recherche Confluence et Rovo, commentable,
+      gouvernée comme le reste de votre espace. Gratuit, sans IA, et rien de vos
+      fichiers n'est conservé.
     </p>
   </header>
 
   <section class="transform" aria-label="Ce que fait l'application">
     <div>
-      <span class="tree-label">Dossier Google Drive</span>
+      <span class="tree-label">Vos fichiers</span>
       <ul class="tree">
-        <li class="node-folder">Ressources humaines
-          <ul>
-            <li class="node-folder">Onboarding
-              <ul>
-                <li class="node-folder">Livret d'accueil.docx</li>
-                <li class="node-folder">Checklist J1.xlsx</li>
-              </ul>
-            </li>
-            <li class="node-folder">Politique de congés.pdf</li>
-          </ul>
-        </li>
+        <li class="node-folder">Livret d'accueil.docx</li>
+        <li class="node-folder">Revue trimestrielle.pptx</li>
+        <li class="node-folder">Budget 2026.xlsx</li>
+        <li class="node-folder">Politique de congés.pdf</li>
       </ul>
     </div>
 
@@ -189,14 +182,11 @@
     <div>
       <span class="tree-label">Espace Confluence</span>
       <ul class="tree">
-        <li class="node-page"><span>Ressources humaines</span>
+        <li class="node-page"><span>Manuel de l'équipe</span>
           <ul>
-            <li class="node-page"><span>Onboarding</span>
-              <ul>
-                <li class="node-page"><span>Livret d'accueil</span></li>
-                <li class="node-page"><span>Checklist J1</span></li>
-              </ul>
-            </li>
+            <li class="node-page"><span>Livret d'accueil</span></li>
+            <li class="node-page"><span>Revue trimestrielle</span></li>
+            <li class="node-page"><span>Budget 2026</span></li>
             <li class="node-page"><span>Politique de congés</span></li>
           </ul>
         </li>
@@ -206,27 +196,37 @@
 
   <h2>Des pages, pas des pièces jointes</h2>
   <p>
-    Les outils existants affichent le fichier Drive dans un cadre inséré : le
-    contenu reste invisible à la recherche Confluence et aux agents. Ici, chaque
-    document est converti en contenu Confluence natif — titres, listes, tableaux,
-    images — avec le fichier d'origine toujours accessible en un clic.
+    Un fichier joint ou une visionneuse insérée laisse ses mots invisibles à la
+    recherche Confluence et à Rovo. Ici, chaque document est converti en contenu
+    Confluence natif : titres, listes, tableaux, images, liens et graphiques. Une
+    présentation reçoit un onglet par diapositive, un classeur un onglet par
+    feuille, un PDF un onglet par page.
   </p>
 
-  <h2>Une synchronisation qui ne casse rien</h2>
+  <h2>Ce que montre l'éditeur, rien d'autre</h2>
   <p>
-    Après la première publication, seuls les documents réellement modifiés sont
-    republiés. Les pages conservent leur identité, leur historique de version et
-    leurs liens entrants. Si un document est renommé ou déplacé dans Drive, la
-    page correspondante suit sans être recréée.
+    Les lecteurs propres de l'application publient ce que montrent Word,
+    PowerPoint ou Excel, jamais ce que le fichier se contente de stocker : les
+    feuilles et le texte masqués restent dehors. Aucun service d'IA ne lit vos
+    documents.
   </p>
 
-  <h2>Ce que l'application lit, et ce qu'elle n'écrit pas</h2>
+  <h2>Ce que l'application conserve, et où elle tourne</h2>
   <ul class="plain">
-    <li>L'accès à Google Drive est en <strong>lecture seule</strong>. L'application ne modifie, ne déplace ni ne supprime jamais un fichier Drive.</li>
-    <li>Seuls les dossiers que vous connectez explicitement sont lus.</li>
-    <li>L'application s'exécute sur Atlassian Forge : le traitement a lieu dans l'infrastructure Atlassian, pas sur un serveur tiers.</li>
-    <li>Seul un administrateur Confluence peut créer, modifier ou supprimer une connexion.</li>
+    <li>L'application tourne entièrement sur Atlassian Forge et n'appelle aucun service hors d'Atlassian.</li>
+    <li>Un fichier déposé est effacé une fois lu, que sa page soit publiée ou non, et au plus tard dans l'heure. Rien de son contenu n'est conservé ni journalisé.</li>
+    <li>Vous ne pouvez publier que là où vous pourriez créer une page à la main : l'application vérifie d'abord votre autorisation Confluence.</li>
+    <li>L'application ne modifie ni ne supprime jamais une page après sa publication.</li>
   </ul>
+
+  <h2>Construit sur</h2>
+  <p>
+    L'application est construite sur <a href="https://www.npmjs.com/package/skryba">skryba</a>,
+    son lecteur de documents open source (AGPL-3.0). Plusieurs de ses décisions
+    de lecture viennent de Side Liu et al., « Beyond the Editing Canvas: Evidence
+    Divergence in OOXML-to-LLM Ingestion »,
+    <a href="https://arxiv.org/abs/2608.25880">arXiv:2608.25880</a>.
+  </p>
 
   <div class="install">
     <p>

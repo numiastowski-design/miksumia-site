@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="alternate" hreflang="en" href="https://miksumia.com/publisher.html">
 <link rel="alternate" hreflang="fr" href="https://miksumia.com/publisher-fr.html">
-<title>Miksumia Publisher — your Drive folders as Confluence pages</title>
-<meta name="description" content="Miksumia Publisher converts your Google Drive folders into native Confluence pages, preserving the folder tree and resynchronising changes.">
+<title>Miksumia Publisher — your files as Confluence pages</title>
+<meta name="description" content="Miksumia Publisher turns Word, PowerPoint, Excel and PDF files into native Confluence pages, searchable by Confluence and Rovo. Free, no AI, nothing kept.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
@@ -153,30 +153,23 @@
   <header>
     <a class="mark" href="/">Miksumia</a>
     <span style="float:right;font-family:var(--sans);font-size:.95rem;color:var(--muted)"><a href="/publisher-fr.html" hreflang="fr" lang="fr">FR</a> | EN</span>
-    <h1>Your Drive folders become real Confluence pages.</h1>
+    <h1>Your files become real Confluence pages.</h1>
     <p class="lede">
-      Miksumia Publisher reads a Google Drive folder and publishes its
-      content in Confluence as native pages — searchable, open to comments,
-      governed like the rest of your space. The folder tree becomes the page
-      tree, and every change in Drive is resynchronised.
+      Drop up to five Word, PowerPoint, Excel or PDF files, choose a page or a
+      folder, and each file becomes a native Confluence page — searchable by
+      Confluence and Rovo, open to comments, governed like the rest of your
+      space. Free, without AI, and nothing of your files is kept.
     </p>
   </header>
 
   <section class="transform" aria-label="What the application does">
     <div>
-      <span class="tree-label">Google Drive folder</span>
+      <span class="tree-label">Your files</span>
       <ul class="tree">
-        <li class="node-folder">Human resources
-          <ul>
-            <li class="node-folder">Onboarding
-              <ul>
-                <li class="node-folder">Welcome booklet.docx</li>
-                <li class="node-folder">Day 1 checklist.xlsx</li>
-              </ul>
-            </li>
-            <li class="node-folder">Leave policy.pdf</li>
-          </ul>
-        </li>
+        <li class="node-folder">Welcome booklet.docx</li>
+        <li class="node-folder">Quarterly review.pptx</li>
+        <li class="node-folder">Budget 2026.xlsx</li>
+        <li class="node-folder">Leave policy.pdf</li>
       </ul>
     </div>
 
@@ -188,14 +181,11 @@
     <div>
       <span class="tree-label">Confluence space</span>
       <ul class="tree">
-        <li class="node-page"><span>Human resources</span>
+        <li class="node-page"><span>Team handbook</span>
           <ul>
-            <li class="node-page"><span>Onboarding</span>
-              <ul>
-                <li class="node-page"><span>Welcome booklet</span></li>
-                <li class="node-page"><span>Day 1 checklist</span></li>
-              </ul>
-            </li>
+            <li class="node-page"><span>Welcome booklet</span></li>
+            <li class="node-page"><span>Quarterly review</span></li>
+            <li class="node-page"><span>Budget 2026</span></li>
             <li class="node-page"><span>Leave policy</span></li>
           </ul>
         </li>
@@ -205,27 +195,36 @@
 
   <h2>Pages, not attachments</h2>
   <p>
-    Existing tools display the Drive file in an embedded frame: the content
-    remains invisible to Confluence search and to agents. Here, every document
-    is converted into native Confluence content — headings, lists, tables,
-    images — with the original file always one click away.
+    An attached file or an embedded viewer leaves its words invisible to
+    Confluence search and to Rovo. Here, every document is converted into
+    native Confluence content: headings, lists, tables, images, links and
+    charts. A presentation gets one tab per slide, a workbook one tab per sheet,
+    a PDF one tab per page.
   </p>
 
-  <h2>A synchronisation that breaks nothing</h2>
+  <h2>What the editor shows, nothing else</h2>
   <p>
-    After the first publication, only the documents that have actually changed
-    are republished. Pages keep their identity, their version history and their
-    incoming links. If a document is renamed or moved in Drive, the
-    corresponding page follows without being recreated.
+    The app's own readers publish what Word, PowerPoint or Excel shows, never
+    what the file merely stores: hidden sheets and hidden text stay out. No AI
+    service reads your documents.
   </p>
 
-  <h2>What the application reads, and what it does not write</h2>
+  <h2>What the application keeps, and where it runs</h2>
   <ul class="plain">
-    <li>Access to Google Drive is <strong>read-only</strong>. The application never modifies, moves or deletes a Drive file.</li>
-    <li>Only the folders you explicitly connect are read.</li>
-    <li>The application runs on Atlassian Forge: processing takes place within Atlassian's infrastructure, not on a third-party server.</li>
-    <li>Only a Confluence administrator can create, modify or delete a connection.</li>
+    <li>The application runs entirely on Atlassian Forge and makes no network call outside Atlassian.</li>
+    <li>An uploaded file is erased once read, whether its page is published or not, and within the hour at the latest. Nothing of its content is kept or logged.</li>
+    <li>You can publish only where you could create a page by hand: the application checks your Confluence permission first.</li>
+    <li>A published page is never updated or deleted by the application afterwards.</li>
   </ul>
+
+  <h2>Built on</h2>
+  <p>
+    The app is built on <a href="https://www.npmjs.com/package/skryba">skryba</a>,
+    its open-source document reader (AGPL-3.0). Several of its reading
+    decisions come from Side Liu et al., “Beyond the Editing Canvas: Evidence
+    Divergence in OOXML-to-LLM Ingestion”,
+    <a href="https://arxiv.org/abs/2608.25880">arXiv:2608.25880</a>.
+  </p>
 
   <div class="install">
     <p>

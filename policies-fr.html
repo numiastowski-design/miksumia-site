@@ -65,7 +65,7 @@
   <span style="float:right;font-family:var(--sans);font-size:.95rem;color:var(--muted)">FR | <a href="/policies.html" hreflang="en" lang="en">EN</a></span>
   <h1>Politiques de sécurité</h1>
   <p class="meta">
-    Éditeur MIKSUMIA · Application « Miksumia Publisher » · Dernière revue : 6 octobre 2026
+    Éditeur MIKSUMIA · Application « Miksumia Publisher » · Dernière revue : 8 novembre 2026
   </p>
 </header>
 
@@ -85,7 +85,7 @@
 </p>
 <p>
   Ces politiques sont revues au moins une fois par an et après tout changement
-  majeur de l'application. Dernière revue : 6 octobre 2026. Nos réponses au
+  majeur de l'application. Dernière revue : 8 novembre 2026. Nos réponses au
   questionnaire CAIQ Lite v4.1.0 de la Cloud Security Alliance sont publiées ici :
   <a href="/caiq-lite-v4.1.0-miksumia-publisher.xlsx">CAIQ Lite v4.1.0 (xlsx, en anglais)</a>,
   et inscrites au <a href="https://cloudsecurityalliance.org/star/registry/miksumia/services/miksumia-publisher-for-confluence">registre STAR de la CSA</a> (STAR Level One, auto-évaluation).
@@ -104,37 +104,39 @@
 
 <h2 id="access">3. Contrôle d'accès</h2>
 <ul>
-  <li>Seul le fondateur a accès à la production, au code source et aux comptes
-    développeur Google Cloud et Atlassian.</li>
-  <li>L'authentification à deux facteurs protège les comptes Atlassian, Google
-    et GitHub.</li>
-  <li>L'application demande les autorisations OAuth les plus étroites dont
-    elle a besoin. Google Drive est en lecture seule.</li>
-  <li>La configuration de l'application est réservée aux administrateurs du
-    site Confluence. C'est vérifié à chaque requête.</li>
+  <li>Seul le fondateur a accès à la production, au code source et au compte
+    développeur Atlassian.</li>
+  <li>L'authentification à deux facteurs protège les comptes Atlassian et
+    GitHub.</li>
+  <li>L'application ne demande que les autorisations Confluence dont elle a
+    besoin. Elle n'appelle aucun service hors d'Atlassian.</li>
+  <li>Avant toute publication, l'application vérifie, avec les droits
+    Confluence de la personne qui dépose, qu'elle peut créer une page à
+    l'endroit choisi : une fois dans l'écran, une seconde fois sur le serveur
+    avant le début de l'envoi. Personne ne peut publier là où il ne pourrait pas
+    créer une page à la main.</li>
 </ul>
 
 <h2 id="encryption">4. Chiffrement et secrets</h2>
 <ul>
   <li>Toutes les communications passent par HTTPS.</li>
-  <li>Les secrets de l'application et les jetons Google sont conservés dans le
-    stockage chiffré des secrets d'Atlassian Forge.</li>
+  <li>L'application ne détient aucun jeton d'un tiers. Les secrets de
+    déploiement sont conservés dans le stockage chiffré des secrets
+    d'Atlassian Forge.</li>
   <li>Les secrets n'apparaissent jamais dans le code source ni dans les
     journaux.</li>
   <li>Un secret divulgué ou suspect est révoqué et remplacé le jour même.</li>
 </ul>
 
 <h2 id="suppliers">5. Gestion des fournisseurs</h2>
-<p>MIKSUMIA a recours à deux sous-traitants :</p>
+<p>MIKSUMIA a recours à un sous-traitant :</p>
 <ul>
   <li><strong>Atlassian</strong> : hébergement et stockage de l'application
     (Forge).</li>
-  <li><strong>Google</strong> : Drive, Sheets, Slides, autorisation OAuth et
-    API Gemini.</li>
 </ul>
 <p>
-  Ils ont été choisis pour leurs programmes de sécurité publiés. Ils sont
-  listés dans la <a href="/privacy-fr.html">politique de confidentialité</a>.
+  Il a été choisi pour son programme de sécurité publié. Il est
+  listé dans la <a href="/privacy-fr.html">politique de confidentialité</a>.
   La liste est revue lors de la revue annuelle des politiques.
 </p>
 
@@ -180,8 +182,8 @@
   <a href="/privacy-fr.html">politique de confidentialité</a>.
 </p>
 <p>
-  À la désinstallation, l'application révoque d'abord le jeton Google.
-  Atlassian supprime ensuite les données stockées au bout de 28 jours.
+  À la désinstallation, Atlassian supprime les données stockées au bout de
+  28 jours.
 </p>
 
 <h2 id="workstation">10. Poste de travail</h2>
